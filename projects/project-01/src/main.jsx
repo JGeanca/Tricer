@@ -4,7 +4,10 @@ import { Layout } from './components/Layout'
 import HomePage from './pages/HomePage'
 import MenPage from './pages/MenPage'
 import NotFoundPage from './pages/NotFoundPage'
-import './index.css'
+import './css/index.css'
+import './css/layout.css'
+import './css/header.css'
+import './css/footer.css'
 
 // Create a router
 const router = createBrowserRouter([

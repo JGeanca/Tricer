@@ -1,0 +1,30 @@
+.layout-container {
+  display: grid;
+  grid-template-rows: 100px 1fr 200px;
+  min-height: 100vh;
+  grid-template-areas:
+    'header   header  header'
+    'main     main    main'
+    'footer   footer  footer';
+}
+
+.layout-container header {
+  grid-area: header;
+}
+
+.layout-container main {
+  grid-area: main;
+}
+
+.layout-container footer {
+  grid-area: footer;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 1em;
+}

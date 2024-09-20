@@ -1,83 +1,3 @@
-/*! This is default Vite CSS: */
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-/** This is CSS by the team: */
-
-.layout-container {
-  display: grid;
-  grid-template-rows: 100px 1fr 200px;
-  min-height: 100vh;
-  grid-template-areas:
-    'header   header  header'
-    'main     main    main'
-    'footer   footer  footer';
-}
-
-.layout-container header {
-  grid-area: header;
-}
-
-.layout-container main {
-  grid-area: main;
-}
-
-.layout-container footer {
-  grid-area: footer;
-}
-
-body {
-  margin: 0;
-}
-
-nav {
-  display: flex;
-  gap: 1em;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-
 footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -87,7 +7,6 @@ footer {
   grid-template-areas:
     'links    links    social'
     'f-bottom f-bottom f-bottom';
-
 }
 
 .footer-links {
