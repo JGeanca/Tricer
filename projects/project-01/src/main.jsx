@@ -20,7 +20,6 @@ const router = createBrowserRouter([
         path: 'men',
         element: <MenPage />
       },
-
     ],
   },
   {

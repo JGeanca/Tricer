@@ -10,7 +10,6 @@ export function Header() {
         <Link to="/">HomePage</Link>
         <Link to="/men">MenPage</Link>
       </nav>
-      <hr />
     </header>
   )
 }

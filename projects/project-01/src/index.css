@@ -37,14 +37,31 @@ button:focus-visible {
 }
 
 /** This is CSS by the team: */
-/**! css just for the moment */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.6em 2em;
-  border-bottom: 1px solid #e0e0e0;
-  gap: 1em;
+
+.layout-container {
+  display: grid;
+  grid-template-rows: 100px 1fr 200px;
+  min-height: 100vh;
+  grid-template-areas:
+    'header   header  header'
+    'main     main    main'
+    'footer   footer  footer';
+}
+
+.layout-container header {
+  grid-area: header;
+}
+
+.layout-container main {
+  grid-area: main;
+}
+
+.layout-container footer {
+  grid-area: footer;
+}
+
+body {
+  margin: 0;
 }
 
 nav {
@@ -52,10 +69,100 @@ nav {
   gap: 1em;
 }
 
-footer {
+header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.6em 2em;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 130px 45px;
   border-top: 1px solid #e0e0e0;
+  padding: 10px;
+  grid-template-areas:
+    'links    links    social'
+    'f-bottom f-bottom f-bottom';
+
+}
+
+.footer-links {
+  grid-area: links;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 265px;
+  padding-left: 20px;
+}
+
+.footer-links-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+
+.footer-links-column strong {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.footer-links a {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-social {
+  grid-area: social;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  padding-right: 20px;
+}
+
+.footer-bottom {
+  grid-column: f-bottom;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-size: 0.9em;
+  color: #6D7993;
+  position: relative;
+}
+
+/* This is just for the divider line between the 2 rows */
+.footer-bottom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  background-color: #a0a0a0;
+  transform: translateX(-50%);
+}
+
+.footer-bottom-left {
+  display: flex;
+  gap: 100px;
+  padding-left: 70px;
+}
+
+.footer-bottom-left a {
+  color: #6D7993;
+  text-decoration: none;
+}
+
+.footer-bottom-right {
+  text-align: right;
+  display: flex;
+  gap: 20px;
+  padding-right: 20px;
 }
