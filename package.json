@@ -14,5 +14,8 @@
     "eslint": "^9.10.0",
     "eslint-plugin-react": "^7.35.2",
     "globals": "^15.9.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
   }
 }
