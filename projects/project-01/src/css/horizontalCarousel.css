@@ -1,0 +1,25 @@
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.carousel-inner {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}

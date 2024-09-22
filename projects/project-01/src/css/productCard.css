@@ -1,0 +1,43 @@
+
+.card {
+  border: none;
+}
+
+.product-card {
+  display: inline-flex;
+  border-radius: 25px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+  max-width: 25%;
+  margin: 2% 3%;
+
+  /* font-size: 1vw; */
+  font-size: clamp(8px, 1.5vw, 16px);
+}
+
+.product-card img {
+  border-radius: 25px 25px 0px 0px;
+}
+
+.card-new-product p {
+  display: flex;
+  max-width: min-content;
+  padding: 1.5% 5%;
+  border-end-end-radius: 20%;
+  border-start-start-radius: 20%;
+  color: white;
+  background-color: black;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card-body {
+  width: 100%;
+  border-radius: 0px 0px 25px 25px;
+  background-color: #F5F5F5;
+  text-align: center; 
+} 
+
+.card-text {
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
