@@ -5,7 +5,6 @@ import "../css/collectionsAndArrivals.css"
 {/* Review and delete this */}
 import { ProductCard } from "../components/ProductCard";
 import { SampleImageMenHat, SampleImageMenPant, SampleImageMenShirt } from "../assets/Images";
-import { HorizontalCarouselItem } from "../components/HorizontalCarouselItem";
 
 export default function MenPage() {
   return (

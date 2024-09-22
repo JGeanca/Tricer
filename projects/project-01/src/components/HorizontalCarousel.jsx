@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from '../assets/Icons';
 
 import "../css/horizontalCarousel.css"
 
 export function HorizontalCarousel({ children }) {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
-  const itemsPerPage = 3;
+  const itemsPerPage = Math.min(3, React.Children.count(children));
   const totalItems = React.Children.count(children);
 
   const handleNext = () => {
@@ -21,6 +22,14 @@ export function HorizontalCarousel({ children }) {
     });
   };
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      handleNext();
+    }, 10000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   const start = currentItemIndex;
   const end = start + itemsPerPage;
 
@@ -30,11 +39,15 @@ export function HorizontalCarousel({ children }) {
 
   return (
     <div className="carousel">
-      <button onClick={handlePrev} className="carousel-button">Prev</button>
-      <div className="carousel-inner">
-        {displayedItems}
-      </div>
-      <button onClick={handleNext} className="carousel-button">Next</button>
+      <button onClick={handlePrev} className="carousel-button">
+        <ChevronLeft />
+      </button>
+        <div className="carousel-inner">
+          {displayedItems}
+        </div>
+      <button onClick={handleNext} className="carousel-button">
+        <ChevronRight />
+      </button>
     </div>
   );
 }
