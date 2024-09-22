@@ -1,6 +1,7 @@
 .layout-container {
   display: grid;
-  grid-template-rows: auto 1fr 200px; /* Cambiado 70px por auto para permitir la expansión */
+  /* Cambiado 70px por auto para permitir la expansión */
+  grid-template-rows: auto 1fr 200px;
   min-height: 100vh;
   grid-template-areas:
     'header   header  header'

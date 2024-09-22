@@ -1,0 +1,136 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Nike Sleeveless Shirt",
+      "description": "Sleeveless shirt from Nike, perfect for workouts and sports activities. Available in multiple colors.",
+      "category": "Shirt",
+      "price": 9.99,
+      "discountPercentage": 7.17,
+      "rating": 4.94,
+      "stock": 5,
+      "colors": [
+        "blue",
+        "white"
+      ],
+      "gender": "Male",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/2/photos//2024/V/0/2/p/4238/500/500/4238500500_2_1_0.jpg?ts=1710169292848&imwidth=1125",
+        "https://static.pullandbear.net/assets/public/4f53/9b61/6b2846c28fac/204d9cb30e75/03244500500-A6M/03244500500-A6M.jpg?ts=1721854114622&w=1024"
+      ],
+      "brand": "Nike"
+    },
+    {
+      "id": 2,
+      "title": "Adidas Performance Shirt",
+      "description": "Lightweight performance shirt from Adidas, ideal for sports and casual wear.",
+      "category": "Shirt",
+      "price": 12.99,
+      "discountPercentage": 10.00,
+      "rating": 4.85,
+      "stock": 8,
+      "colors": [
+        "black",
+        "grey"
+      ],
+      "gender": "Male",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/2/photos//2024/V/0/2/p/4238/500/500/4238500500_2_1_0.jpg?ts=1710169292848&imwidth=1125",
+        "https://static.pullandbear.net/assets/public/4f53/9b61/6b2846c28fac/204d9cb30e75/03244500500-A6M/03244500500-A6M.jpg?ts=1721854114622&w=1024"
+      ],
+      "brand": "Adidas"
+    },
+    {
+      "id": 3,
+      "title": "Puma Graphic Tee",
+      "description": "Stylish graphic tee from Puma, perfect for casual outings and streetwear.",
+      "category": "Shirt",
+      "price": 14.99,
+      "discountPercentage": 5.00,
+      "rating": 4.70,
+      "stock": 10,
+      "colors": [
+        "red",
+        "white"
+      ],
+      "gender": "Male",
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/2/photos//2024/V/0/2/p/4238/500/500/4238500500_2_1_0.jpg?ts=1710169292848&imwidth=1125",
+        "https://static.pullandbear.net/assets/public/4f53/9b61/6b2846c28fac/204d9cb30e75/03244500500-A6M/03244500500-A6M.jpg?ts=1721854114622&w=1024"
+      ],
+      "brand": "Puma"
+    },
+    {
+      "id": 4,
+      "title": "Under Armour Training Shirt",
+      "description": "Durable training shirt from Under Armour, designed for optimal performance and comfort.",
+      "category": "Shirt",
+      "price": 19.99,
+      "discountPercentage": 15.00,
+      "rating": 4.60,
+      "stock": 6,
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "gender": "Male",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/2/photos//2024/V/0/2/p/4238/500/500/4238500500_2_1_0.jpg?ts=1710169292848&imwidth=1125",
+        "https://static.pullandbear.net/assets/public/4f53/9b61/6b2846c28fac/204d9cb30e75/03244500500-A6M/03244500500-A6M.jpg?ts=1721854114622&w=1024"
+      ],
+      "brand": "Under Armour"
+    },
+    {
+      "id": 5,
+      "title": "Reebok Classic Tee",
+      "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
+      "category": "Shirt",
+      "price": 11.99,
+      "discountPercentage": 8.00,
+      "rating": 4.80,
+      "stock": 9,
+      "colors": [
+        "white",
+        "grey"
+      ],
+      "gender": "Male",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/2/photos//2024/V/0/2/p/4238/500/500/4238500500_2_1_0.jpg?ts=1710169292848&imwidth=1125",
+        "https://static.pullandbear.net/assets/public/4f53/9b61/6b2846c28fac/204d9cb30e75/03244500500-A6M/03244500500-A6M.jpg?ts=1721854114622&w=1024"
+      ],
+      "brand": "Reebok"
+    }
+  ]
+}
