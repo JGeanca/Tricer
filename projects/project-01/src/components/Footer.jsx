@@ -6,12 +6,12 @@ export function Footer() {
     <footer>
       <div className='footer-links'>
         <div className='footer-links-column'>
-          <strong>¿Necesitas ayuda?</strong>
-          <Link to='/contact'>Enviar e-mail</Link>
+          <strong>Need help?</strong>
+          <Link to='/contact'>Send email</Link>
         </div>
         <div className='footer-links-column'>
-          <strong>Somos TRICER</strong>
-          <Link to='/about-us'>Sobre Nosotros</Link>
+          <strong>We are TRICER</strong>
+          <Link to='/about-us'>About Us</Link>
           <Link to='/faq'>FAQ</Link>
         </div>
       </div>
@@ -23,13 +23,13 @@ export function Footer() {
       </div>
       <div className='footer-bottom'>
         <div className='footer-bottom-left'>
-          <Link to="/support">Soporte</Link>
-          <Link to="/terms">Términos y Condiciones</Link>
-          <Link to="/cookies">Políticas de cookies</Link>
+          <Link to="/support">Support</Link>
+          <Link to="/terms">Terms and Conditions</Link>
+          <Link to="/cookies">Cookie Policy</Link>
         </div>
         <div className='footer-bottom-right'>
-          <span>Costa Rica | Español</span>
-          <span>© 2021 TRICER</span>
+          <span>Costa Rica | English</span>
+          <span>© 2024 TRICER</span>
         </div>
       </div>
     </footer>

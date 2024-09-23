@@ -5,7 +5,9 @@ import 'bootstrap/dist/js/bootstrap.js';
 import { Layout } from './components/Layout'
 import HomePage from './pages/HomePage'
 import MenPage from './pages/MenPage'
-import NotFoundPage from './pages/NotFoundPage'
+import ProductsPage from './pages/ProductsPage'
+import NoFoundPage from './pages/NoFoundPage'
+
 import './css/index.css'
 import './css/layout.css'
 import './css/header.css'
@@ -23,13 +25,21 @@ const router = createBrowserRouter([
       },
       {
         path: 'men',
-        element: <MenPage />
+        element: <MenPage />,
       },
+      {
+        path: ':gender/:productType',
+        element: <ProductsPage />
+      },
+      {
+        path: ':gender/:productType/:productId',
+        //TODO: element = ProductDetailsPage(Cart)
+      }
     ],
   },
   {
     path: '*',
-    element: <NotFoundPage />
+    element: <NoFoundPage />
   }
 ])
 

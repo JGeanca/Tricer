@@ -1,0 +1,19 @@
+.no-products-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.no-products-found h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #f37474;
+}
+
+.no-products-found p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
