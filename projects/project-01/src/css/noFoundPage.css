@@ -1,26 +1,25 @@
-.not-found-page {
+.no-found-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   text-align: center;
-  background-color: #f0f0f0;
   color: #333;
 }
 
-.not-found-content h2 {
+.no-found-content h2 {
   font-size: 8rem;
   margin: 0;
   color: #ff6b6b;
 }
 
-.not-found-content p {
+.no-found-content p {
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-.not-found-content .home-link {
+.no-found-content .home-link {
   padding: 10px 20px;
   background-color: #333;
   color: #fff;
@@ -29,6 +28,6 @@
   transition: background-color 0.3s ease;
 }
 
-.not-found-content .home-link:hover {
+.no-found-content .home-link:hover {
   background-color: #1d1c1c;
 }

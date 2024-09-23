@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const cardStyle = {
@@ -20,12 +20,13 @@ const footerStyle = {
 }
 
 export default function ProductsGrid({ products }) {
+  const { gender, productType } = useParams()
   return (
     <Container fluid>
       <Row xs={1} sm={2} md={3} lg={4} className="g-4">
         {products.map((product) => (
           <Col key={product.id}>
-            <Link to={`/products/${product.id}`} className="text-decoration-none">
+            <Link to={`/${gender}/${productType}/${product.id}`} className="text-decoration-none">
               <Card style={cardStyle}>
                 <Card.Img
                   variant="top"

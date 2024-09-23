@@ -4,7 +4,7 @@ import { Layout } from './components/Layout'
 import HomePage from './pages/HomePage'
 import MenPage from './pages/MenPage'
 import ProductsPage from './pages/ProductsPage'
-import NotFoundPage from './pages/NotFoundPage'
+import NoFoundPage from './pages/NoFoundPage'
 
 import './css/index.css'
 import './css/layout.css'
@@ -26,14 +26,18 @@ const router = createBrowserRouter([
         element: <MenPage />,
       },
       {
-        path: 'men/clothing',
+        path: ':gender/:productType',
         element: <ProductsPage />
       },
+      {
+        path: ':gender/:productType/:productId',
+        //TODO: element = ProductDetailsPage(Cart)
+      }
     ],
   },
   {
     path: '*',
-    element: <NotFoundPage />
+    element: <NoFoundPage />
   }
 ])
 
