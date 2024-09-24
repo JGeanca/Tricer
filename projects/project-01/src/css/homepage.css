@@ -7,14 +7,17 @@
 
 .image-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 45px;
+  flex-wrap: wrap;
 }
 
 .image-box {
   position: relative;
+  max-width: 100%;
   width: 630px;
   height: 730px;
+  margin: 0 auto;
 }
 
 .image-box img {
@@ -44,4 +47,43 @@
 
 .image-box:hover .overlay-text {
   transform: scale(1.02) translate(-50%, -50%);
+}
+
+@media (max-width: 1400px) {
+  .image-box {
+    width: 500px;
+    height: 580px;
+  }
+
+  .overlay-text {
+    font-size: 68px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .image-box {
+    width: 400px;
+    height: 460px;
+  }
+
+  .overlay-text {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-box {
+    width: 300px;
+    height: 350px;
+  }
+
+  .overlay-text {
+    font-size: 32px;
+  }
 }
