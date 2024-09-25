@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import MenPage from './pages/MenPage'
 import ProductsPage from './pages/ProductsPage'
 import NoFoundPage from './pages/NoFoundPage'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './css/index.css'
 import './css/layout.css'
