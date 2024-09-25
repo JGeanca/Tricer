@@ -2,65 +2,74 @@ import { HorizontalCarousel } from "../components/HorizontalCarousel";
 
 import "../css/collectionsAndArrivals.css"
 
-{/* Review and delete this */}
+{/* Review and delete this */ }
 import { ProductCard } from "../components/ProductCard";
 import { SampleImageMenHat, SampleImageMenPant, SampleImageMenShirt } from "../assets/Images";
 
 export default function MenPage() {
   return (
-    <div className="arrivals-section">
-      <h1 className="page-title">Nuevos productos</h1>
+    <div>
+      <div className="arrivals-section">
+        <h1 className="page-title">Arrivals</h1>
 
-      <HorizontalCarousel>
+        <HorizontalCarousel>
 
-        <ProductCard
+          <ProductCard
             productName="Test one"
             productPrice="Test Price"
             isNew={true}>
-          <SampleImageMenHat />
-        </ProductCard>
+            <SampleImageMenHat />
+          </ProductCard>
 
-        <ProductCard
-          productName="Test two"
-          isNew={true}>
-          <SampleImageMenPant />
-        </ProductCard>
+          <ProductCard
+            productName="Test two"
+            isNew={true}>
+            <SampleImageMenPant />
+          </ProductCard>
 
-        <ProductCard
-          productName="Test three">
-          <SampleImageMenShirt />
-        </ProductCard>
+          <ProductCard
+            productName="Test three">
+            <SampleImageMenShirt />
+          </ProductCard>
 
-        <ProductCard
+          <ProductCard
             isNew={false}>
-          <SampleImageMenHat />
-        </ProductCard>
+            <SampleImageMenHat />
+          </ProductCard>
 
-        <ProductCard
-          isNew={true}>
-          <SampleImageMenPant />
-        </ProductCard>
+          <ProductCard
+            isNew={true}>
+            <SampleImageMenPant />
+          </ProductCard>
 
-      </HorizontalCarousel>
+        </HorizontalCarousel>
 
+      </div>
+
+      <div className="collections-section">
+        <h1 className="page-title">Categories</h1>
+
+        <div className="collections-cards">
+          <ProductCard
+            productName="Clothes"
+            isNew={false}>
+            <SampleImageMenShirt />
+          </ProductCard>
+
+          <ProductCard
+            productName="Footwear"
+            isNew={false}>
+            <SampleImageMenHat />
+          </ProductCard>
+
+          <ProductCard
+            productName="Accessories"
+            isNew={false}>
+            <SampleImageMenPant />
+          </ProductCard>
+          
+        </div>
+      </div>
     </div>
   )
 }
-
-{/* <ProductCard
-  productName="Test one"
-  productPrice="Test Price"
-  isNew={true}>
-  <SampleImageMenHat />
-</ProductCard>
-
-<ProductCard
-  productName="Test two"
-  isNew={true}>
-  <SampleImageMenPant />
-</ProductCard>
-
-<ProductCard
-  productName="Test three">
-  <SampleImageMenShirt />
-</ProductCard> */}

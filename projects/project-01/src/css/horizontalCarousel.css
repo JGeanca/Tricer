@@ -33,8 +33,10 @@
   stroke-width: 3px;
   width: clamp(24px, 4vw, 80px);
   height: clamp(24px, 4vw, 80px);
+  transition: transform 0.3s ease-in-out;
 }
 
 .carousel-button svg:hover {
   color: gray;
+  transform: scale(1.1);
 }

@@ -1,16 +1,22 @@
 
 .card {
-  border: none;
+  border: none !important;
 }
 
 .product-card {
   display: inline-flex;
-  border-radius: 25px;
+  border-radius: 25px !important;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
-  max-width: 25%;
+  max-width: 20%;
   margin: 2% 3%;
 
   font-size: clamp(8px, 1.5vw, 16px);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
 }
 
 .product-card img {
