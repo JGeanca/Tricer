@@ -7,7 +7,7 @@ export function Footer() {
       <div className='footer-links'>
         <div className='footer-links-column'>
           <strong>Need help?</strong>
-          <Link to='/contact'>Send email</Link>
+          <a href='mailto:support@tricer.com'>Send email</a>
         </div>
         <div className='footer-links-column'>
           <strong>We are TRICER</strong>
