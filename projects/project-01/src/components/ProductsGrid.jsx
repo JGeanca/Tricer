@@ -7,11 +7,12 @@ const cardStyle = {
   display: 'flex',
   flexDirection: 'column',
   margin: '0 auto',
-  maxWidth: '500px'
+  maxWidth: '450px',
 }
 
 const imageStyle = {
-  height: '600px',
+  height: 'auto',
+  width: '100%',
   objectFit: 'cover'
 }
 
@@ -27,7 +28,7 @@ export default function ProductsGrid({ products }) {
           <ProductCard key={product.id} product={product} />
         ))}
       </Row>
-    </Container>
+    </Container >
   )
 }
 
