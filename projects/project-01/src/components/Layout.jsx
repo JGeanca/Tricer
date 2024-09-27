@@ -1,11 +1,12 @@
-import { Header } from './Header'
-import { Footer } from './Footer'
-
+import Header from './Header'
+import Footer from './Footer'
+import TitleUpdater from './TitleUpdater'
 import { Outlet } from 'react-router-dom'
 
-export function Layout() {
+export default function Layout() {
   return (
     <div className='layout-container'>
+      <TitleUpdater />
       <Header />
       <main>
         <Outlet />
