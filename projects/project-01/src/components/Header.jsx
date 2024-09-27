@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { CartIcon, ShopTitle, ProfileIcon } from '../assets/Icons'
 import '../css/header.css'
 
-export function Header() {
+export default function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false)
   const [dropdownCategory, setDropdownCategory] = useState('')
   const location = useLocation()
@@ -30,25 +30,25 @@ export function Header() {
     <header className="header-container">
       <nav className="header-nav">
         <div className="header-left">
-          <div 
-            className="header-link-container" 
+          <div
+            className="header-link-container"
             onMouseEnter={() => handleMouseEnter('women')}
             onMouseLeave={handleMouseLeave}
           >
-            <Link 
-              to="/women" 
+            <Link
+              to="/women"
               className={`header-link ${isActiveLink('/women', 'women') ? 'active' : ''}`}
             >
               Women
             </Link>
           </div>
-          <div 
-            className="header-link-container" 
+          <div
+            className="header-link-container"
             onMouseEnter={() => handleMouseEnter('men')}
             onMouseLeave={handleMouseLeave}
           >
-            <Link 
-              to="/men" 
+            <Link
+              to="/men"
               className={`header-link ${isActiveLink('/men', 'men') ? 'active' : ''}`}
             >
               Men
@@ -74,9 +74,9 @@ export function Header() {
       </nav>
 
       {dropdownVisible && (
-        <div 
-          className="fixed-dropdown" 
-          onMouseEnter={() => handleMouseEnter(dropdownCategory)} 
+        <div
+          className="fixed-dropdown"
+          onMouseEnter={() => handleMouseEnter(dropdownCategory)}
           onMouseLeave={handleMouseLeave}
         >
           <Link to={`/${dropdownCategory}/clothing`} className="dropdown-item">Clothing</Link>

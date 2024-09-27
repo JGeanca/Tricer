@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Layout } from './components/Layout'
+import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import MenPage from './pages/MenPage'
 import ProductsPage from './pages/ProductsPage'
