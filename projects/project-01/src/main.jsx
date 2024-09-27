@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import HomePage from './pages/HomePage'
-import MenPage from './pages/MenPage'
+import CollectionsAndArrivalsPage from './pages/CollectionsAndArrivalsPage'
 import ProductsPage from './pages/ProductsPage'
 import NoFoundPage from './pages/NoFoundPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -23,8 +23,8 @@ const router = createBrowserRouter([
         element: <HomePage />,  // <- this page (Home)
       },
       {
-        path: 'men',
-        element: <MenPage />,
+        path: ':gender/',
+        element: <CollectionsAndArrivalsPage />,
       },
       {
         path: ':gender/:productType',

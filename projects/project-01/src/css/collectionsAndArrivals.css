@@ -18,8 +18,8 @@
 }
 
 .collections-cards .product-card {
-  min-width: 25%;
-  max-width: 35%;
-  margin: 2% 5%;
-  font-size: clamp(16px, 2.5vw, 28px);
+  min-width: 20%;
+  max-width: 25%;
+  margin: 2% 3%;
+  font-size: clamp(14px, 2.5vw, 26px);
 }
