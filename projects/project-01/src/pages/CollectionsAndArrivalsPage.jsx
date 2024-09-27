@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { products } from '../mocks/products.json'
 import { categories } from '../mocks/categories.json'
 
-import { HorizontalCarousel } from "../components/HorizontalCarousel";
-import { ProductCard } from "../components/ProductCard";
+import { HorizontalCarousel } from '../components/HorizontalCarousel'
+import { ProductCard } from '../components/ProductCard'
 
-import "../css/collectionsAndArrivals.css"
+import '../css/collectionsAndArrivals.css'
 
 export default function CollectionsAndArrivalsPage() {
   const { gender } = useParams()
