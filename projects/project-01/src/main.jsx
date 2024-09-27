@@ -4,6 +4,7 @@ import { Layout } from './components/Layout'
 import HomePage from './pages/HomePage'
 import MenPage from './pages/MenPage'
 import ProductsPage from './pages/ProductsPage'
+import ProductDetailsPage from './pages/ProductDetailsPage'
 import NoFoundPage from './pages/NoFoundPage'
 
 import './css/index.css'
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: ':gender/:productType/:productId',
-        //TODO: element = ProductDetailsPage(Cart)
+        element: <ProductDetailsPage /> //ProductDetailsPage(Cart)
       }
     ],
   },
