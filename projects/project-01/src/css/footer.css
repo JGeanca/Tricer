@@ -119,8 +119,17 @@ footer {
     justify-content: center;
   }
 
+  .footer-bottom {
+    align-items: center;
+  }
+
   .footer-bottom-left {
     gap: 10px;
     padding-left: 0;
   }
+
+  .footer-bottom::before {
+    top: 15px;
+  }
+
 }
