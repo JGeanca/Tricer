@@ -1,13 +1,13 @@
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
 import { Link } from 'react-router-dom'
 
-export function Footer() {
+export default function Footer() {
   return (
     <footer>
       <div className='footer-links'>
         <div className='footer-links-column'>
           <strong>Need help?</strong>
-          <Link to='/contact'>Send email</Link>
+          <a href='mailto:support@tricer.com'>Send email</a>
         </div>
         <div className='footer-links-column'>
           <strong>We are TRICER</strong>

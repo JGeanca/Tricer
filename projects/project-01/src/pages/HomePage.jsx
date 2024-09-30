@@ -1,8 +1,25 @@
+import { Link } from 'react-router-dom'
+import '../css/homepage.css'
+import HomeWomen from '../assets/imgs/home_women.svg'
+import HomeMen from '../assets/imgs/home_men.svg'
+
 export default function HomePage() {
   return (
-    <div>
-      <h1>This is the Home Page!!</h1>
-      <h3>I Need CSS pls :c</h3>
+    <div className="homepage">
+      <div className="image-container">
+        <div className="image-box">
+          <Link to="/woman">
+            <img src={HomeWomen} alt="Women" />
+            <div className="overlay-text">Women</div>
+          </Link>
+        </div>
+        <div className="image-box">
+          <Link to="/men">
+            <img src={HomeMen} alt="Men" />
+            <div className="overlay-text">Men</div>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

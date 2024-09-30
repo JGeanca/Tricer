@@ -24,7 +24,7 @@ export default function ProductDetailsPage() {
               {images.map((image, index) => (
                 <img
                   key={index}
-                  className="thumbnail-image"
+                  className={`thumbnail-image ${index === 0 ? 'selected' : ''}`}
                   src={image}
                   alt={`Thumbnail ${index + 1}`}
                 />

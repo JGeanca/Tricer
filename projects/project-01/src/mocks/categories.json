@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "title": "Clothes",
+      "type": "clothing",
+      "gender" : "men",
+      "images" : [
+        "https://static.pullandbear.net/assets/public/f098/84ee/2c7f48db9073/eba13c788178/07590518806-A6M/07590518806-A6M.jpg?ts=1719930764247&w=850"
+      ]
+    },
+    {
+      "title": "Footwear",
+      "type": "footwear",
+      "gender" : "men",
+      "images" : [
+        "https://static.pullandbear.net/assets/public/1abb/0973/8f8d4cb9a210/9449308e14f4/12220440040-a1m/12220440040-a1m.jpg?ts=1723027053453&w=750"
+      ]
+    },
+    {
+      "title": "Accessories",
+      "type": "accessories",
+      "gender" : "men",
+      "images" : [
+        "https://static.pullandbear.net/2/photos//2024/V/0/2/p/3891/509/800/3891509800_2_1_0.jpg?ts=1708085698657&imwidth=850"
+      ]
+    },
+    {
+      "title": "Clothes",
+      "type": "clothing",
+      "gender" : "women",
+      "images" : [
+        "https://static.pullandbear.net/assets/public/dbf2/e0fb/574a43228854/e6f70e25a635/07244356633-A6M/07244356633-A6M.jpg?ts=1726059668903&w=850"
+      ]
+    },
+    {
+      "title": "Footwear",
+      "type": "footwear",
+      "gender" : "women",
+      "images" : [
+        "https://static.pullandbear.net/assets/public/d122/08ab/ba2140dbb2fd/93acdbb49937/11017240040-a1m/11017240040-a1m.jpg?ts=1723644957759&w=850"
+      ]
+    },
+    {
+      "title": "Accessories",
+      "gender" : "women",
+      "type": "accessories",
+      "images" : [
+        "https://static.pullandbear.net/2/photos//2024/V/0/1/p/3891/308/303/3891308303_2_1_0.jpg?ts=1702398514286&imwidth=850"
+      ]
+    }
+  ]
+}
