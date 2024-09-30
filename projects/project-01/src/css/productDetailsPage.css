@@ -172,10 +172,6 @@
   border-bottom: rgb(206, 206, 206) solid 1px !important;
 }
 
-.custom-dropdown-item:hover {
-  background-color: #007bff;
-}
-
 .product-share-and-contact {
   display: flex;
   align-items: center;
@@ -239,6 +235,11 @@ input {
   font-weight: bold;
 }
 
+.add-to-basket:active {
+  background-color: rgb(67, 74, 90) !important; /* Cambia a este color cuando se presiona */
+  border-color: rgb(67, 74, 90) !important; /* Cambia a este color cuando se presiona */
+}
+
 @media (max-width: 767px) {
   .product-images-column,
   .product-details-column {
@@ -257,8 +258,6 @@ input {
     min-width: 50px;
     margin-top: 10px;
     margin-bottom: 0;
-
-
   }
 
   .product-main-image img {
