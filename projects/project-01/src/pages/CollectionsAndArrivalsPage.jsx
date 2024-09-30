@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import NoFoundPage from './NoFoundPage'
 
 import { products } from '../mocks/products.json'
 import { categories } from '../mocks/categories.json'
@@ -8,8 +9,12 @@ import { ProductCard } from '../components/ProductCard'
 
 import '../css/collectionsAndArrivals.css'
 
+const validGenders = ['men', 'women']
+
 export default function CollectionsAndArrivalsPage() {
   const { gender } = useParams()
+
+  if (!validGenders.includes(gender)) return <NoFoundPage />
 
   const filteredProducts = products.filter(product =>
     product.gender === gender && product.new === true)
