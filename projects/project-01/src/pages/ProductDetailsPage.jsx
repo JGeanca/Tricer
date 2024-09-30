@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { products } from '../mocks/products.json'
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap'
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
+import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/productDetailsPage.css'
 
@@ -10,7 +11,7 @@ export default function ProductDetailsPage() {
   const product = products.find(p => p.id === +productId)
 
   if (!product) {
-    return <p>Product not found</p>
+    return <NoProductsFound />
   }
 
   const { title, colors, images, price } = product
