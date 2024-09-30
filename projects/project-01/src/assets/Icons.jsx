@@ -8,36 +8,36 @@ import cartSvg from '../assets/icons/cart.svg'
 
 export function ShopTitle() {
   return (
-    <img 
-      src={shopSvg} 
-      alt="Shop Icon" 
-      width="171" 
-      height="44" 
-      className="size-6" 
+    <img
+      src={shopSvg}
+      alt="Shop Icon"
+      width="171"
+      height="44"
+      className="size-6"
     />
   )
 }
 
 export function ProfileIcon() {
   return (
-    <img 
-      src={profileSvg} 
-      alt="Profile Icon" 
-      width="50" 
-      height="50" 
-      className="size-6" 
+    <img
+      src={profileSvg}
+      alt="Profile Icon"
+      width="50"
+      height="50"
+      className="size-6"
     />
   )
 }
 
 export function CartIcon() {
   return (
-    <img 
-      src={cartSvg} 
-      alt="Cart Icon" 
-      width="32" 
-      height="31" 
-      className="size-6" 
+    <img
+      src={cartSvg}
+      alt="Cart Icon"
+      width="32"
+      height="31"
+      className="size-6"
     />
   )
 }
@@ -57,7 +57,7 @@ export function ChevronLeft() {
     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
     </svg>
-  );
+  )
 }
 
 export function ChevronRight() {
@@ -66,7 +66,7 @@ export function ChevronRight() {
       <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
     </svg>
 
-  );
+  )
 }
 
 

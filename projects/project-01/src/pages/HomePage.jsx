@@ -8,7 +8,7 @@ export default function HomePage() {
     <div className="homepage">
       <div className="image-container">
         <div className="image-box">
-          <Link to="/woman">
+          <Link to="/women">
             <img src={HomeWomen} alt="Women" />
             <div className="overlay-text">Women</div>
           </Link>
