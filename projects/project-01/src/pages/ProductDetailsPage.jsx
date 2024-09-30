@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { products } from '../mocks/products.json'
+import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap'
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
 import NoProductsFound from '../components/NoProductFound'
@@ -85,7 +86,7 @@ export default function ProductDetailsPage() {
                 <TiktokIcon width={20} height={20} />
               </a>
             </div>
-            <a href='' style={{ color: 'rgb(85, 85, 85)'}} >Contact Us</a>
+            <Link to="/contact-us" style={{ color: 'rgb(85, 85, 85)'}}>Contact Us</Link>
           </div>
         </Col>
       </Row>
