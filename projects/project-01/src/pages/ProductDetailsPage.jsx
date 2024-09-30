@@ -48,9 +48,10 @@ export default function ProductDetailsPage() {
           <div className="product-details-size">
             <p>Size</p>
             <DropdownButton id="dropdown-basic-button" title="S" className="w-100 text-start">
-              <Dropdown.Item href="#/action-1">S</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">M</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">L</Dropdown.Item>
+              <Dropdown.Item href="#/S" className="custom-dropdown-item">S</Dropdown.Item>
+              <Dropdown.Item href="#/N" className="custom-dropdown-item">M</Dropdown.Item>
+              <Dropdown.Item href="#/L" className="custom-dropdown-item">L</Dropdown.Item>
+              <Dropdown.Item href="#/XL" className="custom-dropdown-item">XL</Dropdown.Item>
             </DropdownButton>
           </div>
           <div className="product-details-quantity">
