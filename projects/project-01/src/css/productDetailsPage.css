@@ -244,9 +244,26 @@ input {
   .product-details-column {
     margin: 25px 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 50px;
   }
-  
+
+  .product-images-column {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   .product-details-column {
     max-width: 668px;
+    min-width: 50px;
+    margin-top: 10px;
+    margin-bottom: 0;
+
+
+  }
+
+  .product-main-image img {
+    width: 100%;
+    min-width: 100px;
+    padding-right: 15px;
   }
 }
