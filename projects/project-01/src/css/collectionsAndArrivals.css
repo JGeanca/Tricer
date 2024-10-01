@@ -23,3 +23,16 @@
   margin: 2% 3%;
   font-size: clamp(14px, 2.5vw, 26px);
 }
+
+@media (max-width: 768px) {
+  .collections-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .collections-cards .product-card {
+    min-width: 20%;
+    max-width: 50%;
+    margin: 10px 0;
+  }
+}

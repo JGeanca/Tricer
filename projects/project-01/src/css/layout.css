@@ -9,6 +9,10 @@
     'footer   footer  footer';
 }
 
+.main-content {
+  margin-top: 75px;
+}
+
 .layout-container header {
   grid-area: header;
 }
@@ -28,4 +32,10 @@ body {
 nav {
   display: flex;
   gap: 1em;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 0px;
+  }
 }

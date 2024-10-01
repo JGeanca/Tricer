@@ -9,7 +9,9 @@ export default function Layout() {
       <TitleUpdater />
       <Header />
       <main>
-        <Outlet />
+        <div className='main-content'>
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>
