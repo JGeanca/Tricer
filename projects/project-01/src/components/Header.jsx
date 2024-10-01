@@ -23,7 +23,7 @@ export default function Header() {
   }
 
   const isActiveLink = (path, category) => {
-    return location.pathname === path || dropdownCategory === category
+    return location.pathname.startsWith(path) || dropdownCategory === category
   }
 
   return (
