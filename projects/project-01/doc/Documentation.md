@@ -1,8 +1,9 @@
 # Project 01 - E-commerce Website Clothing Store
 
-##Index
+## Index
 
 - [Project 01 - E-commerce Website Clothing Store](#project-01---e-commerce-website-clothing-store)
+  - [Index](#index)
   - [Description](#description)
   - [User Manual](#user-manual)
     - [Prerequisites](#prerequisites)
@@ -112,4 +113,4 @@ Indentation should be set to 2 spaces.
 
 ***
 
-Return to [Assignments Documentation](../../README.md).
+Return to [Assignments Documentation](../../../README.md).
