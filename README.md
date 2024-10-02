@@ -1,29 +1,28 @@
 # Web Development CI-0137
 
-Universidad de Costa Rica
+University of Costa Rica
 
-Facultad de Ingeniería
+Faculty of Engineering
 
-Escuela de Ciencias de la Computación e Informática
+School of Computer Science and Informatics
 
-Desarrollo de Aplicaciones Web(CI-0137)
+Web Development(CI-0137)
 
-## Estudiantes
+## Students
 
 - Geancarlo Rivera Hernández (C06516). <geancarlo.riverahernandez@ucr.ac.cr>
 - Gabriel Gonzáles Flores (C03376). <gabriel.gonzalezflores@ucr.ac.cr>
 - Julio Alejandro Rodríguez Salguera (C16717). <julio.rodriguezsalguera@ucr.ac.cr>
 - Sebastián Rodríguez Tencio (C06316). <sebastian.rodrigueztencio@ucr.ac.cr>
 
-## Profesor
+## Professor
 
 - Mag. Daniel Cabezas Vindas. <daniel.cabezas@ucr.ac.cr>
 
-## Descripción
+## Description
 
-Repositorio para asignaciones y proyectos del curso Desarrollo de Aplicaciones Web de la Universidad de Costa Rica.
+Repository for assignments and projects of the Web Development course at the University of Costa Rica.
 
-### Asignaciones
+### Assignments Documentation
 
-- [Proyecto 1](./projects/project-01/README.md)
-[TUTO de instalación](./projects/TUTO.MD)
+- [Project 01](./projects/project-01/doc/Documentation.md)
