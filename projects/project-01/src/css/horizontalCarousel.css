@@ -40,3 +40,8 @@
   color: gray;
   transform: scale(1.1);
 }
+
+.carousel-inner .card.product-card {
+    min-width: clamp(150px, 20vw, 1100px) !important;
+    max-width: clamp(150px, 20vw, 1100px) !important;
+}

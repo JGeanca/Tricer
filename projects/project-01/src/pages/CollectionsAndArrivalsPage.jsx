@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import NoFoundPage from './NoFoundPage'
 
 import { products } from '../mocks/products.json'
@@ -13,6 +14,24 @@ const validGenders = ['men', 'women']
 
 export default function CollectionsAndArrivalsPage() {
   const { gender } = useParams()
+  const [itemsPerCarousel, setItemsPerCarousel] = useState(3)
+
+  useEffect(() => {
+    const updateItemsPerCarousel = () => {
+      if (window.innerWidth <= 576) {
+        setItemsPerCarousel(1)
+      } else if (window.innerWidth <= 768)  {
+        setItemsPerCarousel(2)
+      } else {
+        setItemsPerCarousel(3)
+      }
+    }
+
+    window.addEventListener('resize', updateItemsPerCarousel)
+    updateItemsPerCarousel()
+
+    return () => window.removeEventListener('resize', updateItemsPerCarousel)
+  }, [])
 
   if (!validGenders.includes(gender)) return <NoFoundPage />
 
@@ -29,7 +48,7 @@ export default function CollectionsAndArrivalsPage() {
         {
           filteredProducts && filteredProducts.length > 0 && (
             <HorizontalCarousel products={filteredProducts}
-              itemsPerCarousel={3} />
+              itemsPerCarousel={itemsPerCarousel} />
           )
         }
       </div>
