@@ -6,6 +6,7 @@ import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../asset
 import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/productDetailsPage.css'
+import { capitalize } from '../utils/utils'
 
 export default function ProductDetailsPage() {
   const { gender, productType, productId } = useParams()
@@ -40,7 +41,7 @@ export default function ProductDetailsPage() {
 
         <Col xs={12} md={3} className="product-details-column">
           <p className="gender-and-product-type">
-            {gender.charAt(0).toUpperCase() + gender.slice(1)} | {productType.charAt(0).toUpperCase() + productType.slice(1)}
+            {capitalize(gender)} | {capitalize(productType)}
           </p>
           <h1 className="product-details-title">{title}</h1>
           <div className="product-color">
@@ -86,7 +87,7 @@ export default function ProductDetailsPage() {
                 <TiktokIcon width={20} height={20} />
               </a>
             </div>
-            <Link to="/contact-us" style={{ color: 'rgb(85, 85, 85)'}}>Contact Us</Link>
+            <Link to="/contact-us" style={{ color: 'rgb(85, 85, 85)' }}>Contact Us</Link>
           </div>
         </Col>
       </Row>

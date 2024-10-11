@@ -7,7 +7,6 @@ import ProductsPage from './pages/ProductsPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
 import NoFoundPage from './pages/NoFoundPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import './css/index.css'
 import './css/layout.css'
 import './css/header.css'

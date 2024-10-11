@@ -4,16 +4,13 @@ import ProductsGrid from '../components/ProductsGrid'
 import NotProductFound from '../components/NoProductFound'
 import NoFoundPage from './NoFoundPage'
 import '../css/productsPage.css'
-
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
-
-const validGenders = ['men', 'women']
-const validProductTypes = ['clothing', 'footwear', 'accessories']
+import { VALID_GENDERS, VALID_PRODUCT_TYPES } from '../config'
+import { capitalize } from '../utils/utils.js'
 
 export default function ProductsPage() {
   const { gender, productType } = useParams()
 
-  if (!validGenders.includes(gender) || !validProductTypes.includes(productType)) {
+  if (!VALID_GENDERS.includes(gender) || !VALID_PRODUCT_TYPES.includes(productType)) {
     return <NoFoundPage />
   }
 
