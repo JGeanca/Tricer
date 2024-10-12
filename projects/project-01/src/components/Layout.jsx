@@ -4,12 +4,14 @@ import TitleUpdater from './TitleUpdater'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
-export default function Layout() {
-  const { pathname } = useLocation()
 
+//TODO: Import useSessionTimeout 
+export default function Layout() {
+  //TODO: useSessionTimeout();
+  const { pathname } = useLocation()
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'auto'
-    
+
     // Force scroll to top 
     window.scrollTo({
       top: 0,

@@ -6,6 +6,12 @@ import CollectionsAndArrivalsPage from './pages/CollectionsAndArrivalsPage'
 import ProductsPage from './pages/ProductsPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
 import NoFoundPage from './pages/NoFoundPage'
+import { LoginForm } from './components/LoginForm'
+import { RegisterForm } from './components/RegisterForm'
+
+// Provider for managing the authentication state
+import { AuthProvider } from './contexts/AuthContext'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/index.css'
 import './css/layout.css'
@@ -21,6 +27,14 @@ const router = createBrowserRouter([
       {
         index: true,  // This means that default route (/) will render
         element: <HomePage />,  // <- this page (Home)
+      },
+      {
+        path: 'login',
+        element: <LoginForm />,
+      },
+      {
+        path: 'register',
+        element: <RegisterForm />,
       },
       {
         path: ':gender/',
@@ -43,5 +57,7 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} /> // Wrap the router in a provider
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
 )
