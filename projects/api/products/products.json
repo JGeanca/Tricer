@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "type": "clothing",
       "title": "Nike Sleeveless Shirt",
       "description": "Sleeveless shirt from Nike, perfect for workouts and sports activities. Available in multiple colors.",
@@ -27,13 +27,12 @@
         "https://static.pullandbear.net/assets/public/88b5/2ce3/0dd94bd1834e/f2cf2f93e63f/03242510802-A6M/03242510802-A6M.jpg?ts=1721866476914&w=750",
         "https://static.pullandbear.net/assets/public/141c/3779/14094f2288ae/582e67aade72/03242510802-A1M/03242510802-A1M.jpg?ts=1721866469779&w=750",
         "https://static.pullandbear.net/assets/public/88b5/2ce3/0dd94bd1834e/f2cf2f93e63f/03242510802-A6M/03242510802-A6M.jpg?ts=1721866476914&w=750"
-        
       ],
       "brand": "Nike",
       "new": true
     },
     {
-      "id": 2,
+      "id": "2",
       "type": "clothing",
       "title": "Adidas Performance Shirt",
       "description": "Lightweight performance shirt from Adidas, ideal for sports and casual wear.",
@@ -61,7 +60,7 @@
       "new": true
     },
     {
-      "id": 3,
+      "id": "3",
       "type": "clothing",
       "title": "Puma Graphic Tee",
       "description": "Stylish graphic tee from Puma, perfect for casual outings and streetwear.",
@@ -89,7 +88,7 @@
       "new": true
     },
     {
-      "id": 4,
+      "id": "4",
       "type": "clothing",
       "title": "Under Armour Training Shirt",
       "description": "Durable training shirt from Under Armour, designed for optimal performance and comfort.",
@@ -117,7 +116,7 @@
       "new": true
     },
     {
-      "id": 5,
+      "id": "5",
       "type": "clothing",
       "title": "Reebok Classic Tee",
       "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
@@ -146,7 +145,7 @@
       "new": true
     },
     {
-      "id": 6,
+      "id": "6",
       "type": "clothing",
       "title": "Reebok Classic Tee",
       "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
@@ -175,7 +174,7 @@
       "new": true
     },
     {
-      "id": 7,
+      "id": "7",
       "type": "clothing",
       "title": "Reebok Active Sports Bra",
       "description": "Supportive sports bra from Reebok, perfect for high-intensity workouts.",
@@ -204,7 +203,7 @@
       "new": true
     },
     {
-      "id": 8,
+      "id": "8",
       "type": "clothing",
       "title": "Reebok Training Tank",
       "description": "Lightweight and breathable tank top, ideal for any training session.",
@@ -233,7 +232,7 @@
       "new": false
     },
     {
-      "id": 9,
+      "id": "9",
       "type": "clothing",
       "title": "Reebok Running Shorts",
       "description": "Comfortable and flexible shorts designed for running and intense workouts.",
@@ -262,7 +261,7 @@
       "new": true
     },
     {
-      "id": 10,
+      "id": "10",
       "type": "clothing",
       "title": "Reebok Yoga Leggings",
       "description": "High-waisted leggings for comfort and support during yoga sessions.",
@@ -291,7 +290,7 @@
       "new": true
     },
     {
-      "id": 11,
+      "id": "11",
       "type": "clothing",
       "title": "Reebok Classic Tee",
       "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
@@ -320,7 +319,7 @@
       "new": false
     },
     {
-      "id": 12,
+      "id": "12",
       "type": "clothing",
       "title": "Reebok Classic Tee",
       "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
@@ -349,7 +348,7 @@
       "new": false
     },
     {
-      "id": 13,
+      "id": "13",
       "type": "clothing",
       "title": "Reebok Active Sports Bra",
       "description": "Supportive sports bra from Reebok, perfect for high-intensity workouts.",
@@ -378,7 +377,7 @@
       "new": true
     },
     {
-      "id": 14,
+      "id": "14",
       "type": "clothing",
       "title": "Reebok Training Tank",
       "description": "Lightweight and breathable tank top, ideal for any training session.",
@@ -407,7 +406,7 @@
       "new": true
     },
     {
-      "id": 15,
+      "id": "15",
       "type": "clothing",
       "title": "Reebok Running Shorts",
       "description": "Comfortable and flexible shorts designed for running and intense workouts.",
@@ -436,7 +435,7 @@
       "new": true
     },
     {
-      "id": 16,
+      "id": "16",
       "type": "clothing",
       "title": "Reebok Yoga Leggings",
       "description": "High-waisted leggings for comfort and support during yoga sessions.",
@@ -460,6 +459,64 @@
       "images": [
         "https://static.pullandbear.net/assets/public/3c52/0aea/79f94ff2a89c/069ee31daf80/07249348805-A1M/07249348805-A1M.jpg?ts=1716302423724&w=750",
         "https://static.pullandbear.net/assets/public/d5cc/5337/a32f4604b261/0270367511f5/07249348805-A6M/07249348805-A6M.jpg?ts=1716555814967&w=750"
+      ],
+      "brand": "Reebok",
+      "new": false
+    },
+    {
+      "id": "17",
+      "type": "footwear",
+      "title": "Reebok Yoga Leggings",
+      "description": "High-waisted leggings for comfort and support during yoga sessions.",
+      "category": "Leggings",
+      "price": 24.99,
+      "discountPercentage": 12.00,
+      "rating": 4.90,
+      "stock": 10,
+      "colors": [
+        "purple",
+        "black"
+      ],
+      "gender": "women",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Spandex",
+      "images": [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
+      ],
+      "brand": "Reebok",
+      "new": false
+    },
+    {
+      "id": "18",
+      "type": "footwear",
+      "title": "Reebok Yoga Leggings",
+      "description": "High-waisted leggings for comfort and support during yoga sessions.",
+      "category": "Leggings",
+      "price": 24.99,
+      "discountPercentage": 12.00,
+      "rating": 4.90,
+      "stock": 10,
+      "colors": [
+        "purple",
+        "black"
+      ],
+      "gender": "men",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Spandex",
+      "images": [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
       ],
       "brand": "Reebok",
       "new": false
