@@ -1,0 +1,26 @@
+import { z } from 'zod'
+
+export const userSchema = z.object({
+  username: z.string({
+    invalid_type_error: 'Username must be a string',
+    required_error: 'Username is required',
+  }).min(4).max(10)
+    .regex(/^[a-zA-Z0-9_]+$/, 'Username can only contain letters, numbers and underscores'),
+
+  email: z.string({
+    invalid_type_error: 'Email must be a string',
+    required_error: 'Email is required',
+  }).email('Invalid email format'),
+
+  password: z.string({
+    invalid_type_error: 'Password must be a string',
+    required_error: 'Password is required',
+  }).min(8).max(20)
+    .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+    .regex(/[0-9]/, 'Password must contain at least one number')
+  //.regex(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, 'Password must contain at least one special character')
+})
+
+export async function validateUser(user) {
+  return userSchema.safeParseAsync(user)
+}

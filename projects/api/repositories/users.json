@@ -2,14 +2,21 @@
   "users": [
     {
       "id": "1",
-      "name": "rayoMakuin2001",
+      "username": "rayoMakuin2001",
       "email": "rayoMakuin2001@gmail.com",
       "password": "hashedpass"
     },
     {
-      "id": "4252e90b-8e8f-4dc7-9d61-87d8b472d300",
+      "id": "5ca09a34-001d-46c4-843e-3bd1858c714c",
+      "username": "J_Doe",
       "email": "gean@gmail.com",
-      "password": "$2b$10$L0Hxs9PD3WVU1iTycFFcj.TThbleRNcWMYlXCBtxtTtlWcxJBnHhq"
+      "password": "$2b$10$rFGHaYiiA/vZ5zV2jiHn/uFL30N5PaFbpJN45/4i1xr1zE9Np49Tq"
+    },
+    {
+      "id": "62a4254c-654b-4cd4-bcf6-a1b98a988e63",
+      "username": "J_sDoe",
+      "email": "gean@gmail.com",
+      "password": "$2b$10$4aTVkhwgq7PzpNT7yYVi4uIjvbyCJDGmBlPuFQnGKqXUiTnVCzCgy"
     }
   ]
 }

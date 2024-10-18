@@ -5,7 +5,6 @@ import { writeFile } from 'fs/promises'
 
 const { users } = readJSON('./repositories/users.json')
 
-
 export class UserModel {
   static async create({ username, email, password }) {
 
@@ -25,5 +24,12 @@ export class UserModel {
     await writeFile('./repositories/users.json', JSON.stringify({ users }, null, 2))
   }
 
+  static async usernameExists(username) {
+    return users.some(user => user.username === username)
+  }
+
+  static async emailExists(email) {
+    return users.some(user => user.email === email)
+  }
   //TODO, login methods
 }
