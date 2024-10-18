@@ -2,7 +2,9 @@ import express, { json } from 'express'
 import logger from 'morgan'
 import cors from 'cors'
 import { productsRouter } from './routes/products.js'
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 const app = express()
 app.use(logger('dev'))
