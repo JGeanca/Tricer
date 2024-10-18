@@ -31,5 +31,14 @@ export class UserModel {
   static async emailExists(email) {
     return users.some(user => user.email === email)
   }
-  //TODO, login methods
+
+  static async verifyCredentials({ username, password }) {
+    const user = users.find(user => user.username === username)
+    if (!user) return null
+
+    if (await bcrypt.compare(password, user.password)) {
+      return { id: user.id, username: user.username }
+    }
+    return null
+  }
 }

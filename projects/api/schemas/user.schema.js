@@ -21,6 +21,22 @@ export const userSchema = z.object({
   //.regex(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, 'Password must contain at least one special character')
 })
 
+export const loginSchema = z.object({
+  username: z.string({
+    invalid_type_error: 'Username must be a string',
+    required_error: 'Username is required',
+  }),
+
+  password: z.string({
+    invalid_type_error: 'Password must be a string',
+    required_error: 'Password is required',
+  })
+})
+
 export async function validateUser(user) {
   return userSchema.safeParseAsync(user)
+}
+
+export async function validateLogin(login) {
+  return loginSchema.safeParseAsync(login)
 }

@@ -25,7 +25,25 @@ POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "username": "J_sDoe22",
-    "email": "gean@gmail.com",
-    "password": "A12s35678",
+    "username": "rayoMakuin",
+    "email": "rayomakuin2001@gmail.com",
+    "password": "A1235678"
+}
+
+### User login
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "username": "rayoMakuin",
+    "password": "A1235678"
+}
+
+### Invalid login
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "username": "rayoMakuin",
+    "password": "A123567",
 }
