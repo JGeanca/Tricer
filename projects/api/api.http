@@ -18,3 +18,14 @@ GET http://localhost:3000/products?type=footwear&gender=men
 
 ### Get products by type and gender
 GET http://localhost:3000/products?gender=women&type=footwear
+
+
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "name": "J Doe",
+    "email": "gean@gmail.com",
+    "password": "123"
+}

@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "rayoMakuin2001",
+      "email": "rayoMakuin2001@gmail.com",
+      "password": "hashedpass"
+    },
+    {
+      "id": "4252e90b-8e8f-4dc7-9d61-87d8b472d300",
+      "email": "gean@gmail.com",
+      "password": "$2b$10$L0Hxs9PD3WVU1iTycFFcj.TThbleRNcWMYlXCBtxtTtlWcxJBnHhq"
+    }
+  ]
+}

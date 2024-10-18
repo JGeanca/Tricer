@@ -1,6 +1,6 @@
 import { readJSON } from '../../utils.js'
 
-const { products } = readJSON('./products/products.json')
+const { products } = readJSON('./repositories/products.json')
 
 export class ProductModel {
   static async getAll({ gender, type }) {
