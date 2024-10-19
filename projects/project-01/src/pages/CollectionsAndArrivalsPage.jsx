@@ -7,14 +7,12 @@ import { HorizontalCarousel } from '../components/HorizontalCarousel'
 import { ProductCard } from '../components/ProductCard'
 import { VALID_GENDERS } from '../config'
 import { Loading } from '../components/Loading'
-
 import '../css/collectionsAndArrivals.css'
 
 export default function CollectionsAndArrivalsPage() {
-  const isNew = true
   const { gender } = useParams()
   const [itemsPerCarousel, setItemsPerCarousel] = useState(3)
-  const { data: products, isError, isLoading } = useProducts(gender, null, isNew)
+  const { data: products, isError, isLoading } = useProducts(gender, null, true)
 
   //TODO: Fix this useEffect -> add the missing dependencies
   useEffect(() => {
@@ -39,7 +37,6 @@ export default function CollectionsAndArrivalsPage() {
   if (isLoading) return <Loading />
 
   if (isError) return <div>Error loading products</div>
-
 
   const filteredCategories = categories.filter(category =>
     category.gender === gender)
