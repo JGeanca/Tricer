@@ -1,7 +1,13 @@
 import { Router } from 'express'
 import { UserController } from '../controllers/users.js'
 
-export const usersRouter = Router()
+export const createUsersRouter = ({ userModel }) => {
+  const usersRouter = Router()
 
-usersRouter.post('/register', UserController.register)
-usersRouter.post('/login', UserController.login)
+  const userController = new UserController({ userModel })
+
+  usersRouter.post('/register', userController.register)
+  usersRouter.post('/login', userController.login)
+
+  return usersRouter
+}

@@ -2,13 +2,13 @@ import express, { json } from 'express'
 import logger from 'morgan'
 import cors from 'cors'
 import { createProductsRouter } from './routes/products.js'
-import { usersRouter } from './routes/users.js'
+import { createUsersRouter } from './routes/users.js'
 import { mainRouter } from './routes/main.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 
 import dotenv from 'dotenv'
 
-export const createApp = ({ productModel }) => {
+export const createApp = ({ productModel, userModel }) => {
   dotenv.config()
   const app = express()
   app.use(logger('dev'))
@@ -19,7 +19,7 @@ export const createApp = ({ productModel }) => {
 
   app.use('/', mainRouter)
   app.use('/products', createProductsRouter({ productModel }))
-  app.use('/users', usersRouter)
+  app.use('/users', createUsersRouter({ userModel }))
 
   const PORT = process.env.PORT ?? 3000
 
