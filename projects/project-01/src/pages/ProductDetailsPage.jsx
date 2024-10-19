@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom'
-import { products } from '../mocks/products.json'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap'
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
 import { capitalize } from '../utils/utils'
 import { useProduct } from '../hooks/useProducts'
+import { Loading } from '../components/Loading'
 
 import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,7 +15,7 @@ export default function ProductDetailsPage() {
   const { data: product, isError, isLoading } = useProduct(productId)
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   if (isError) {

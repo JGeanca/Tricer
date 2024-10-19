@@ -5,7 +5,7 @@ import NoFoundPage from './NoFoundPage'
 import NotProductFound from '../components/NoProductFound'
 import ProductsGrid from '../components/ProductsGrid'
 import { useProducts } from '../hooks/useProducts'
-
+import { Loading } from '../components/Loading'
 import '../css/productsPage.css'
 
 export default function ProductsPage() {
@@ -16,7 +16,7 @@ export default function ProductsPage() {
     return <NoFoundPage />
   }
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <Loading />
 
   if (isError) return <div>Error loading products</div>
 
