@@ -9,10 +9,7 @@ export class ProductController {
   static async getAll(req, res) {
     const { gender, type, new: isNew } = req.query
     const products = await ProductModel.getAll({ gender, type, isNew })
-    res.json({
-      results: products.length,
-      products: products
-    })
+    res.json(products)
   }
 
   static async getById(req, res) {
