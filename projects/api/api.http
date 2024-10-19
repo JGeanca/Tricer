@@ -30,8 +30,8 @@ POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "username": "rayoMakuin",
-    "email": "rayomakuin2001@gmail.com",
+    "username": "rayoMakuin2",
+    "email": "rayomakuin22001@gmail.com",
     "password": "A1235678"
 }
 
