@@ -3,7 +3,7 @@ import { readJSON } from '../../utils.js'
 const { products } = readJSON('./repositories/products.json')
 
 export class ProductModel {
-  static async getAll({ gender, type }) {
+  static async getAll({ gender, type, isNew }) {
     let filteredProducts = products
 
     if (gender) {
@@ -17,6 +17,13 @@ export class ProductModel {
         product => product.type.toLowerCase() === type.toLowerCase()
       )
     }
+
+    if (isNew == 'true') {
+      filteredProducts = filteredProducts.filter(
+        product => product.new === true
+      )
+    }
+
     return filteredProducts
   }
 
