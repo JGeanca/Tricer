@@ -7,20 +7,20 @@ import { categories } from '../mocks/categories.json'
 
 import { HorizontalCarousel } from '../components/HorizontalCarousel'
 import { ProductCard } from '../components/ProductCard'
+import { VALID_GENDERS } from '../config'
 
 import '../css/collectionsAndArrivals.css'
-
-const validGenders = ['men', 'women']
 
 export default function CollectionsAndArrivalsPage() {
   const { gender } = useParams()
   const [itemsPerCarousel, setItemsPerCarousel] = useState(3)
 
+  //TODO: Fix this useEffect -> add the missing dependencies
   useEffect(() => {
     const updateItemsPerCarousel = () => {
       if (window.innerWidth <= 576) {
         setItemsPerCarousel(1)
-      } else if (window.innerWidth <= 768)  {
+      } else if (window.innerWidth <= 768) {
         setItemsPerCarousel(2)
       } else {
         setItemsPerCarousel(3)
@@ -31,9 +31,9 @@ export default function CollectionsAndArrivalsPage() {
     updateItemsPerCarousel()
 
     return () => window.removeEventListener('resize', updateItemsPerCarousel)
-  }, [])
+  }, []) //TODO: <- Add the missing dependencies
 
-  if (!validGenders.includes(gender)) return <NoFoundPage />
+  if (!VALID_GENDERS.includes(gender)) return <NoFoundPage />
 
   const filteredProducts = products.filter(product =>
     product.gender === gender && product.new === true)

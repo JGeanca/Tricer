@@ -1,33 +1,31 @@
 import { useParams } from 'react-router-dom'
-import { products } from '../mocks/products.json'
-import ProductsGrid from '../components/ProductsGrid'
-import NotProductFound from '../components/NoProductFound'
-import NoFoundPage from './NoFoundPage'
-import '../css/productsPage.css'
 import { VALID_GENDERS, VALID_PRODUCT_TYPES } from '../config'
 import { capitalize } from '../utils/utils.js'
+import NoFoundPage from './NoFoundPage'
+import NotProductFound from '../components/NoProductFound'
+import ProductsGrid from '../components/ProductsGrid'
+import { useProducts } from '../hooks/useProducts'
+
+import '../css/productsPage.css'
 
 export default function ProductsPage() {
   const { gender, productType } = useParams()
+  const { data: products, isLoading, isError } = useProducts(gender, productType)
 
   if (!VALID_GENDERS.includes(gender) || !VALID_PRODUCT_TYPES.includes(productType)) {
     return <NoFoundPage />
   }
 
-  const filteredProducts = products.filter(product =>
-    product.gender === gender && product.type === productType
-  )
+  if (isLoading) return <div>Loading...</div>
+
+  if (isError) return <div>Error loading products</div>
+
+  if (!products || products.length === 0) return <NotProductFound />
 
   return (
     <div className='products-container'>
       <h3>{`${capitalize(productType)}`} </h3>
-      {
-        filteredProducts && filteredProducts.length > 0 ? (
-          <ProductsGrid products={filteredProducts} />
-        ) : (
-          <NotProductFound />
-        )
-      }
+      <ProductsGrid products={products} />
     </div>
   )
 }

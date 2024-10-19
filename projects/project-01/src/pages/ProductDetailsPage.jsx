@@ -3,18 +3,26 @@ import { products } from '../mocks/products.json'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap'
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
+import { capitalize } from '../utils/utils'
+import { useProduct } from '../hooks/useProducts'
+
 import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/productDetailsPage.css'
-import { capitalize } from '../utils/utils'
 
 export default function ProductDetailsPage() {
   const { gender, productType, productId } = useParams()
-  const product = products.find(p => p.id === +productId)
+  const { data: product, isError, isLoading } = useProduct(productId)
 
-  if (!product) {
-    return <NoProductsFound />
+  if (isLoading) {
+    return <div>Loading...</div>
   }
+
+  if (isError) {
+    return <div>Error loading product</div>
+  }
+
+  if (!product || product.length === 0) return <NoProductsFound />
 
   const { title, colors, images, price } = product
 
