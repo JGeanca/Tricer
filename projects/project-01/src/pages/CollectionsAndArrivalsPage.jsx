@@ -1,19 +1,20 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import NoFoundPage from './NoFoundPage'
-
-import { products } from '../mocks/products.json'
 import { categories } from '../mocks/categories.json'
-
+import { useProducts } from '../hooks/useProducts'
 import { HorizontalCarousel } from '../components/HorizontalCarousel'
 import { ProductCard } from '../components/ProductCard'
 import { VALID_GENDERS } from '../config'
+import { Loading } from '../components/Loading'
 
 import '../css/collectionsAndArrivals.css'
 
 export default function CollectionsAndArrivalsPage() {
+  const isNew = true
   const { gender } = useParams()
   const [itemsPerCarousel, setItemsPerCarousel] = useState(3)
+  const { data: products, isError, isLoading } = useProducts(gender, null, isNew)
 
   //TODO: Fix this useEffect -> add the missing dependencies
   useEffect(() => {
@@ -35,8 +36,10 @@ export default function CollectionsAndArrivalsPage() {
 
   if (!VALID_GENDERS.includes(gender)) return <NoFoundPage />
 
-  const filteredProducts = products.filter(product =>
-    product.gender === gender && product.new === true)
+  if (isLoading) return <Loading />
+
+  if (isError) return <div>Error loading products</div>
+
 
   const filteredCategories = categories.filter(category =>
     category.gender === gender)
@@ -46,8 +49,8 @@ export default function CollectionsAndArrivalsPage() {
       <div className="arrivals-section">
         <h1 className="page-title">Arrivals</h1>
         {
-          filteredProducts && filteredProducts.length > 0 && (
-            <HorizontalCarousel products={filteredProducts}
+          products && products.length > 0 && (
+            <HorizontalCarousel products={products}
               itemsPerCarousel={itemsPerCarousel} />
           )
         }
