@@ -19,6 +19,11 @@ GET http://localhost:3000/products?type=footwear&gender=men
 ### Get products by type and gender
 GET http://localhost:3000/products?gender=women&type=footwear
 
+### Get new products for women
+GET http://localhost:3000/products/?gender=women&type=clothing&new=true
+
+###
+GET http://localhost:3000/products/?gender=men&type=clothing&new=true
 
 ### User registration
 POST http://localhost:3000/users/register

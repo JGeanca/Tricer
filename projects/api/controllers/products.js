@@ -7,9 +7,12 @@ export class ProductController {
   // TODO: Make the model return the error but the result too for more robustness
 
   static async getAll(req, res) {
-    const { gender, type } = req.query
-    const products = await ProductModel.getAll({ gender, type })
-    res.json(products)
+    const { gender, type, new: isNew } = req.query
+    const products = await ProductModel.getAll({ gender, type, isNew })
+    res.json({
+      results: products.length,
+      products: products
+    })
   }
 
   static async getById(req, res) {
