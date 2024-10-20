@@ -21,9 +21,15 @@ export const createApp = ({ productModel, userModel }) => {
   app.use('/products', createProductsRouter({ productModel }))
   app.use('/users', createUsersRouter({ userModel }))
 
-  const PORT = process.env.PORT ?? 3000
+  return app
+}
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port http://localhost:${PORT}`)
+//TODO CHECK!
+export const startApp = (app, port = process.env.PORT ?? 3000) => {
+  return new Promise((resolve) => {
+    const server = app.listen(port, () => {
+      console.log(`Server running on port http://localhost:${port}`)
+      resolve(server);
+    })
   })
 }

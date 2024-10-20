@@ -1,5 +1,8 @@
-import { createApp } from './app.js'
+import { createApp, startApp } from './app.js'
 import { ProductModel } from './models/local-file-system/products.js'
 import { UserModel } from './models/local-file-system/users.js'
 
-createApp({ productModel: ProductModel, userModel: UserModel })
+
+const app = createApp({ productModel: ProductModel, userModel: UserModel })
+
+await startApp(app)
