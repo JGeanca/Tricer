@@ -1,11 +1,10 @@
 import express, { json } from 'express'
-import logger from 'morgan'
-import cors from 'cors'
 import { createProductsRouter } from './routes/products.js'
 import { createUsersRouter } from './routes/users.js'
 import { mainRouter } from './routes/main.js'
 import { errorHandler } from './middlewares/errorHandler.js'
-
+import logger from 'morgan'
+import cors from 'cors'
 import dotenv from 'dotenv'
 
 export const createApp = ({ productModel, userModel }) => {
@@ -21,9 +20,14 @@ export const createApp = ({ productModel, userModel }) => {
   app.use('/products', createProductsRouter({ productModel }))
   app.use('/users', createUsersRouter({ userModel }))
 
-  const PORT = process.env.PORT ?? 3000
+  return app
+}
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port http://localhost:${PORT}`)
+export const startApp = async (app, port = process.env.PORT ?? 3000) => {
+  return new Promise((resolve) => {
+    const server = app.listen(port, () => {
+      console.log(`Server running on port http://localhost:${port}`)
+      resolve(server);
+    })
   })
 }

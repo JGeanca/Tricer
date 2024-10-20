@@ -11,6 +11,12 @@
       "username": "rayoMakuin2",
       "email": "rayomakuin22001@gmail.com",
       "password": "$2b$10$HJ0Ge/BsR4GzWmSuPkzG2OOVx3MSanLAHtBgsj1v1WviwmeHSbeJm"
+    },
+    {
+      "id": "834294cf-520f-4272-b918-192e71a6a545",
+      "username": "testUser",
+      "email": "testuser@gmail.com",
+      "password": "$2b$10$KSFtGpo/X12q2N4FTtfH0uZfVaODMDPrc814tzvkJ2lDXIBkA6shG"
     }
   ]
 }

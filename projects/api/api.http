@@ -35,6 +35,16 @@ Content-Type: application/json
     "password": "A1235678"
 }
 
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "testUser",
+    "email": "testuser@gmail.com",
+    "password": "testPassword123"
+}
+
 ### User login
 POST http://localhost:3000/users/login
 Content-Type: application/json
