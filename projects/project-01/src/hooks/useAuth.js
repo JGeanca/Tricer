@@ -43,7 +43,7 @@ export const useAuth = () => {
   const logoutMutation = useMutation({
     mutationFn: () => authService.logout(),
     onSuccess: () => {
-      queryClient.clear()
+      queryClient.removeQueries(['user'])
       navigate('/') //TODO: Check where to redirect after logout
     }
   })
@@ -51,8 +51,12 @@ export const useAuth = () => {
   const { data: user } = useQuery({
     queryKey: ['user'],
     queryFn: () => authService.getCurrentUser(),
-    staleTime: 1000 * 60 * 5, // 5 minutes
-    retry: false // Don't retry if the request fails
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false
   })
 
   return {
