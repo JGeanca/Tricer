@@ -13,10 +13,12 @@ export function RegisterForm() {
     register({ username, email, password })
   }
 
-  //TODO: Add validation
-  //For now the error(s) is/are displayed directly, we have to handle it better
+  // TODO: Add validation
+  // For now the error(s) is/are displayed directly, we have to handle it better
   // the message of error is the message response of the api, but if we handle the
   // error here in the frontend, the api should not even be able to receive invalid parameters
+  //! Even so, errors of whether the email or the username already exists do come from the API
+  //! since only it realizes this, those must be handled when they are received from the API
   return (
     <form onSubmit={handleSubmit}>
       {error && <div>{error.message}</div>}

@@ -44,7 +44,7 @@ export const useAuth = () => {
     mutationFn: () => authService.logout(),
     onSuccess: () => {
       queryClient.clear()
-      navigate('/')
+      navigate('/') //TODO: Check where to redirect after logout
     }
   })
 

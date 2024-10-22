@@ -10,6 +10,7 @@ import { LoginForm } from './components/LoginForm'
 import { RegisterForm } from './components/RegisterForm'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { TestComponent } from './components/TestComponent'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/index.css'
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginForm />,
+      },
+      {
+        path: 'test',
+        element: <TestComponent />,
       },
       {
         path: 'register',
