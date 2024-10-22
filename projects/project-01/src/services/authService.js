@@ -1,67 +1,67 @@
-//* Here, in this service, all operations related to authentication will be handled.
-
-const API_URL = 'https://rayomakuin.example.com'  // TODO
+import { publicApi } from './apiConfig'
+import { jwtDecode } from 'jwt-decode'
 
 export const authService = {
 
-  // Login // TODO -- Check THIS
-  async login(email, password) {
-    // Fetch the user from the API
-    const response = await fetch(`${API_URL}/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    }) //TODO TRY CATCH
-    if (!response.ok) {
-      throw new Error('Login failed')
+  //*For now we will use local storage, but cookies are a better option 
+  // because they are more secure and can be used for server-side rendering
+
+  async login({ username, password }) {
+    try {
+      const response = await publicApi.post('users/login', { username, password })
+
+      const { token } = response.data
+      if (!token) throw new Error('No token received from server')
+
+      localStorage.setItem('token', token)
+      return {
+        token,
+        user: this.getCurrentUser()
+      }
+    } catch (error) {
+      localStorage.removeItem('token')
+      throw error
     }
-    const data = await response.json()
-    //TODO -- Check if we want to use local storage or cookies
-    //!For now we will use local storage
-    localStorage.setItem('token', data.token)
-    return data.user
   },
 
-  // Register // TODO -- Check THIS
-  async register(email, password) {
-    // Fetch the user from the API with a post request
-    const response = await fetch(`${API_URL}/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    }) //TODO TRY CATCH
-    if (!response.ok) {
-      throw new Error('Registration failed')
-    }
-    const data = await response.json()
-    localStorage.setItem('token', data.token)  //TODO CHECK
-    return data.user
+  async register({ username, email, password }) {
+    const response = await publicApi.post('users/register', { username, email, password })
+    return response.data
   },
 
-  logout() { //? Logout with local storage for now
+  async logout() {
     localStorage.removeItem('token')
-    //? redirect to login page?
   },
 
   getCurrentUser() {
-    const token = localStorage.getItem('token')
-    if (!token) return null
-    // TODO USE JWT to get the user info from the token
-    //! For now, we will return a mock user
-    return { id: 1, email: 'gean@example.com' }
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) return null
+
+      const decodedToken = jwtDecode(token)
+      if (this.isTokenExpired(decodedToken)) {
+        this.logout()
+        return null
+      }
+      return decodedToken
+    } catch (error) {
+      console.error('Error getting current user:', error)
+      this.logout()
+      return null
+    }
   },
 
-  getToken() { // Still using local storage
+  isTokenExpired(decodedToken) {
+    if (!decodedToken.exp) return true
+    const expirationTime = decodedToken.exp * 1000
+    return Date.now() >= expirationTime
+  },
+
+  getToken() {
     return localStorage.getItem('token')
+  },
+
+  isAuthenticated() {
+    return this.getCurrentUser() !== null
   }
 }
-
-//!List of important things by Gean:
-
-//TODO USE API When we have it
-//TODO USE JWT to get the user info from the token -> JWT is a way to encode the user info in the token
-//TODO TRY CATCH -> Handle errors
-//TODO FOR NOW we will use local storage for the token, but we could use cookies, is more secure and recommended
-//TODO WE CAN SIMPLiFY This with AXIOS library -> Check it out  
-
-//* CHECK: https://jwt.io/  -> JWT is very common!!!

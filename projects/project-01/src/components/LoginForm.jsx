@@ -1,31 +1,32 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../hooks/useAuth'
+import { authService } from '../services/authService'
 
 export function LoginForm() {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const { login } = useAuth()
+  const [error, setError] = useState(null)
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await login(email, password)
+      const { user } = await authService.login({ username, password })
+      console.log('Logged in user:', user)
       navigate('/')
     } catch (error) {
-      // TODO: Show a proper error message to the user
-      console.error('Login failed', error)
+      setError(error.response?.data?.message || 'Login failed')
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      {error && <div>{error}</div>}
       <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
+        type="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="username"
         required
       />
       <input
@@ -36,6 +37,6 @@ export function LoginForm() {
         required
       />
       <button type="submit">Login</button>
-    </form>
+    </form >
   )
 }
