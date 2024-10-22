@@ -1,28 +1,25 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { authService } from '../services/authService'
+import { useAuth } from '../hooks/useAuth'
 
 export function RegisterForm() {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
-  const [error, setError] = useState(null)
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const navigate = useNavigate()
+  const { register, isLoading, error } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const response = await authService.register({ username, email, password })
-      console.log('Registered user:', response)
-      navigate('/')
-    } catch (error) {
-      setError(error.response?.data?.message || 'Register failed')
-    }
+    register({ username, email, password })
   }
+
+  //TODO: Add validation
+  //For now the error(s) is/are displayed directly, we have to handle it better
+  // the message of error is the message response of the api, but if we handle the
+  // error here in the frontend, the api should not even be able to receive invalid parameters
   return (
     <form onSubmit={handleSubmit}>
-      {error && <div>{error}</div>}
+      {error && <div>{error.message}</div>}
       <input
         type="username"
         value={username}
@@ -51,7 +48,9 @@ export function RegisterForm() {
         placeholder="Confirm Password"
         required
       />
-      <button type="submit">Register</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Loading...' : 'Register'}
+      </button>
     </form>
   )
 }
