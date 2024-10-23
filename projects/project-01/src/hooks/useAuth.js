@@ -64,7 +64,6 @@ export const useAuth = () => {
     queryKey: ['user'],
     queryFn: getCurrentUser,
     staleTime: Infinity,
-    suspense: true
   })
 
   return {

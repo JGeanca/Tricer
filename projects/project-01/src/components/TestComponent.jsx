@@ -1,17 +1,45 @@
 import { useAuth } from '../hooks/useAuth'
+import { useState, useEffect } from 'react'
 
 export function TestComponent() {
-  const { user, isLoading, isAuthenticated, logout } = useAuth()
+  const { user, isLoading, logout } = useAuth()
+  const [isInitialized, setIsInitialized] = useState(false)
 
-  if (isLoading) return <div>Loading...</div>
-  if (!isAuthenticated) return <h1>Please login to see the content of this page!!!</h1>
+  useEffect(() => {
+    if (!isLoading) {
+      setIsInitialized(true)
+    }
+  }, [isLoading])
 
+  if (!isInitialized) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px]">
+        <div className="animate-pulse">
+          <div className="h-8 w-32 bg-gray-200 rounded" />
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return (
+      <div className="p-4 text-center">
+        <h1 className="text-xl font-semibold text-gray-800">
+          Please login to see the content of this page!
+        </h1>
+      </div>
+    )
+  }
 
   return (
-    <div>
-      <h1>Welcome, {user.username}!</h1>
-      <button onClick={logout}>Logout</button>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Welcome, {user.username}!</h1>
+      <button
+        onClick={logout}
+        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+      >
+        Logout
+      </button>
     </div>
   )
-
 }
