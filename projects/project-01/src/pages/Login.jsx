@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import HomeWomen from '../assets/imgs/home_women.svg'
-import HomeMen from '../assets/imgs/home_men.svg'
+import LoginWomen from '../assets/imgs/login_women.svg'
+import LoginMen from '../assets/imgs/login_men.svg'
 import { LoginForm } from '../components/LoginForm'
 import { GoogleIcon } from '../assets/Icons'
 import { useState, useEffect } from 'react'
@@ -31,8 +31,8 @@ export default function Login() {
             {
                 showDecoration && (
                     <div className="images-section">
-                        <img src={HomeWomen} alt="Women" className="upper-image" />
-                        <img src={HomeMen} alt="Men" className="lower-image" />
+                        <img src={LoginWomen} alt="Women" className="upper-image" />
+                        <img src={LoginMen} alt="Men" className="lower-image" />
                     </div>
                 )
             }
@@ -57,7 +57,7 @@ export default function Login() {
                 </div>
                 <div className="register-section">
                     Don't have an account?
-                    <Link to="/signup" className="sign-up">
+                    <Link to="/register" className="sign-up">
                         Sing up
                     </Link>
                 </div>

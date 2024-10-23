@@ -1,22 +1,22 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import HomePage from './pages/HomePage'
-import CollectionsAndArrivalsPage from './pages/CollectionsAndArrivalsPage'
-import ProductsPage from './pages/ProductsPage'
-import ProductDetailsPage from './pages/ProductDetailsPage'
-import Login from './pages/Login'
-import NoFoundPage from './pages/NoFoundPage'
-import { RegisterForm } from './components/RegisterForm'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { TestComponent } from './components/TestComponent'
+import CollectionsAndArrivalsPage from './pages/CollectionsAndArrivalsPage'
+import HomePage from './pages/HomePage'
+import Login from './pages/Login'
+import RegisterPage from './pages/RegisterPage'
+import NoFoundPage from './pages/NoFoundPage'
+import ProductDetailsPage from './pages/ProductDetailsPage'
+import ProductsPage from './pages/ProductsPage'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './css/footer.css'
+import './css/header.css'
 import './css/index.css'
 import './css/layout.css'
-import './css/header.css'
-import './css/footer.css'
 
 // Create a router
 const router = createBrowserRouter([
@@ -32,10 +32,6 @@ const router = createBrowserRouter([
       {
         path: 'test',
         element: <TestComponent />,
-      },
-      {
-        path: 'register',
-        element: <RegisterForm />,
       },
       {
         path: ':gender/',
@@ -58,8 +54,11 @@ const router = createBrowserRouter([
   },
   {
     path: 'login',
-    //element: <LoginForm />,
     element: <Login />,
+  },
+  {
+    path: 'register',
+    element: <RegisterPage />,
   },
 ])
 
