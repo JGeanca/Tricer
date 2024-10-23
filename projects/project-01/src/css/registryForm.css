@@ -1,0 +1,48 @@
+
+.registry-form {
+    width: 80%;
+    margin: 1%;
+}
+
+.username-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.email-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.password-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.confirm-password-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+.register-button-form {
+    width: 100% !important;
+    padding: 2.5% !important;
+    font-family: Elephant !important;
+    font-size: clamp(10px, 2.5vw, 20px) !important;
+    background-color: #6D7993 !important;
+    border: none !important;
+    border-radius: 10px !important;
+}
+
+.register-button-form:hover {
+    background-color: #5465FF !important;
+}

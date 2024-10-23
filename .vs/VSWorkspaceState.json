@@ -5,12 +5,12 @@
     "\\projects\\project-01",
     "\\projects\\project-01\\src",
     "\\projects\\project-01\\src\\assets",
-    "\\projects\\project-01\\src\\assets\\icons",
+    "\\projects\\project-01\\src\\assets\\imgs",
+    "\\projects\\project-01\\src\\components",
     "\\projects\\project-01\\src\\css",
-    "\\projects\\project-01\\src\\hooks",
     "\\projects\\project-01\\src\\mocks",
     "\\projects\\project-01\\src\\pages"
   ],
-  "SelectedNode": "\\projects\\project-01\\src\\assets\\Icons.jsx",
+  "SelectedNode": "\\projects\\project-01\\src\\css\\registryPage.css",
   "PreviewInSolutionExplorer": false
 }

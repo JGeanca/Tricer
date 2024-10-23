@@ -11,7 +11,7 @@
 .registry-section {
     min-width: 80%;
     margin: 0%;
-    padding: 1%;
+    padding: 2.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +62,7 @@
 .registry-login-section {
     min-width: 80%;
     margin: 1%;
-    padding: 2%;
+    padding: 3% 0% 3% 0%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -71,7 +71,11 @@
     border: 2px solid gray;
     border-radius: 15px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
-    font-size: clamp(12px, 3vw, 16px);
+    font-size: clamp(12px, 3vw, 18px);
+}
+
+.accept-politics-checkbox {
+    font-size: clamp(10px, 2.5vw, 16px);
 }
 
 .log-in {
@@ -82,4 +86,5 @@
 
 .setting-complete {
     min-width: 40% !important;
+    padding: 1.5%;
 }

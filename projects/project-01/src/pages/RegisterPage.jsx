@@ -34,7 +34,7 @@ export default function RegisterPage() {
                     <div className="google-icon">
                         <GoogleIcon width="24" height="24"/>
                     </div>
-                    Login with Google
+                    Register with Google
                 </Link>
                 <hr className="registry-separator-line" />
                 <RegistryForm />
