@@ -1,67 +1,40 @@
-//* Here, in this service, all operations related to authentication will be handled.
-
-const API_URL = 'https://rayomakuin.example.com'  // TODO
+import { publicApi } from './apiConfig'
 
 export const authService = {
 
-  // Login // TODO -- Check THIS
-  async login(email, password) {
-    // Fetch the user from the API
-    const response = await fetch(`${API_URL}/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    }) //TODO TRY CATCH
-    if (!response.ok) {
-      throw new Error('Login failed')
+  //*For now we will use local storage, but cookies are a better option 
+  // because they are more secure and can be used for server-side rendering
+
+  async login({ username, password }) {
+    try {
+      const response = await publicApi.post('users/login', { username, password })
+      const { token } = response.data
+      if (!token) throw new Error('No token received from server')
+      return { token }
+    } catch (error) {
+      if (!error.response) throw error
+      if (error.response?.data) throw { message: error.response.data.message }
+      throw error
     }
-    const data = await response.json()
-    //TODO -- Check if we want to use local storage or cookies
-    //!For now we will use local storage
-    localStorage.setItem('token', data.token)
-    return data.user
   },
 
-  // Register // TODO -- Check THIS
-  async register(email, password) {
-    // Fetch the user from the API with a post request
-    const response = await fetch(`${API_URL}/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    }) //TODO TRY CATCH
-    if (!response.ok) {
-      throw new Error('Registration failed')
+  async register({ username, email, password }) {
+    try {
+      const response = await publicApi.post('users/register', { username, email, password })
+      return response.data
+    } catch (error) {
+      if (!error.response) throw error
+
+      const { status, data } = error.response
+      if ([422, 409].includes(status)) throw { status, message: data.message, errors: data.errors }
+
+      throw error
     }
-    const data = await response.json()
-    localStorage.setItem('token', data.token)  //TODO CHECK
-    return data.user
   },
 
-  logout() { //? Logout with local storage for now
-    localStorage.removeItem('token')
-    //? redirect to login page?
+  isTokenExpired(decodedToken) {
+    if (!decodedToken.exp) return true
+    const expirationTime = decodedToken.exp * 1000
+    return Date.now() >= expirationTime
   },
-
-  getCurrentUser() {
-    const token = localStorage.getItem('token')
-    if (!token) return null
-    // TODO USE JWT to get the user info from the token
-    //! For now, we will return a mock user
-    return { id: 1, email: 'gean@example.com' }
-  },
-
-  getToken() { // Still using local storage
-    return localStorage.getItem('token')
-  }
 }
-
-//!List of important things by Gean:
-
-//TODO USE API When we have it
-//TODO USE JWT to get the user info from the token -> JWT is a way to encode the user info in the token
-//TODO TRY CATCH -> Handle errors
-//TODO FOR NOW we will use local storage for the token, but we could use cookies, is more secure and recommended
-//TODO WE CAN SIMPLiFY This with AXIOS library -> Check it out  
-
-//* CHECK: https://jwt.io/  -> JWT is very common!!!

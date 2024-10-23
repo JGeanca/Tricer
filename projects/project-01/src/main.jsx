@@ -10,9 +10,7 @@ import NoFoundPage from './pages/NoFoundPage'
 import { RegisterForm } from './components/RegisterForm'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
-// Provider for managing the authentication state
-import { AuthProvider } from './contexts/AuthContext'
+import { TestComponent } from './components/TestComponent'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/index.css'
@@ -31,6 +29,10 @@ const router = createBrowserRouter([
         element: <HomePage />,  // <- this page (Home)
       },
      
+      {
+        path: 'test',
+        element: <TestComponent />,
+      },
       {
         path: 'register',
         element: <RegisterForm />,
@@ -65,9 +67,7 @@ const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <RouterProvider router={router} />
     <ReactQueryDevtools />
   </QueryClientProvider>
 )
