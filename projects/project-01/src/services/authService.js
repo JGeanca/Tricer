@@ -1,5 +1,4 @@
 import { publicApi } from './apiConfig'
-import { jwtDecode } from 'jwt-decode'
 
 export const authService = {
 
@@ -9,45 +8,27 @@ export const authService = {
   async login({ username, password }) {
     try {
       const response = await publicApi.post('users/login', { username, password })
-
       const { token } = response.data
       if (!token) throw new Error('No token received from server')
-
-      localStorage.setItem('token', token)
-      return {
-        token,
-        user: this.getCurrentUser()
-      }
+      return { token }
     } catch (error) {
-      localStorage.removeItem('token')
+      if (!error.response) throw error
+      if (error.response?.data) throw { message: error.response.data.message }
       throw error
     }
   },
 
   async register({ username, email, password }) {
-    const response = await publicApi.post('users/register', { username, email, password })
-    return response.data
-  },
-
-  async logout() {
-    localStorage.removeItem('token')
-  },
-
-  getCurrentUser() {
     try {
-      const token = localStorage.getItem('token')
-      if (!token) return null
-
-      const decodedToken = jwtDecode(token)
-      if (this.isTokenExpired(decodedToken)) {
-        this.logout()
-        return null
-      }
-      return decodedToken
+      const response = await publicApi.post('users/register', { username, email, password })
+      return response.data
     } catch (error) {
-      console.error('Error getting current user:', error)
-      this.logout()
-      return null
+      if (!error.response) throw error
+
+      const { status, data } = error.response
+      if ([422, 409].includes(status)) throw { status, message: data.message, errors: data.errors }
+
+      throw error
     }
   },
 
@@ -56,12 +37,4 @@ export const authService = {
     const expirationTime = decodedToken.exp * 1000
     return Date.now() >= expirationTime
   },
-
-  getToken() {
-    return localStorage.getItem('token')
-  },
-
-  isAuthenticated() {
-    return this.getCurrentUser() !== null
-  }
 }

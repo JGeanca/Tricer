@@ -1,62 +1,70 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { authService } from '../services/authService'
 import { useNavigate } from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode'
+import { useCallback } from 'react'
 
 export const useAuth = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
 
-  const transformError = (error) => {
-    if (error.response?.status === 422) {
-      const validationErrors = error.response.data.errors
-      error.message = validationErrors
-        .map(err => err.message)
-        .join('-')
-    } else if (error.response?.data?.message) {
-      error.message = error.response.data.message
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('token')
+    queryClient.removeQueries(['user'])
+    navigate('/login') //TODO: Check where to redirect after logout
+  }, [queryClient, navigate])
+
+  const getCurrentUser = useCallback(() => {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) return null
+
+      const decodedToken = jwtDecode(token)
+      if (authService.isTokenExpired(decodedToken)) {
+        handleLogout()
+        return null
+      }
+      return decodedToken
+    } catch (error) {
+      console.error('Error getting current user:', error)
+      handleLogout()
+      return null
     }
-    return error
-  }
+  }, [handleLogout])
 
   const loginMutation = useMutation({
-    mutationFn: (credentials) => authService.login(credentials),
+    mutationFn: async (credentials) => {
+      const { token } = await authService.login(credentials)
+      localStorage.setItem('token', token)
+      const user = getCurrentUser()
+      return { token, user }
+    },
     onSuccess: (data) => {
       queryClient.setQueryData(['user'], data.user)
-      navigate('/') // Check where to redirect after login
+      navigate('/') //TODO: Check where to redirect after login
     },
     onError: (error) => {
-      if (error.response?.data.message) {
-        error.message = error.response.data.message
-      }
-      return error
+      handleLogout()
+      throw error
     }
   })
 
   const registerMutation = useMutation({
     mutationFn: (userData) => authService.register(userData),
     onSuccess: () => {
-      navigate('/login')
+      navigate('/login') //TODO: We can add logic to login the user after registration
     },
-    onError: transformError
   })
 
   const logoutMutation = useMutation({
-    mutationFn: () => authService.logout(),
-    onSuccess: () => {
-      queryClient.removeQueries(['user'])
-      navigate('/') //TODO: Check where to redirect after logout
-    }
+    mutationFn: () => handleLogout()
   })
 
   const { data: user } = useQuery({
     queryKey: ['user'],
-    queryFn: () => authService.getCurrentUser(),
+    queryFn: getCurrentUser,
     staleTime: Infinity,
-    cacheTime: Infinity,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    retry: false
+    suspense: true
   })
 
   return {

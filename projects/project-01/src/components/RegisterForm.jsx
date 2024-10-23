@@ -21,7 +21,8 @@ export function RegisterForm() {
   //! since only it realizes this, those must be handled when they are received from the API
   return (
     <form onSubmit={handleSubmit}>
-      {error && <div>{error.message}</div>}
+      {error && <div>{error.message} </div>}
+      {error?.errors && (error.errors.map((error, index) => <div key={index}>{error.message}</div>))}
       <input
         type="username"
         value={username}
