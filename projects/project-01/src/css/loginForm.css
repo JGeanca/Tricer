@@ -1,0 +1,33 @@
+
+.login-form {
+    width: 80%;
+    margin: 1.5%;
+}
+
+.email-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.password-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.login-button-form {
+    width: 100%;
+    padding: 2.5%;
+    font-family: Elephant;
+    font-size: clamp(10px, 2.5vw, 20px);
+    background-color: #6D7993;
+    border: none;
+    border-radius: 10px;
+}
+
+.login-button-form:hover {
+    background-color: #5465FF;
+}

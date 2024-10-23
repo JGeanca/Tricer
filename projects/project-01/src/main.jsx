@@ -5,8 +5,8 @@ import HomePage from './pages/HomePage'
 import CollectionsAndArrivalsPage from './pages/CollectionsAndArrivalsPage'
 import ProductsPage from './pages/ProductsPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
+import Login from './pages/Login'
 import NoFoundPage from './pages/NoFoundPage'
-import { LoginForm } from './components/LoginForm'
 import { RegisterForm } from './components/RegisterForm'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -30,10 +30,7 @@ const router = createBrowserRouter([
         index: true,  // This means that default route (/) will render
         element: <HomePage />,  // <- this page (Home)
       },
-      {
-        path: 'login',
-        element: <LoginForm />,
-      },
+     
       {
         path: 'register',
         element: <RegisterForm />,
@@ -55,7 +52,13 @@ const router = createBrowserRouter([
   {
     path: '*',
     element: <NoFoundPage />
-  }
+
+  },
+  {
+    path: 'login',
+    //element: <LoginForm />,
+    element: <Login />,
+  },
 ])
 
 const queryClient = new QueryClient()

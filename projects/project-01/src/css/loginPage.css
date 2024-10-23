@@ -1,0 +1,112 @@
+.login-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.images-section {
+    min-width: 55%;
+    position: relative;
+}
+
+.images-section img {
+    position: absolute;
+    min-width: 25%;
+    max-width: 35%;
+}
+
+.upper-image {
+    top: 10%;
+    left: 50%;
+    border-radius: 10%;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.lower-image {
+    top: 35%;
+    left: 20%;
+    border-radius: 10%;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.user-section {
+    margin-top: 1.5%;
+    min-width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.login-section {
+    padding: 2% 0% 2% 0%;
+    display: flex;
+    width: 65%;
+    border: 2px solid gray;
+    border-radius: 20px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+}
+
+.login-title {
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: bold;
+    font-family: Elephant;
+}
+
+.separator-line {
+    width: 80%;
+}
+
+
+.register-section {
+    padding: 3.5%;
+    display: flex;
+    width: 65%;
+    border: 2px solid gray;
+    border-radius: 15px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    flex-direction: row;
+    font-size: clamp(14px, 2vw, 18px);
+    color: #6D7993;
+}
+
+.login-google-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-lower-section {
+    text-align: center;
+    text-decoration-line: none;
+    width: 75%;
+}
+
+.login-google {
+    color: #5465FF;
+    text-decoration: none;
+    margin: 1.5%;
+    padding: 1%;
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+.forget-password {
+    color: #6D7993;
+    margin: 1.5%;
+    text-decoration-line: none;
+    padding: 1%;
+    font-size: clamp(12px, 2vw, 18px);
+}
+
+.sign-up {
+    margin: 0% 2% 0% 2%;
+    color: #5465FF;
+    text-decoration: none;
+}

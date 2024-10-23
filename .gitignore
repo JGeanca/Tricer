@@ -22,9 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.vs/*
+/.vs/slnx.sqlite
 
 # Environment
 .env
+/env.txt
 
 #Tests
 coverage
