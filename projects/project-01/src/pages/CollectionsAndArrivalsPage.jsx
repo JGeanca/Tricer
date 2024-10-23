@@ -14,7 +14,6 @@ export default function CollectionsAndArrivalsPage() {
   const [itemsPerCarousel, setItemsPerCarousel] = useState(3)
   const { data: products, isError, isLoading } = useProducts(gender, null, true)
 
-  //TODO: Fix this useEffect -> add the missing dependencies
   useEffect(() => {
     const updateItemsPerCarousel = () => {
       if (window.innerWidth <= 576) {
@@ -30,7 +29,7 @@ export default function CollectionsAndArrivalsPage() {
     updateItemsPerCarousel()
 
     return () => window.removeEventListener('resize', updateItemsPerCarousel)
-  }, []) //TODO: <- Add the missing dependencies
+  }, []) //TODO: <- Add the missing dependencies FIXED: Is not necessary
 
   if (!VALID_GENDERS.includes(gender)) return <NoFoundPage />
 

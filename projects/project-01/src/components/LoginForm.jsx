@@ -85,32 +85,65 @@
 //}
 
 
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
+
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
 import '../css/loginForm.css'
+
 export function LoginForm() {
+    const [emailOrUsername, setEmailOrUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [rememberMe, setRememberMe] = useState(false)
+    const { login, isLoading, error } = useAuth()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        login({ username: emailOrUsername, password })
+    }
+
     return (
-        <Form className="login-form">
+        <Form className="login-form" onSubmit={handleSubmit}>
+            {error && <div>{error.message}</div>}
             <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Control className="email-form" onChange={(e) => setEmail(e.target.value)}
-                    type="email" placeholder="Email or Username" />
+                <Form.Control
+                    className="email-form"
+                    onChange={(e) => setEmailOrUsername(e.target.value)}
+                    type="text"
+                    value={emailOrUsername}
+                    placeholder="Email or Username"
+                    required
+                />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control className="password-form" onChange={(e) => setPassword(e.target.value)}
-                    type="password" placeholder="Password" />
+                <Form.Control
+                    className="password-form"
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    value={password}
+                    placeholder="Password"
+                    required
+                />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check className="remember-checkbox" onChange={(e) => setRemeberMe(e.target.value)}
-                    type="checkbox" label="Remember me" />
+                <Form.Check
+                    className="remember-checkbox"
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    type="checkbox"
+                    value={rememberMe}
+                    label="Remember me"
+                />
             </Form.Group>
 
-            <Button type="submit" className="login-button-form">
-                Login
+            <Button type="submit" className="login-button-form" disabled={isLoading}>
+                {isLoading ? 'Loading...' : 'Login'}
             </Button>
         </Form>
     )
 }
+
 

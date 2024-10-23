@@ -3,17 +3,40 @@ import HomeWomen from '../assets/imgs/home_women.svg'
 import HomeMen from '../assets/imgs/home_men.svg'
 import { LoginForm } from '../components/LoginForm'
 import { GoogleIcon } from '../assets/Icons'
+import { useState, useEffect } from 'react'
 
 import '../css/loginPage.css'
 
 export default function Login() {
+
+    const [showDecoration, setShowDecoration] = useState(true)
+
+    useEffect(() => {
+        const updateShowDecoration = () => {
+           if (window.innerWidth <= 1000) {
+               setShowDecoration(false)
+            } else {
+               setShowDecoration(true)
+            }
+        }
+
+        window.addEventListener('resize', updateShowDecoration)
+        updateShowDecoration()
+
+        return () => window.removeEventListener('resize', updateShowDecoration)
+    }, [])
+
     return (
         <div className="login-page">
-            <div className="images-section">
-                <img src={HomeWomen} alt="Women" className="upper-image"/>
-                <img src={HomeMen} alt="Men" className="lower-image" />
-            </div>
-            <div className="user-section">
+            {
+                showDecoration && (
+                    <div className="images-section">
+                        <img src={HomeWomen} alt="Women" className="upper-image" />
+                        <img src={HomeMen} alt="Men" className="lower-image" />
+                    </div>
+                )
+            }
+            <div className={`user-section ${!showDecoration ? 'user-section-complete' : ''}`}>
                 <div className="login-section">
                     <div className="login-title">
                         Tricer
