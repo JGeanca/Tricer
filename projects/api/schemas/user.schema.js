@@ -22,9 +22,9 @@ export const userSchema = z.object({
 })
 
 export const loginSchema = z.object({
-  username: z.string({
-    invalid_type_error: 'Username must be a string',
-    required_error: 'Username is required',
+  credential: z.string({
+    invalid_type_error: 'Username or email must be a string',
+    required_error: 'Username or email is required',
   }),
 
   password: z.string({
