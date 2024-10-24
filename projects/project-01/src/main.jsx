@@ -6,7 +6,7 @@ import Layout from './components/Layout'
 import { TestComponent } from './components/TestComponent'
 import CollectionsAndArrivalsPage from './pages/CollectionsAndArrivalsPage'
 import HomePage from './pages/HomePage'
-import Login from './pages/Login'
+import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import NoFoundPage from './pages/NoFoundPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'login',
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: 'register',

@@ -31,3 +31,4 @@ dist-ssr
 
 #Tests
 coverage
+/projects/api/env.txt

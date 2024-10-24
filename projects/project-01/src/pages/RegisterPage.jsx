@@ -7,14 +7,14 @@ import { useState, useEffect } from 'react'
 import '../css/registryPage.css'
 export default function RegisterPage() {
 
-    const [bigSetting, setBigSetting] = useState(true)
+    const [isLargeScreen, setIsLargeScreen] = useState(true)
 
     useEffect(() => {
         const updateSizeSetting = () => {
             if (window.innerWidth <= 1000) {
-                setBigSetting(false)
+                setIsLargeScreen(false)
             } else {
-                setBigSetting(true)
+                setIsLargeScreen(true)
             }
         }
 
@@ -26,7 +26,7 @@ export default function RegisterPage() {
 
     return (
         <div className="register-page">
-            <div className={`registry-section  ${bigSetting ? 'setting-complete' : ''}`}>
+            <div className={`registry-section  ${isLargeScreen ? 'setting-complete' : ''}`}>
                 <div className="registry-title">
                     Tricer
                 </div>
@@ -39,7 +39,7 @@ export default function RegisterPage() {
                 <hr className="registry-separator-line" />
                 <RegistryForm />
             </div>
-            <div className={`registry-login-section ${bigSetting ? 'setting-complete' : ''}`} >
+            <div className={`registry-login-section ${isLargeScreen ? 'setting-complete' : ''}`} >
                 Already have an account?
                 <Link to="/login" className="log-in">
                     Log in

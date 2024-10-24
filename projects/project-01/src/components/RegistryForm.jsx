@@ -13,17 +13,71 @@ export function RegistryForm() {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [acceptPolitics, setAcceptPolitics] = useState(false)
+    const [registryError, setRegistryError] = useState('')
     const { register, isLoading, error } = useAuth()
+
+    const validateUsername = (username) => {
+        const usernameRegex = /^[a-zA-Z0-9_]+$/
+        return username.length >= 4 && username.length <= 15 && usernameRegex.test(username)
+    }
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return emailRegex.test(email)
+    }
+
+    const validatePassword = (password) => {
+        const uppercaseRegex = /[A-Z]/
+        const numberRegex = /[0-9]/
+        /*const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/*/
+        return (
+            password.length >= 8 &&
+            password.length <= 20 &&
+            uppercaseRegex.test(password) &&
+            numberRegex.test(password)
+            /*&& specialCharRegex.test(password)*/
+        )
+    }
+
+    const passwordsMatch = (password, confirmPassword) => password === confirmPassword
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        register({ username, email, password })
+
+        let errors = ''
+
+        if (!validateUsername(user)) {
+            errors = 'Username can only contain letters, numbers and underscores'
+        }
+
+        if (!validateEmail(email)) {
+            errors = 'Invalid email format'
+        }
+
+        if (!validatePassword(password)) {
+            errors = 'Invalid password'
+        }
+
+        if (!passwordsMatch(password, confirmPassword)) {
+            errors = 'Passwords do not match'
+        }
+
+        setRegistryError(errors)
+        if (errors) {
+            return
+        }
+
+        register({ username: user, email, password })
     }
+
 
     return (
         <Form className="registry-form" onSubmit={handleSubmit}>
-            {error && <div>{error.message} </div>}
-            {error?.errors && (error.errors.map((error, index) => <div key={index}>{error.message}</div>))}
+            <div className="error-messages">
+                {error && <div>{error.message} </div>}
+                {error?.errors && (error.errors.map((error, index) => <div key={index}>{error.message}</div>))}
+                {registryError && <div>{registryError}</div>}
+            </div>
 
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Control
@@ -32,6 +86,8 @@ export function RegistryForm() {
                     type="text"
                     value={user}
                     placeholder="Username"
+                    minLength={4}
+                    maxLength={20}
                     required
                 />
             </Form.Group>
@@ -43,6 +99,7 @@ export function RegistryForm() {
                     type="email"
                     value={email}
                     placeholder="Email"
+                    maxLength={35}
                     required
                 />
             </Form.Group>
@@ -54,6 +111,8 @@ export function RegistryForm() {
                     type="password"
                     value={password}
                     placeholder="Password"
+                    minLength={8}
+                    maxLength={20}
                     required
                 />
             </Form.Group>
@@ -65,6 +124,8 @@ export function RegistryForm() {
                     type="password"
                     value={confirmPassword}
                     placeholder="Confirm Password"
+                    minLength={8}
+                    maxLength={20}
                     required
                 />
             </Form.Group>
