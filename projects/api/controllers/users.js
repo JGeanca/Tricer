@@ -34,7 +34,7 @@ export class UserController {
 
       const user = await this.userModel.verifyCredentials(result.data)
       if (!user) {
-        return res.status(401).json({ message: 'Invalid username or password' })
+        return res.status(401).json({ message: 'Invalid credentials' })
       }
 
       const token = jwt.sign(

@@ -31,8 +31,11 @@ export class UserModel {
     return users.some(user => user.email === email)
   }
 
-  static async verifyCredentials({ username, password }) {
-    const user = users.find(user => user.username === username)
+  static async verifyCredentials({ credential, password }) {
+    const user = users.find(
+      user => user.username === credential || user.email === credential
+    )
+
     if (!user) return null
 
     if (await bcrypt.compare(password, user.password)) {
