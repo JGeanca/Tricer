@@ -5,9 +5,9 @@ export const authService = {
   //*For now we will use local storage, but cookies are a better option 
   // because they are more secure and can be used for server-side rendering
 
-  async login({ username, password }) {
+  async login({ credential, password }) {
     try {
-      const response = await publicApi.post('users/login', { username, password })
+      const response = await publicApi.post('users/login', { credential, password })
       const { token } = response.data
       if (!token) throw new Error('No token received from server')
       return { token }

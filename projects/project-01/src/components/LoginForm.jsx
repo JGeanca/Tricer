@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 
 export function LoginForm() {
-  const [username, setUsername] = useState('')
+  const [credential, setCredential] = useState('')
   const [password, setPassword] = useState('')
   const { login, isLoading, error } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    login({ username, password })
+    login({ credential, password })
   }
 
   //TODO: Add validation
@@ -19,10 +19,10 @@ export function LoginForm() {
     <form onSubmit={handleSubmit}>
       {error && <div>{error.message}</div>}
       <input
-        type="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="username"
+        type="credential"
+        value={credential}
+        onChange={(e) => setCredential(e.target.value)}
+        placeholder="username or email"
         required
       />
       <input
