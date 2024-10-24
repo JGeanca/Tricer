@@ -6,8 +6,6 @@
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
@@ -17,16 +15,17 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #756b6b;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 
 button:hover {
   border-color: #646cff;
+  background-color: #aaa2a2;
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto;
 }

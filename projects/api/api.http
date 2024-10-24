@@ -1,0 +1,75 @@
+###* This file is just for testing the API endpoints
+###* To use it, you need to install the REST Client extension in VSCode
+
+### Get all products
+GET http://localhost:3000/products
+
+### Get product by id
+GET http://localhost:3000/products/12
+
+### Get products by gender
+GET http://localhost:3000/products?gender=women
+
+### Get products by gender
+GET http://localhost:3000/products?gender=men
+
+### Get products by type and gender
+GET http://localhost:3000/products?type=footwear&gender=men
+
+### Get products by type and gender
+GET http://localhost:3000/products?gender=women&type=footwear
+
+### Get new products for women
+GET http://localhost:3000/products/?gender=women&type=clothing&new=true
+
+###
+GET http://localhost:3000/products/?gender=men&type=clothing&new=true
+
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "rayoMakuin2",
+    "email": "rayomakuin22001@gmail.com",
+    "password": "A1235678"
+}
+
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "testUser",
+    "email": "testuser@gmail.com",
+    "password": "testPassword123"
+}
+
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "s",
+    "email": "testuser@gmail.com",
+    "password": "d123"
+}
+
+
+### User login
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "credential": "rayoMakuin",
+    "password": "A1235678"
+}
+
+### Invalid login
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "username": "raykuin",
+    "password": "A1237"
+}

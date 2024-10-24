@@ -1,27 +1,35 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+
 export function RegisterForm() {
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const { register } = useAuth()
-  const navigate = useNavigate()
+  const { register, isLoading, error } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // TODO: Logic to register the user
-
-    try {
-      await register(email, password)
-      navigate('/')
-    } catch (error) {
-      //TODO: Show a proper error message to the user
-      console.error('Register failed', error)
-    }
+    register({ username, email, password })
   }
+
+  // TODO: Add validation
+  // For now the error(s) is/are displayed directly, we have to handle it better
+  // the message of error is the message response of the api, but if we handle the
+  // error here in the frontend, the api should not even be able to receive invalid parameters
+  //! Even so, errors of whether the email or the username already exists do come from the API
+  //! since only it realizes this, those must be handled when they are received from the API
   return (
     <form onSubmit={handleSubmit}>
+      {error && <div>{error.message} </div>}
+      {error?.errors && (error.errors.map((error, index) => <div key={index}>{error.message}</div>))}
+      <input
+        type="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="username"
+        required
+      />
       <input
         type="email"
         value={email}
@@ -43,7 +51,9 @@ export function RegisterForm() {
         placeholder="Confirm Password"
         required
       />
-      <button type="submit">Register</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Loading...' : 'Register'}
+      </button>
     </form>
   )
 }

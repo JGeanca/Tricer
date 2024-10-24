@@ -1,0 +1,525 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "type": "clothing",
+      "title": "Nike Sleeveless Shirt",
+      "description": "Sleeveless shirt from Nike, perfect for workouts and sports activities. Available in multiple colors.",
+      "category": "Shirt",
+      "price": 9.99,
+      "discountPercentage": 7.17,
+      "rating": 4.94,
+      "stock": 5,
+      "colors": [
+        "blue",
+        "white"
+      ],
+      "gender": "men",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/assets/public/141c/3779/14094f2288ae/582e67aade72/03242510802-A1M/03242510802-A1M.jpg?ts=1721866469779&w=750",
+        "https://static.pullandbear.net/assets/public/88b5/2ce3/0dd94bd1834e/f2cf2f93e63f/03242510802-A6M/03242510802-A6M.jpg?ts=1721866476914&w=750",
+        "https://static.pullandbear.net/assets/public/141c/3779/14094f2288ae/582e67aade72/03242510802-A1M/03242510802-A1M.jpg?ts=1721866469779&w=750",
+        "https://static.pullandbear.net/assets/public/88b5/2ce3/0dd94bd1834e/f2cf2f93e63f/03242510802-A6M/03242510802-A6M.jpg?ts=1721866476914&w=750"
+      ],
+      "brand": "Nike",
+      "new": true
+    },
+    {
+      "id": "2",
+      "type": "clothing",
+      "title": "Adidas Performance Shirt",
+      "description": "Lightweight performance shirt from Adidas, ideal for sports and casual wear.",
+      "category": "Shirt",
+      "price": 12.99,
+      "discountPercentage": 10.00,
+      "rating": 4.85,
+      "stock": 8,
+      "colors": [
+        "black",
+        "grey"
+      ],
+      "gender": "men",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/assets/public/c99c/840b/9a4743d4a906/b62c532b3780/03243509802-A1M/03243509802-A1M.jpg?ts=1721866010101&w=850",
+        "https://static.pullandbear.net/assets/public/c42e/a9f8/d8814fb8a308/c953131f74cb/03243509802-A6M/03243509802-A6M.jpg?ts=1721866024335&w=375"
+      ],
+      "brand": "Adidas",
+      "new": true
+    },
+    {
+      "id": "3",
+      "type": "clothing",
+      "title": "Puma Graphic Tee",
+      "description": "Stylish graphic tee from Puma, perfect for casual outings and streetwear.",
+      "category": "Shirt",
+      "price": 14.99,
+      "discountPercentage": 5.00,
+      "rating": 4.70,
+      "stock": 10,
+      "colors": [
+        "red",
+        "white"
+      ],
+      "gender": "men",
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/assets/public/8793/992c/31c2442bb042/5ee941ac692e/07248936250-A1M/07248936250-A1M.jpg?ts=1718104150113&w=850",
+        "https://static.pullandbear.net/assets/public/f1ee/e49d/c2c24d0d887d/74ad3271707d/07248936250-A6M/07248936250-A6M.jpg?ts=1717401418334&w=375"
+      ],
+      "brand": "Puma",
+      "new": true
+    },
+    {
+      "id": "4",
+      "type": "clothing",
+      "title": "Under Armour Training Shirt",
+      "description": "Durable training shirt from Under Armour, designed for optimal performance and comfort.",
+      "category": "Shirt",
+      "price": 19.99,
+      "discountPercentage": 15.00,
+      "rating": 4.60,
+      "stock": 6,
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "gender": "men",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/2/photos//2024/V/0/2/p/4238/500/500/4238500500_2_1_0.jpg?ts=1710169292848&imwidth=1125",
+        "https://static.pullandbear.net/assets/public/4f53/9b61/6b2846c28fac/204d9cb30e75/03244500500-A6M/03244500500-A6M.jpg?ts=1721854114622&w=1024"
+      ],
+      "brand": "Under Armour",
+      "new": true
+    },
+    {
+      "id": "5",
+      "type": "clothing",
+      "title": "Reebok Classic Tee",
+      "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
+      "category": "Shirt",
+      "price": 11.99,
+      "discountPercentage": 8.00,
+      "rating": 4.80,
+      "stock": 9,
+      "colors": [
+        "white",
+        "grey"
+      ],
+      "gender": "men",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/assets/public/8d1d/c75d/ea9b496ebc8d/cde66f18cd51/03470917707-A1M/03470917707-A1M.jpg?ts=1721049727998&w=850",
+        "https://static.pullandbear.net/assets/public/ec13/3c70/4aca4fe49fb8/73b9a0cd366a/03470917707-A6M/03470917707-A6M.jpg?ts=1720788909098&w=750"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "6",
+      "type": "clothing",
+      "title": "Reebok Classic Tee",
+      "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
+      "category": "Shirt",
+      "price": 12.99,
+      "discountPercentage": 7.00,
+      "rating": 4.70,
+      "stock": 15,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "gender": "women",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/assets/public/42a8/5031/c19d4e66aa92/794ec4e02c1d/07249425401-A1M/07249425401-A1M.jpg?ts=1723645588074&w=750",
+        "https://static.pullandbear.net/assets/public/cf5f/99ad/a1c44d8cabd2/6b58faed0a21/07249425401-A6M/07249425401-A6M.jpg?ts=1723120902923&w=750"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "7",
+      "type": "clothing",
+      "title": "Reebok Active Sports Bra",
+      "description": "Supportive sports bra from Reebok, perfect for high-intensity workouts.",
+      "category": "Sports Bra",
+      "price": 19.99,
+      "discountPercentage": 10.00,
+      "rating": 4.85,
+      "stock": 20,
+      "colors": [
+        "pink",
+        "black"
+      ],
+      "gender": "women",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Nylon",
+      "images": [
+        "https://static.pullandbear.net/assets/public/4f3a/52d7/9a65438a85c4/bd1f0c5190fc/07249398401-A7M/07249398401-A7M.jpg?ts=1725534997758&w=750",
+        "https://static.pullandbear.net/assets/public/befc/83d3/12cb473e9cd5/e0372e4b276a/07249398401-A6M/07249398401-A6M.jpg?ts=1723757305537&w=750"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "8",
+      "type": "clothing",
+      "title": "Reebok Training Tank",
+      "description": "Lightweight and breathable tank top, ideal for any training session.",
+      "category": "Tank Top",
+      "price": 14.99,
+      "discountPercentage": 5.00,
+      "rating": 4.60,
+      "stock": 25,
+      "colors": [
+        "blue",
+        "grey"
+      ],
+      "gender": "women",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/assets/public/5eab/1b9f/375f483d8195/1f56e958b69e/07252339401-A7M/07252339401-A7M.jpg?ts=1727178194619&w=850",
+        "https://static.pullandbear.net/assets/public/f489/cef6/e63645af981e/fa6971aebd1b/07252339401-A6M/07252339401-A6M.jpg?ts=1726824355958&w=375"
+      ],
+      "brand": "Reebok",
+      "new": false
+    },
+    {
+      "id": "9",
+      "type": "clothing",
+      "title": "Reebok Running Shorts",
+      "description": "Comfortable and flexible shorts designed for running and intense workouts.",
+      "category": "Shorts",
+      "price": 17.99,
+      "discountPercentage": 6.00,
+      "rating": 4.75,
+      "stock": 18,
+      "colors": [
+        "black",
+        "blue"
+      ],
+      "gender": "women",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/assets/public/d66c/b087/900a4514a129/127547f05429/07252345676-A7M/07252345676-A7M.jpg?ts=1726045359013&w=750",
+        "https://static.pullandbear.net/assets/public/3012/2efc/5d82404a9d43/e527ef02e9f7/07252345676-A6M/07252345676-A6M.jpg?ts=1724224257822&w=90"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "10",
+      "type": "clothing",
+      "title": "Reebok Yoga Leggings",
+      "description": "High-waisted leggings for comfort and support during yoga sessions.",
+      "category": "Leggings",
+      "price": 24.99,
+      "discountPercentage": 12.00,
+      "rating": 4.90,
+      "stock": 10,
+      "colors": [
+        "purple",
+        "black"
+      ],
+      "gender": "women",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Spandex",
+      "images": [
+        "https://static.pullandbear.net/assets/public/84d1/a68b/aa3c4b58aba1/f75133865dcc/07252379805-a1M/07252379805-a1M.jpg?ts=1726146753692&w=850",
+        "https://static.pullandbear.net/assets/public/5853/b0ec/8d6a4750b949/94534f075fa5/07252379805-A6M/07252379805-A6M.jpg?ts=1724690020774&w=375"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "11",
+      "type": "clothing",
+      "title": "Reebok Classic Tee",
+      "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
+      "category": "Shirt",
+      "price": 11.99,
+      "discountPercentage": 8.00,
+      "rating": 4.80,
+      "stock": 9,
+      "colors": [
+        "white",
+        "grey"
+      ],
+      "gender": "men",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/assets/public/bdcd/3817/2e434ffa9f9d/756649ff835e/03471505104-A7M/03471505104-A7M.jpg?ts=1724059947548&w=850",
+        "https://static.pullandbear.net/assets/public/8140/b26c/7b6a4b29b015/03de9600dac3/03471505104-A6M/03471505104-A6M.jpg?ts=1723188124133&w=750"
+      ],
+      "brand": "Reebok",
+      "new": false
+    },
+    {
+      "id": "12",
+      "type": "clothing",
+      "title": "Reebok Classic Tee",
+      "description": "Casual classic tee from Reebok, suitable for everyday wear and workouts.",
+      "category": "Shirt",
+      "price": 12.99,
+      "discountPercentage": 7.00,
+      "rating": 4.70,
+      "stock": 15,
+      "colors": [
+        "black",
+        "white"
+      ],
+      "gender": "women",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Cotton",
+      "images": [
+        "https://static.pullandbear.net/assets/public/901c/c231/57134b3ca501/0be6b844ed94/07244355802-A7M/07244355802-A7M.jpg?ts=1725530043449&w=750",
+        "https://static.pullandbear.net/assets/public/e880/fd39/f7e1496cb14b/0b97418c737b/07244355802-A6M/07244355802-A6M.jpg?ts=1721746525244&w=750"
+      ],
+      "brand": "Reebok",
+      "new": false
+    },
+    {
+      "id": "13",
+      "type": "clothing",
+      "title": "Reebok Active Sports Bra",
+      "description": "Supportive sports bra from Reebok, perfect for high-intensity workouts.",
+      "category": "Sports Bra",
+      "price": 19.99,
+      "discountPercentage": 10.00,
+      "rating": 4.85,
+      "stock": 20,
+      "colors": [
+        "pink",
+        "black"
+      ],
+      "gender": "women",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Nylon",
+      "images": [
+        "https://static.pullandbear.net/assets/public/3c40/c375/b9e94ec8b377/d47df93b4654/07252336250-A1M/07252336250-A1M.jpg?ts=1722264313782&w=850",
+        "https://static.pullandbear.net/assets/public/50c8/c18a/85524ba4b27d/ad2548072b3b/07252336250-A6M/07252336250-A6M.jpg?ts=1721739378216&w=750"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "14",
+      "type": "clothing",
+      "title": "Reebok Training Tank",
+      "description": "Lightweight and breathable tank top, ideal for any training session.",
+      "category": "Tank Top",
+      "price": 14.99,
+      "discountPercentage": 5.00,
+      "rating": 4.60,
+      "stock": 25,
+      "colors": [
+        "blue",
+        "grey"
+      ],
+      "gender": "women",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/assets/public/c9c2/527d/c68645e9937e/cd458d1440f4/07244317803-A1M/07244317803-A1M.jpg?ts=1724858381559&w=750",
+        "https://static.pullandbear.net/assets/public/c289/285c/5ed04da2b722/57aa972e7d92/07244317803-A6M/07244317803-A6M.jpg?ts=1721379988984&w=750"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "15",
+      "type": "clothing",
+      "title": "Reebok Running Shorts",
+      "description": "Comfortable and flexible shorts designed for running and intense workouts.",
+      "category": "Shorts",
+      "price": 17.99,
+      "discountPercentage": 6.00,
+      "rating": 4.75,
+      "stock": 18,
+      "colors": [
+        "black",
+        "blue"
+      ],
+      "gender": "women",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "material": "Polyester",
+      "images": [
+        "https://static.pullandbear.net/assets/public/cadd/0a6a/a27e4844b9dc/2635ae4a1ac2/07244331805-A1M/07244331805-A1M.jpg?ts=1720511766737&w=850",
+        "https://static.pullandbear.net/assets/public/a8c3/f609/f9b84b4cab56/cd4bda7a20f4/07244331805-A6M/07244331805-A6M.jpg?ts=1718722132691&w=375"
+      ],
+      "brand": "Reebok",
+      "new": true
+    },
+    {
+      "id": "16",
+      "type": "clothing",
+      "title": "Reebok Yoga Leggings",
+      "description": "High-waisted leggings for comfort and support during yoga sessions.",
+      "category": "Leggings",
+      "price": 24.99,
+      "discountPercentage": 12.00,
+      "rating": 4.90,
+      "stock": 10,
+      "colors": [
+        "purple",
+        "black"
+      ],
+      "gender": "women",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Spandex",
+      "images": [
+        "https://static.pullandbear.net/assets/public/3c52/0aea/79f94ff2a89c/069ee31daf80/07249348805-A1M/07249348805-A1M.jpg?ts=1716302423724&w=750",
+        "https://static.pullandbear.net/assets/public/d5cc/5337/a32f4604b261/0270367511f5/07249348805-A6M/07249348805-A6M.jpg?ts=1716555814967&w=750"
+      ],
+      "brand": "Reebok",
+      "new": false
+    },
+    {
+      "id": "17",
+      "type": "footwear",
+      "title": "Reebok Yoga Leggings",
+      "description": "High-waisted leggings for comfort and support during yoga sessions.",
+      "category": "Leggings",
+      "price": 24.99,
+      "discountPercentage": 12.00,
+      "rating": 4.90,
+      "stock": 10,
+      "colors": [
+        "purple",
+        "black"
+      ],
+      "gender": "women",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Spandex",
+      "images": [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
+      ],
+      "brand": "Reebok",
+      "new": false
+    },
+    {
+      "id": "18",
+      "type": "footwear",
+      "title": "Reebok Yoga Leggings",
+      "description": "High-waisted leggings for comfort and support during yoga sessions.",
+      "category": "Leggings",
+      "price": 24.99,
+      "discountPercentage": 12.00,
+      "rating": 4.90,
+      "stock": 10,
+      "colors": [
+        "purple",
+        "black"
+      ],
+      "gender": "men",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "material": "Spandex",
+      "images": [
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg"
+      ],
+      "brand": "Reebok",
+      "new": false
+    }
+  ]
+}
