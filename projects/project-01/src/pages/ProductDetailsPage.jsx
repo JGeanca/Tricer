@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { products } from '../mocks/products.json'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap'
+import { useState } from 'react';
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
 import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -11,6 +12,9 @@ import { capitalize } from '../utils/utils'
 export default function ProductDetailsPage() {
   const { gender, productType, productId } = useParams()
   const product = products.find(p => p.id === +productId)
+
+  const [selectedSize, setSelectedSize] = useState('S')
+  const [quantity, setQuantity] = useState(1)
 
   if (!product) {
     return <NoProductsFound />
@@ -50,20 +54,37 @@ export default function ProductDetailsPage() {
           </div>
           <div className="product-details-size">
             <p>Size</p>
-            <DropdownButton id="dropdown-basic-button" title="S" className="w-100 text-start">
-              <Dropdown.Item href="#/S" className="custom-dropdown-item">S</Dropdown.Item>
-              <Dropdown.Item href="#/N" className="custom-dropdown-item">M</Dropdown.Item>
-              <Dropdown.Item href="#/L" className="custom-dropdown-item">L</Dropdown.Item>
-              <Dropdown.Item href="#/XL" className="custom-dropdown-item">XL</Dropdown.Item>
+            <DropdownButton id="dropdown-basic-button" title={selectedSize} className="w-100 text-start">
+              {['S', 'M', 'L', 'XL'].map(size => (
+                <Dropdown.Item
+                  key={size}
+                  onClick={() => setSelectedSize(size)}
+                  className="custom-dropdown-item"
+                >
+                  {size}
+                </Dropdown.Item>
+              ))}
             </DropdownButton>
           </div>
           <div className="product-details-quantity">
             <p>Quantity</p>
             <div className="quantity">
-              <span className="quantity-value">1</span>
+              <span className="quantity-value">{quantity}</span>
               <div className="quantity-buttons">
-                <Button variant="outline-secondary" className="btn-increase">+</Button>
-                <Button variant="outline-secondary" className="btn-decrease">-</Button>
+                <Button
+                  variant="outline-secondary"
+                  className="btn-increase"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  +
+                </Button>
+                <Button
+                  variant="outline-secondary"
+                  className="btn-decrease"
+                  onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+                >
+                  -
+                </Button>
               </div>
             </div>
           </div>
