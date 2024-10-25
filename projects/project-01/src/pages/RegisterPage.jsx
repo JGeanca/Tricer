@@ -7,44 +7,44 @@ import { useState, useEffect } from 'react'
 import '../css/registryPage.css'
 export default function RegisterPage() {
 
-    const [isLargeScreen, setIsLargeScreen] = useState(true)
+  const [isLargeScreen, setIsLargeScreen] = useState(true)
 
-    useEffect(() => {
-        const updateSizeSetting = () => {
-            if (window.innerWidth <= 1000) {
-                setIsLargeScreen(false)
-            } else {
-                setIsLargeScreen(true)
-            }
-        }
+  useEffect(() => {
+    const updateSizeSetting = () => {
+      if (window.innerWidth <= 1000) {
+        setIsLargeScreen(false)
+      } else {
+        setIsLargeScreen(true)
+      }
+    }
 
-        window.addEventListener('resize', updateSizeSetting)
-        updateSizeSetting()
+    window.addEventListener('resize', updateSizeSetting)
+    updateSizeSetting()
 
-        return () => window.removeEventListener('resize', updateSizeSetting)
-    }, [])
+    return () => window.removeEventListener('resize', updateSizeSetting)
+  }, [])
 
-    return (
-        <div className="register-page">
-            <div className={`registry-section  ${isLargeScreen ? 'setting-complete' : ''}`}>
-                <div className="registry-title">
-                    Tricer
-                </div>
-                <Link to="/signin-google" className="google-registry-link">
-                    <div className="google-icon">
-                        <GoogleIcon width="24" height="24"/>
-                    </div>
-                    Register with Google
-                </Link>
-                <hr className="registry-separator-line" />
-                <RegistryForm />
-            </div>
-            <div className={`registry-login-section ${isLargeScreen ? 'setting-complete' : ''}`} >
-                Already have an account?
-                <Link to="/login" className="log-in">
-                    Log in
-                </Link>
-            </div>
+  return (
+    <div className="register-page">
+      <div className={`registry-section  ${isLargeScreen ? 'setting-complete' : ''}`}>
+        <div className="registry-title">
+          Tricer
         </div>
-    )
+        <Link to="/signin-google" className="google-registry-link">
+          <div className="google-icon">
+            <GoogleIcon width="24" height="24" />
+          </div>
+          Register with Google
+        </Link>
+        <hr className="registry-separator-line" />
+        <RegistryForm />
+      </div>
+      <div className={`registry-login-section ${isLargeScreen ? 'setting-complete' : ''}`} >
+        Already have an account?
+        <Link to="/login" className="log-in">
+          Log in
+        </Link>
+      </div>
+    </div>
+  )
 }
