@@ -5,9 +5,9 @@ const app = createTestApp()
 
 describe('Users routes API', () => {
 
-  it('POST /users/login should authenticate a valid user', async () => {
+  it('POST /users/login should authenticate a valid user by username', async () => {
     const userCredentials = {
-      username: 'testUser',
+      credential: 'testUser',
       password: 'testPassword123'
     }
 
@@ -22,9 +22,27 @@ describe('Users routes API', () => {
 
   })
 
+  it('POST /users/login should authenticate a valid user by email', async () => {
+    const userCredentials = {
+      credential: 'testuser@gmail.com',
+      password: 'testPassword123'
+    }
+
+    const res = await request(app)
+      .post('/users/login')
+      .send(userCredentials)
+      .expect('Content-Type', /json/)
+      .expect(200)
+
+    expect(res.body).toHaveProperty('message', 'Login successful')
+    expect(res.body).toHaveProperty('token')
+
+  })
+
+
   it('POST /users/login should not authenticate an incorrect pass', async () => {
     const userCredentials = {
-      username: 'testUser',
+      credential: 'testUser',
       password: 'wrongPassword'
     }
 
@@ -34,12 +52,12 @@ describe('Users routes API', () => {
       .expect('Content-Type', /json/)
       .expect(401)
 
-    expect(res.body).toHaveProperty('message', 'Invalid username or password')
+    expect(res.body).toHaveProperty('message', 'Invalid credentials')
   })
 
   it('POST /users/login should invalidate username', async () => {
     const userCredentials = {
-      username: 'WrongTestUser',
+      credential: 'WrongTestUser',
       password: 'testPassword123'
     }
 
@@ -49,7 +67,7 @@ describe('Users routes API', () => {
       .expect('Content-Type', /json/)
       .expect(401)
 
-    expect(res.body).toHaveProperty('message', 'Invalid username or password')
+    expect(res.body).toHaveProperty('message', 'Invalid credentials')
   })
 
   it('POST /users/login should return 422 if no credentials are provided', async () => {

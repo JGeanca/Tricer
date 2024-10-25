@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form'
 import '../css/loginForm.css'
 
 export function LoginForm() {
-    const [emailOrUsername, setEmailOrUsername] = useState('')
+    const [credential, setCredential] = useState('')
     const [password, setPassword] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
     const [loginError, setLoginError] = useState('')
@@ -41,7 +41,7 @@ export function LoginForm() {
 
         let errors = ''
 
-        if (!validateUsername(emailOrUsername) && !validateEmail(emailOrUsername)) {
+        if (!validateUsername(credential) && !validateEmail(credential)) {
             errors = 'Username or email format invalid'
         }
 
@@ -54,7 +54,7 @@ export function LoginForm() {
             return
         }
 
-        login({ username: emailOrUsername, password })
+        login({ credential, password })
     }
 
     return (
@@ -64,9 +64,9 @@ export function LoginForm() {
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Control
                     className="email-form"
-                    onChange={(e) => setEmailOrUsername(e.target.value)}
-                    type="text"
-                    value={emailOrUsername}
+                    onChange={(e) => setCredential(e.target.value)}
+                    type="credential"
+                    value={credential}
                     placeholder="Email or Username"
                     maxLength={35}
                     required

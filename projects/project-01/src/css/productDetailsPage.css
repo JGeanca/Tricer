@@ -194,6 +194,9 @@
 .quantity-value {
   margin-right: 20px;
   margin-left: 25px;
+  width: 17.26px;
+  height: 24px; 
+  text-align: center;
 }
 
 .quantity-buttons {
@@ -216,7 +219,7 @@
   display: inline-flex;
   align-items: center;
   border: 1px solid black;
-  width: 70px;
+  padding-right: 5px;
 }
 
 .text-center .form-control {

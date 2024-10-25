@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap'
+import { useState } from 'react';
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
 import { capitalize } from '../utils/utils'
 import { useProduct } from '../hooks/useProducts'
@@ -13,6 +14,10 @@ import '../css/productDetailsPage.css'
 export default function ProductDetailsPage() {
   const { gender, productType, productId } = useParams()
   const { data: product, isError, isLoading } = useProduct(productId)
+
+  const [selectedSize, setSelectedSize] = useState('S')
+  const [quantity, setQuantity] = useState(1)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
   if (isLoading) {
     return <Loading />
@@ -31,18 +36,19 @@ export default function ProductDetailsPage() {
       <Row className="product-details-row">
         <Col xs={12} md={5} className="product-images-column">
           <div className="product-images-wrapper">
-            <div className="product-thumbnails">
+          <div className="product-thumbnails">
               {images.map((image, index) => (
                 <img
                   key={index}
-                  className={`thumbnail-image ${index === 0 ? 'selected' : ''}`}
+                  className={`thumbnail-image ${index === selectedImageIndex  ? 'selected' : ''}`}
                   src={image}
                   alt={`Thumbnail ${index + 1}`}
+                  onClick={() => setSelectedImageIndex(index)}
                 />
               ))}
             </div>
             <div className="product-main-image">
-              <img src={images[0]} alt="Main product" />
+              <img src={images[selectedImageIndex]} alt="Main product" />
             </div>
           </div>
         </Col>
@@ -58,20 +64,37 @@ export default function ProductDetailsPage() {
           </div>
           <div className="product-details-size">
             <p>Size</p>
-            <DropdownButton id="dropdown-basic-button" title="S" className="w-100 text-start">
-              <Dropdown.Item href="#/S" className="custom-dropdown-item">S</Dropdown.Item>
-              <Dropdown.Item href="#/N" className="custom-dropdown-item">M</Dropdown.Item>
-              <Dropdown.Item href="#/L" className="custom-dropdown-item">L</Dropdown.Item>
-              <Dropdown.Item href="#/XL" className="custom-dropdown-item">XL</Dropdown.Item>
+            <DropdownButton id="dropdown-basic-button" title={selectedSize} className="w-100 text-start">
+              {['S', 'M', 'L', 'XL'].map(size => (
+                <Dropdown.Item
+                  key={size}
+                  onClick={() => setSelectedSize(size)}
+                  className="custom-dropdown-item"
+                >
+                  {size}
+                </Dropdown.Item>
+              ))}
             </DropdownButton>
           </div>
           <div className="product-details-quantity">
             <p>Quantity</p>
             <div className="quantity">
-              <span className="quantity-value">1</span>
+              <span className="quantity-value">{quantity}</span>
               <div className="quantity-buttons">
-                <Button variant="outline-secondary" className="btn-increase">+</Button>
-                <Button variant="outline-secondary" className="btn-decrease">-</Button>
+                <Button
+                  variant="outline-secondary"
+                  className="btn-increase"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  +
+                </Button>
+                <Button
+                  variant="outline-secondary"
+                  className="btn-decrease"
+                  onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+                >
+                  -
+                </Button>
               </div>
             </div>
           </div>
