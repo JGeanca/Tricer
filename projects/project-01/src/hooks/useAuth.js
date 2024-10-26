@@ -11,7 +11,7 @@ export const useAuth = () => {
   const handleLogout = useCallback(() => {
     localStorage.removeItem('token')
     queryClient.removeQueries(['user'])
-    navigate('/login') //TODO: Check where to redirect after logout
+    navigate('/') //TODO: Check where to redirect after logout
   }, [queryClient, navigate])
 
   const getCurrentUser = useCallback(() => {
@@ -50,9 +50,15 @@ export const useAuth = () => {
   })
 
   const registerMutation = useMutation({
-    mutationFn: (userData) => authService.register(userData),
-    onSuccess: () => {
-      navigate('/login') //TODO: We can add logic to login the user after registration
+    mutationFn: async (userData) => {
+      const { token } = await authService.register(userData)
+      localStorage.setItem('token', token)
+      const user = getCurrentUser()
+      return { token, user }
+    },
+    onSuccess: (data) => {
+      queryClient.setQueryData(['user'], data.user)
+      navigate('/') // TODO: Check where to redirect after register
     },
   })
 

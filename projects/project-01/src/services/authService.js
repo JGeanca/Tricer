@@ -10,7 +10,7 @@ export const authService = {
       const response = await publicApi.post('users/login', { credential, password })
       const { token } = response.data
       if (!token) throw new Error('No token received from server')
-      return { token }
+      return response.data
     } catch (error) {
       if (!error.response) throw error
       if (error.response?.data) throw { message: error.response.data.message }
@@ -21,6 +21,8 @@ export const authService = {
   async register({ username, email, password }) {
     try {
       const response = await publicApi.post('users/register', { username, email, password })
+      const { token } = response.data
+      if (!token) throw new Error('No token received from server')
       return response.data
     } catch (error) {
       if (!error.response) throw error

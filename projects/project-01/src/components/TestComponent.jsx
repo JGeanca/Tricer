@@ -2,7 +2,7 @@ import { useAuth } from '../hooks/useAuth'
 import { useState, useEffect } from 'react'
 
 export function TestComponent() {
-  const { user, isLoading, logout } = useAuth()
+  const { user, isLoading, logout, isAuthenticated } = useAuth()
   const [isInitialized, setIsInitialized] = useState(false)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export function TestComponent() {
     )
   }
 
-  if (!user) {
+  if (!isAuthenticated) {
     return (
       <div className="p-4 text-center">
         <h1 className="text-xl font-semibold text-gray-800">

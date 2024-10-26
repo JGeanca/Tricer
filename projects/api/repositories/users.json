@@ -23,6 +23,12 @@
       "username": "Julio342",
       "email": "julio@gmail.com",
       "password": "$2b$10$1lzAwl7eekc6nH68PU1B0.zH9RW9B3AxVO1bpNnMsbrUbIuD9sRJq"
+    },
+    {
+      "id": "c7a39893-8173-434f-8614-da96ff9294cc",
+      "username": "Saku",
+      "email": "gean@gmail.com",
+      "password": "$2b$10$/R5S8RZdDagK10CWkz8XDOtUQuEvi2G0sWtdVDZE9nvOhDbMTkwRC"
     }
   ]
 }
