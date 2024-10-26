@@ -2,8 +2,8 @@
 import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
+import { Form, Button } from 'react-bootstrap'
+
 
 import '../css/registryForm.css'
 
