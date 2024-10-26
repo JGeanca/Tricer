@@ -1,35 +1,7 @@
 import { useAuth } from '../hooks/useAuth'
-import { useState, useEffect } from 'react'
 
 export function TestComponent() {
-  const { user, isLoading, logout } = useAuth()
-  const [isInitialized, setIsInitialized] = useState(false)
-
-  useEffect(() => {
-    if (!isLoading) {
-      setIsInitialized(true)
-    }
-  }, [isLoading])
-
-  if (!isInitialized) {
-    return (
-      <div className="flex items-center justify-center min-h-[200px]">
-        <div className="animate-pulse">
-          <div className="h-8 w-32 bg-gray-200 rounded" />
-        </div>
-      </div>
-    )
-  }
-
-  if (!user) {
-    return (
-      <div className="p-4 text-center">
-        <h1 className="text-xl font-semibold text-gray-800">
-          Please login to see the content of this page!
-        </h1>
-      </div>
-    )
-  }
+  const { user, logout } = useAuth()
 
   return (
     <div className="p-4">

@@ -111,13 +111,15 @@ export const useAuth = () => {
     staleTime: Infinity,
     initialData: getCurrentUser
   })
+
   const isLoading = loginMutation.isLoading || registerMutation.isLoading || isQueryLoading
+
   return {
     user,
     isLoading,
     isAuthenticated: !!user,
-    login: loginMutation.mutate,
-    register: registerMutation.mutate,
+    login: (credentials) => loginMutation.mutateAsync(credentials),
+    register: (credentials) => registerMutation.mutateAsync(credentials),
     logout: logoutMutation.mutate,
 
     error: loginMutation.error || registerMutation.error

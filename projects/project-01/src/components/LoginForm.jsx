@@ -55,9 +55,13 @@ export function LoginForm() {
       return
     }
 
-    await login({ credential, password })
-    const from = location.state?.from?.pathname || '/'
-    navigate(from, { replace: true })
+    try {
+      await login({ credential, password })
+      const previousPath = location.state?.from?.pathname || '/'
+      navigate(previousPath, { replace: true })
+    } catch (error) {
+      setLoginError(error.message)
+    }
   }
 
   return (
