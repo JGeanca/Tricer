@@ -70,7 +70,6 @@ export const useAuth = () => {
     onSuccess: (data) => {
       // Update the user data in React Query cache
       queryClient.setQueryData(['user'], data.user)
-      navigate('/') //TODO: Check where to redirect after login
     },
     onError: (error) => {
       handleLogout()
@@ -106,19 +105,21 @@ export const useAuth = () => {
    * Query hook that manages the current user state
    * Uses staleTime: Infinity to prevent unnecessary refetches
    */
-  const { data: user } = useQuery({
+  const { data: user, isLoading: isQueryLoading } = useQuery({
     queryKey: ['user'],
     queryFn: getCurrentUser,
     staleTime: Infinity,
+    initialData: getCurrentUser
   })
-
+  const isLoading = loginMutation.isLoading || registerMutation.isLoading || isQueryLoading
   return {
     user,
+    isLoading,
     isAuthenticated: !!user,
     login: loginMutation.mutate,
     register: registerMutation.mutate,
     logout: logoutMutation.mutate,
-    isLoading: loginMutation.isPending || registerMutation.isPending,
+
     error: loginMutation.error || registerMutation.error
   }
 }

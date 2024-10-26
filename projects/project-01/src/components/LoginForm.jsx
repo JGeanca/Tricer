@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
-
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 
 import '../css/loginForm.css'
@@ -11,6 +11,8 @@ export function LoginForm() {
   const [rememberMe, setRememberMe] = useState(false)
   const [loginError, setLoginError] = useState('')
   const { login, isLoading, error } = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const validateUsername = (username) => {
     const usernameRegex = /^[a-zA-Z0-9_]+$/
@@ -53,7 +55,9 @@ export function LoginForm() {
       return
     }
 
-    login({ credential, password })
+    await login({ credential, password })
+    const from = location.state?.from?.pathname || '/'
+    navigate(from, { replace: true })
   }
 
   return (
