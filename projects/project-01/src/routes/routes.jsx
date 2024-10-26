@@ -8,6 +8,7 @@ import ProductDetailsPage from '../pages/ProductDetailsPage'
 import ProductsPage from '../pages/ProductsPage'
 import CollectionsAndArrivalsPage from '../pages/CollectionsAndArrivalsPage'
 import { ProtectedRoute } from '../components/ProtectedRoute'
+import { PublicOnlyRoute } from '../components/PublicOnlyRoute'
 
 export const routes = [
   {
@@ -46,10 +47,18 @@ export const routes = [
   },
   {
     path: 'login',
-    element: <LoginPage />,
+    element: (
+      <PublicOnlyRoute>
+        <LoginPage />
+      </PublicOnlyRoute>
+    ),
   },
   {
     path: 'register',
-    element: <RegisterPage />,
+    element: (
+      <PublicOnlyRoute>
+        <RegisterPage />
+      </PublicOnlyRoute>
+    ),
   },
 ]
