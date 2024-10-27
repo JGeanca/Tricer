@@ -24,6 +24,8 @@ dist-ssr
 *.sw?
 *.vs/*
 /.vs/slnx.sqlite
+/projects/api/env.txt
+/.vs/web_dev_triceratops/v17/.wsuo
 
 # Environment
 .env
@@ -31,4 +33,3 @@ dist-ssr
 
 #Tests
 coverage
-/projects/api/env.txt

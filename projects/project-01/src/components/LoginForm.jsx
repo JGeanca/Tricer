@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
+import { useFeedback } from '../hooks/useFeedback.jsx';
 
 import '../css/loginForm.css'
 
@@ -9,10 +10,10 @@ export function LoginForm() {
   const [credential, setCredential] = useState('')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
-  const [loginError, setLoginError] = useState('')
   const { login, isLoading, error } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
+  const { showError, showSuccess } = useFeedback()
 
   const validateUsername = (username) => {
     const usernameRegex = /^[a-zA-Z0-9_]+$/
@@ -40,34 +41,28 @@ export function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    let errors = ''
-
     if (!validateUsername(credential) && !validateEmail(credential)) {
-      errors = 'Username or email format invalid'
+      showError('Invalid credentials')
+      return
     }
 
     if (!validatePassword(password)) {
-      errors = 'Invalid password'
-    }
-
-    setLoginError(errors)
-    if (errors) {
+      showError('Invalid credentials')
       return
     }
 
     try {
       await login({ credential, password })
       const previousPath = location.state?.from?.pathname || '/'
+      showSuccess('Login successful')
       navigate(previousPath, { replace: true })
     } catch (error) {
-      setLoginError(error.message)
+      showError(error.message)
     }
   }
 
   return (
     <Form className="login-form" onSubmit={handleSubmit}>
-      {error && <div>{error.message}</div>}
-      {loginError && <div>{loginError}</div>}
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Control
           className="email-form"
@@ -75,6 +70,7 @@ export function LoginForm() {
           type="credential"
           value={credential}
           placeholder="Email or Username"
+          minLength={4}
           maxLength={35}
           required
         />
