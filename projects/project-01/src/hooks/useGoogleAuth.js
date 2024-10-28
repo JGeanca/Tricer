@@ -16,7 +16,7 @@ export const useGoogleAuth = () => {
       return user
     },
     onSuccess: (user) => {
-      console.log('Login with Google successful', user)
+      console.log('Login with Google successful ', user)
       showSuccess('Login successful')
       navigate('/')
     },
@@ -28,7 +28,7 @@ export const useGoogleAuth = () => {
 
   const googleRegisterMutation = useMutation({
     mutationFn: async (googleToken) => {
-      const { token } = await authService.registerWithGoogle(googleToken);
+      const { token } = await authService.loginWithGoogle(googleToken);
       localStorage.setItem('token', token);
       const user = jwtDecode(token);
       return user;

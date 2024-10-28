@@ -7,7 +7,11 @@ const { users } = readJSON('./repositories/users.json')
 
 export class UserModel {
   static async create({ username, email, password }) {
-    const hashedPass = await bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS, 10))
+    let hashedPass = null
+
+    if (password) {
+      hashedPass = await bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS, 10))
+    }
     const newUser = {
       id: crypto.randomUUID(),
       username,
@@ -42,5 +46,16 @@ export class UserModel {
       return { id: user.id, username: user.username }
     }
     return null
+  }
+
+  static async verifyGoogleCredential({ email, username }) {
+    const sanitizedEmail = email.trim()
+    const sanitizedUsername = username.trim()
+
+    const user = users.find(
+      user => user.username === sanitizedUsername || user.email === sanitizedEmail
+    )
+
+    return user ? { id: user.id, username: user.username } : null
   }
 }
