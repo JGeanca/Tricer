@@ -5,11 +5,15 @@ import { LoginForm } from '../components/LoginForm'
 import { GoogleIcon } from '../assets/Icons'
 import { useState, useEffect } from 'react'
 
+import { GoogleLogin } from '@react-oauth/google'
+import { useGoogleAuth } from '../hooks/useGoogleAuth'
+
 import '../css/loginPage.css'
 
 export default function LoginPage() {
 
   const [showDecoration, setShowDecoration] = useState(true)
+  const { googleLogin } = useGoogleAuth()
 
   useEffect(() => {
     const updateShowDecoration = () => {
@@ -44,12 +48,30 @@ export default function LoginPage() {
           <LoginForm />
           <hr className="separator-line" />
           <div className="login-lower-section">
-            <div className="login-google-group">
-              <GoogleIcon width="24" height="24" />
-              <Link to="/login-google" className="login-google">
-                Log in with Google
-              </Link>
-            </div>
+            {/*<div className="login-google-group">*/}
+            {/*  <GoogleIcon width="24" height="24" />*/}
+            {/*  <Link to="/login-google" className="login-google">*/}
+            {/*    Log in with Google*/}
+            {/*  </Link>*/}
+            {/*</div>*/}
+            <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                const googleToken = credentialResponse.credential
+                googleLogin(googleToken)
+              }}
+              onError={() => {
+                console.error('Error en Google Login')
+              }}
+            />
+            {/*<GoogleLogin*/}
+            {/*  onSuccess={credentialResponse => {*/}
+            {/*    const credentialResponseDecoded = credentialResponse = jwt_decode(credentialResponse)*/}
+            {/*    showSuccess('Login successful')*/}
+            {/*  }}*/}
+            {/*  onError={() => {*/}
+            {/*    showError('Google login failed')*/}
+            {/*  }}*/}
+            {/*/> */}
             <Link to="/password/reset" className="forget-password">
               Forget the password?
             </Link>
