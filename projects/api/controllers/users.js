@@ -1,4 +1,5 @@
 import { validateUser, validateLogin } from '../schemas/user.schema.js'
+import { validateAddToCart, validateRemoveFromCart, validateUpdateCartItem, validateGetCart } from '../schemas/cart.schema.js'
 import { signToken } from '../utils.js'
 
 export class UserController {
@@ -46,6 +47,10 @@ export class UserController {
 
   getCart = async (req, res) => {
     try {
+      const result = await validateGetCart(req.body)
+      if (!result.success) {
+        return res.status(422).json({ errors: JSON.parse(result.error.message) })
+      }
       const cart = await this.userModel.getUserCart(req.body)
       if (!cart) {
         return res.status(404).json({ message: 'User not found' })
@@ -58,6 +63,10 @@ export class UserController {
 
   addToCart = async (req, res) => {
     try {
+      const result = await validateAddToCart(req.body)
+      if (!result.success) {
+        return res.status(422).json({ errors: JSON.parse(result.error.message) })
+      }
       const cart = await this.userModel.addToCart(req.body)
       if (!cart) {
         return res.status(404).json({ message: 'User not found' })
@@ -70,6 +79,10 @@ export class UserController {
 
   removeFromCart = async (req, res) => {
     try {
+      const result = await validateRemoveFromCart(req.body)
+      if (!result.success) {
+        return res.status(422).json({ errors: JSON.parse(result.error.message) })
+      }
       const cart = await this.userModel.removeFromCart(req.body)
       if (!cart) {
         return res.status(404).json({ message: 'User not found' })
@@ -82,6 +95,10 @@ export class UserController {
 
   updateCartItem = async (req, res) => {
     try {
+      const result = await validateUpdateCartItem(req.body)
+      if (!result.success) {
+        return res.status(422).json({ errors: JSON.parse(result.error.message) })
+      }
       const cart = await this.userModel.updateCartItem(req.body)
       if (!cart) {
         return res.status(404).json({ message: 'User or product not found' })
