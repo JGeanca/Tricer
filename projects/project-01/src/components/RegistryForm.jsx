@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
+import { useFeedback } from '../hooks/useFeedback.jsx';
 
 import { Form, Button } from 'react-bootstrap'
 
@@ -13,8 +14,8 @@ export function RegistryForm() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [acceptPolitics, setAcceptPolitics] = useState(false)
-  const [registryError, setRegistryError] = useState('')
   const { register, isLoading, error } = useAuth()
+  const { showError, showSuccess } = useFeedback()
 
   const validateUsername = (username) => {
     const usernameRegex = /^[a-zA-Z0-9_]+$/
@@ -43,40 +44,43 @@ export function RegistryForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    let errors = ''
+    let areErrors = false
 
     if (!validateUsername(user)) {
-      errors = 'Username can only contain letters, numbers and underscores'
+      showError('Username can only contain letters, numbers and underscores')
     }
 
     if (!validateEmail(email)) {
-      errors = 'Invalid email format'
+      showError('Invalid email format')
+      areErrors = true
     }
 
     if (!validatePassword(password)) {
-      errors = 'Invalid password'
+      showError('Invalid password')
+      areErrors = true
     }
 
     if (!passwordsMatch(password, confirmPassword)) {
-      errors = 'Passwords do not match'
+      showError('Passwords don\'t match')
+      areErrors = true
     }
 
-    setRegistryError(errors)
-    if (errors) {
+    if (areErrors) {
       return
     }
 
-    register({ username: user, email, password })
+    try {
+      await register({ username: user, email, password });
+
+      showSuccess('Register successful');
+
+    } catch (err) {
+      showError(err.message);
+    }
   }
 
   return (
     <Form className="registry-form" onSubmit={handleSubmit}>
-      <div className="error-messages">
-        {error && <div>{error.message} </div>}
-        {error?.errors && (error.errors.map((error, index) => <div key={index}>{error.message}</div>))}
-        {registryError && <div>{registryError}</div>}
-      </div>
 
       <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Control

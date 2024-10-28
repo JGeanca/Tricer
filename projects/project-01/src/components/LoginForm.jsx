@@ -45,7 +45,7 @@ export function LoginForm() {
       showError('Invalid credentials')
       return
     }
-
+    
     if (!validatePassword(password)) {
       showError('Invalid credentials')
       return
