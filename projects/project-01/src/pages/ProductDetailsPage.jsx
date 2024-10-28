@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap'
-import { useState } from 'react';
+import { useState } from 'react'
 import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../assets/Icons'
 import { capitalize } from '../utils/utils'
 import { useProduct } from '../hooks/useProducts'
@@ -36,7 +36,7 @@ export default function ProductDetailsPage() {
       <Row className="product-details-row">
         <Col xs={12} md={5} className="product-images-column">
           <div className="product-images-wrapper">
-          <div className="product-thumbnails">
+            <div className="product-thumbnails">
               {images.map((image, index) => (
                 <img
                   key={index}
