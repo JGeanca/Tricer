@@ -16,12 +16,12 @@ export const useGoogleAuth = () => {
       return user
     },
     onSuccess: (user) => {
-      console.log('Login con Google exitoso', user)
+      console.log('Login with Google successful', user)
       showSuccess('Login successful')
       navigate('/')
     },
     onError: (error) => {
-      console.error('Error en el login de Google:', error.message)
+      console.error('Error with the Google login:', error.message)
       showError('Google login failed')
     }
   })
