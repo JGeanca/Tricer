@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 import { RegistryForm } from '../components/RegistryForm'
 import { useState, useEffect } from 'react'
-import { CustomGoogleRegistry } from '../components/GoogleRegistry'
+import { GoogleAuthButton } from '../components/GoogleAuthButton'
 
 import '../css/registryPage.css'
 export default function RegisterPage() {
@@ -32,7 +32,7 @@ export default function RegisterPage() {
         </Link>
         <RegistryForm />
         <hr className="registry-separator-line" />
-        <CustomGoogleRegistry />
+        <GoogleAuthButton />
       </div>
       <div className={`registry-login-section ${isLargeScreen ? 'setting-complete' : ''}`} >
         Already have an account?

@@ -34,9 +34,9 @@ export const authService = {
     }
   },
 
-  async loginWithGoogle(googleToken) {
+  async googleAuthorization(googleToken) {
     try {
-      const response = await publicApi.post('users/google-login', { token: googleToken })
+      const response = await publicApi.post('users/google-auth', { token: googleToken })
       const { token } = response.data
 
       if (!token) throw new Error('No token received from server')
@@ -47,20 +47,6 @@ export const authService = {
       throw error
     }
   },
-
-  //async registerWithGoogle(googleToken) {
-  //  try {
-  //    const response = await publicApi.post('users/google-register', { token: googleToken });
-  //    const { token } = response.data;
-
-  //    if (!token) throw new Error('No token received from server');
-  //    return response.data;
-  //  } catch (error) {
-  //    if (!error.response) throw error;
-  //    if (error.response?.data) throw { message: error.response.data.message };
-  //    throw error;
-  //  }
-  //},
 
   isTokenExpired(decodedToken) {
     if (!decodedToken.exp) return true

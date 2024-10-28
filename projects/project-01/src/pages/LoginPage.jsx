@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import LoginWomen from '../assets/imgs/login_women.svg'
 import LoginMen from '../assets/imgs/login_men.svg'
 import { LoginForm } from '../components/LoginForm'
-import { CustomGoogleLogin } from '../components/GoogleLogin'
+import { GoogleAuthButton } from '../components/GoogleAuthButton'
 import { useState, useEffect } from 'react'
 
 import '../css/loginPage.css'
@@ -47,7 +47,7 @@ export default function LoginPage() {
           </Link>
           <hr className="separator-line" />
           <div className="login-lower-section">
-            <CustomGoogleLogin />
+            <GoogleAuthButton />
           </div>
         </div>
         <div className="register-section">

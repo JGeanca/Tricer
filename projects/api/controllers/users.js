@@ -46,7 +46,7 @@ export class UserController {
     }
   }
 
-  loginWithGoogle = async (req, res) => {
+  googleAuth = async (req, res) => {
     try {
       const { token: googleToken } = req.body
 
