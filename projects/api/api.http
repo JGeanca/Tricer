@@ -50,7 +50,7 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "credential": "rayoMakuin",
+    "credential": "rayoMakuin2",
     "password": "A1235678"
 }
 

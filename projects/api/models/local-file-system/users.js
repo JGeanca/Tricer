@@ -75,13 +75,17 @@ export class UserModel {
 
     if (!user) return null
 
-    const productExist = user.cart.find(item =>
+    const existsInProducts = await ProductModel.getById({ id: productId })
+
+    if (!existsInProducts) return null
+
+    const existsInCart = user.cart.find(item =>
       item.productId === productId &&
       item.size === size &&
       item.color === color
     )
 
-    if (productExist) {
+    if (existsInCart) {
       productExist.quantity += quantity
     }
     else {

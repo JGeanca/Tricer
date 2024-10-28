@@ -5,46 +5,7 @@
       "username": "testUser",
       "email": "testuser@gmail.com",
       "password": "$2b$10$gA3EL6l3Ug3T9NHmyqt5u.JyPjf/VBPysgyDtCQ6InQRwIadaX8Lu",
-      "cart": [
-        {
-          "productId": "2",
-          "size": "S",
-          "color": "Pink",
-          "quantity": 3
-        },
-        {
-          "productId": "2",
-          "size": "L",
-          "color": "black",
-          "quantity": 5
-        },
-        {
-          "productId": "2",
-          "size": "L",
-          "color": "black",
-          "quantity": 5
-        },
-        {
-          "productId": "2",
-          "size": "L",
-          "color": "black",
-          "quantity": 5
-        }
-      ]
-    },
-    {
-      "id": "9cdb81bc-c3b0-476f-a8a0-84ce7e81c7d0",
-      "username": "rayoMakuin2",
-      "email": "rayomakuin22001@gmail.com",
-      "password": "$2b$10$4UJFhB/gGzzAGDTJZn/8u.JeUxSHfTHfAmxcDkcBj/bZEHEdNO.j2",
-      "cart": [
-        {
-          "productId": "2",
-          "size": "M",
-          "color": "black",
-          "quantity": 3
-        }
-      ]
+      "cart": []
     }
   ]
 }

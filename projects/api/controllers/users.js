@@ -13,10 +13,10 @@ export class UserController {
       if (!result.success) {
         return res.status(422).json({ errors: JSON.parse(result.error.message) })
       }
-      if (await this.userModel.usernameExists(result.data.username)) {
+      if (await this.userModel.usernameExists(result.data)) {
         return res.status(409).json({ message: 'Username already exists' })
       }
-      if (await this.userModel.emailExists(result.data.email)) {
+      if (await this.userModel.emailExists(result.data)) {
         return res.status(409).json({ message: 'Email already exists' })
       }
       const newUser = await this.userModel.create(result.data)
@@ -69,7 +69,7 @@ export class UserController {
       }
       const cart = await this.userModel.addToCart(req.body)
       if (!cart) {
-        return res.status(404).json({ message: 'User not found' })
+        return res.status(404).json({ message: 'User or product not found' })
       }
       return res.status(201).json({ message: 'Product added to cart', cart })
     } catch (error) {
