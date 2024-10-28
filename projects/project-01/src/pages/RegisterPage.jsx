@@ -27,9 +27,9 @@ export default function RegisterPage() {
   return (
     <div className="register-page">
       <div className={`registry-section  ${isLargeScreen ? 'setting-complete' : ''}`}>
-        <div className="registry-title">
+        <Link to="/" className="registry-title">
           Tricer
-        </div>
+        </Link>
         <Link to="/signin-google" className="google-registry-link">
           <div className="google-icon">
             <GoogleIcon width="24" height="24" />
