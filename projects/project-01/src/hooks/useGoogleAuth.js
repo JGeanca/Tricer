@@ -26,7 +26,26 @@ export const useGoogleAuth = () => {
     }
   })
 
+  const googleRegisterMutation = useMutation({
+    mutationFn: async (googleToken) => {
+      const { token } = await authService.registerWithGoogle(googleToken);
+      localStorage.setItem('token', token);
+      const user = jwtDecode(token);
+      return user;
+    },
+    onSuccess: (user) => {
+      console.log('Registration with Google successful', user);
+      showSuccess('Registration successful');
+      navigate('/');
+    },
+    onError: (error) => {
+      console.error('Error with the Google registration:', error.message);
+      showError('Google registration failed');
+    },
+  });
+
   return {
-    googleLogin: googleLoginMutation.mutate
+    googleLogin: googleLoginMutation.mutate,
+    googleRegister: googleRegisterMutation.mutate,
   }
 }
