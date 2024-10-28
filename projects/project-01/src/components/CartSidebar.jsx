@@ -8,7 +8,7 @@ export default function CartSidebar({ show, onClose }) {
       id: 1,
       image: 'https://via.placeholder.com/200',
       title: '"THE" LEATHER JACKET RED',
-      price: '271.200',
+      price: 271200,
       size: 'M',
       quantity: 1,
     },
@@ -16,7 +16,7 @@ export default function CartSidebar({ show, onClose }) {
       id: 2,
       image: 'https://via.placeholder.com/200',
       title: 'FUCK NORMAL HOOD GREY MELANGE',
-      price: '53.700',
+      price: 53700,
       size: 'L',
       quantity: 2,
     },
@@ -34,10 +34,13 @@ export default function CartSidebar({ show, onClose }) {
     )
   }
 
+  const totalItems = items.reduce((acc, item) => acc + item.quantity, 0)
+  const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+
   return (
     <Offcanvas show={show} onHide={onClose} placement="end">
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Your Cart</Offcanvas.Title>
+        <Offcanvas.Title>Your Basket</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
         {items.length > 0 ? (
@@ -48,7 +51,7 @@ export default function CartSidebar({ show, onClose }) {
               </div>
               <div className="cart-item-details">
                 <h5 className="cart-item-title">{item.title}</h5>
-                <p className="cart-item-price">${item.price}</p>
+                <p className="cart-item-price">₡{(item.price).toLocaleString('es-CR')}</p>
                 <p className="cart-item-size">Size: {item.size}</p>
                 <div className="cart-item-quantity">
                   <span 
@@ -69,7 +72,7 @@ export default function CartSidebar({ show, onClose }) {
                   onClick={() => handleRemove(item.id)} 
                   className="cart-item-remove" 
                 >
-                  Remove
+                  REMOVE
                 </span>
               </div>
             </div>
@@ -77,6 +80,14 @@ export default function CartSidebar({ show, onClose }) {
         ) : (
           <p>Your cart is empty.</p>
         )}
+        <div className="cart-summary-header">
+          <p>Basket</p>
+          <p>SUBTOTAL</p>
+        </div>
+        <div className="cart-summary">
+          <p>{totalItems} Items</p>
+          <p className="cart-item-total-price">₡{totalPrice.toLocaleString('es-CR')}</p>
+        </div>
         <div className="checkout-container">
           <Button className="checkout-button">
             CHECKOUT

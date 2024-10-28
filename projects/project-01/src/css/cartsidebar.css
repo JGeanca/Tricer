@@ -85,8 +85,27 @@
   transform: scaleX(0);
 }
 .checkout-container {
-  padding-top: 20px;
+  padding-top: 15px;
   margin-top: auto;
+}
+
+.cart-summary-header,
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-summary p,
+.cart-summary-header p {
+  font-size: 12px;
+  margin: 0;
+}
+
+.cart-item-total-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  margin: 0;
 }
 
 .checkout-container .checkout-button {
