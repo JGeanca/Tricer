@@ -38,9 +38,9 @@ export default function LoginPage() {
       }
       <div className={`user-section ${!showDecoration ? 'user-section-complete' : ''}`}>
         <div className="login-section">
-          <div className="login-title">
+          <Link to="/" className="login-title">
             Tricer
-          </div>
+          </Link>
           <LoginForm />
           <hr className="separator-line" />
           <div className="login-lower-section">

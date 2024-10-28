@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useFeedback } from '../hooks/useFeedback.jsx';
+import { useValidation } from '../hooks/useValidation.jsx';
 
 import '../css/loginForm.css'
 
@@ -14,29 +15,7 @@ export function LoginForm() {
   const navigate = useNavigate()
   const location = useLocation()
   const { showError, showSuccess } = useFeedback()
-
-  const validateUsername = (username) => {
-    const usernameRegex = /^[a-zA-Z0-9_]+$/
-    return username.length >= 4 && username.length <= 15 && usernameRegex.test(username)
-  }
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
-  const validatePassword = (password) => {
-    const uppercaseRegex = /[A-Z]/
-    const numberRegex = /[0-9]/
-    /*const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/*/
-    return (
-      password.length >= 8 &&
-      password.length <= 20 &&
-      uppercaseRegex.test(password) &&
-      numberRegex.test(password)
-      /*&& specialCharRegex.test(password)*/
-    )
-  }
+  const { validateUsername, validateEmail, validatePassword } = useValidation();
 
   const handleSubmit = async (e) => {
     e.preventDefault()

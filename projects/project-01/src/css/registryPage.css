@@ -26,6 +26,8 @@
     font-size: clamp(32px, 6vw, 54px);
     font-weight: bold;
     font-family: Elephant;
+    text-decoration: none;
+    color: black;
 }
 
 .registry-separator-line {

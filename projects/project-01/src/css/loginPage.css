@@ -67,6 +67,8 @@
     font-size: clamp(24px, 4vw, 48px);
     font-weight: bold;
     font-family: Elephant;
+    text-decoration: none;
+    color: black;
 }
 
 .separator-line {
