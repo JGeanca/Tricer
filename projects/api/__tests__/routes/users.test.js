@@ -1,8 +1,14 @@
 import request from 'supertest'
 import { createTestApp } from '../../test-server.js'
+import jwt from 'jsonwebtoken'
 
 const app = createTestApp()
 
+const generateToken = (userId = 'test-user-id') => {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' })
+}
+
+//* Auth Routes
 describe('Users Auth Routes', () => {
 
   it('POST /users/login should authenticate a valid user by username', async () => {
@@ -124,14 +130,20 @@ describe('Users Auth Routes', () => {
   })
 })
 
+//* Cart Routes
 describe('Users Cart Routes', () => {
+  const token = generateToken()
+
   it('GET /users/cart should return the user cart', async () => {
     const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
     const res = await request(app)
       .get('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
       .send({ userId: userID })
       .expect('Content-Type', /json/)
       .expect(200)
+
+    expect(res.body).toHaveProperty('cart')
   })
 
   it('POST /users/cart should add a product to the user cart', async () => {
@@ -145,6 +157,7 @@ describe('Users Cart Routes', () => {
 
     const res = await request(app)
       .post('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
       .send({ userId: userID, ...product })
       .expect('Content-Type', /json/)
       .expect(201)
@@ -168,6 +181,7 @@ describe('Users Cart Routes', () => {
 
     const res = await request(app)
       .put('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
       .send({ userId: userID, ...product })
       .expect('Content-Type', /json/)
       .expect(200)
@@ -187,6 +201,7 @@ describe('Users Cart Routes', () => {
 
     const res = await request(app)
       .delete('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
       .send({ userId: userID, ...product })
       .expect('Content-Type', /json/)
       .expect(200)
@@ -206,6 +221,7 @@ describe('Users Cart Routes', () => {
 
     const res = await request(app)
       .post('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
       .send({ userId: userID, ...product })
       .expect('Content-Type', /json/)
       .expect(404)
@@ -224,6 +240,7 @@ describe('Users Cart Routes', () => {
 
     const res = await request(app)
       .post('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
       .send({ userId: userID, ...product })
       .expect('Content-Type', /json/)
       .expect(404)
@@ -247,10 +264,20 @@ describe('Users Cart Routes', () => {
 
     const res = await request(app)
       .put('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
       .send({ userId: userID, ...product })
       .expect('Content-Type', /json/)
       .expect(404)
 
     expect(res.body).toHaveProperty('message', 'User or product not found')
+  })
+
+  it('GET /users/cart should return 401 if no token is provided', async () => {
+    const res = await request(app)
+      .get('/users/cart')
+      .expect('Content-Type', /json/)
+      .expect(401)
+
+    expect(res.body).toHaveProperty('message', 'Unauthorized')
   })
 })
