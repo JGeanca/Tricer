@@ -1,18 +1,6 @@
 {
   "users": [
     {
-      "id": "f5e17cde-c143-499f-9b52-4fcd1a2c6571",
-      "username": "rayoMakuin",
-      "email": "rayomakuin2001@gmail.com",
-      "password": "$2b$10$/2ZC4IArxXv/apjmpffj/uMqW9hN5cQe7koI7aIY.yxBXaOMeDT22"
-    },
-    {
-      "id": "a74c672c-df99-42c1-81d0-5a871fb06f5b",
-      "username": "rayoMakuin2",
-      "email": "rayomakuin22001@gmail.com",
-      "password": "$2b$10$HJ0Ge/BsR4GzWmSuPkzG2OOVx3MSanLAHtBgsj1v1WviwmeHSbeJm"
-    },
-    {
       "id": "c26ff231-b599-4de1-ba3f-303fcc5bd824",
       "username": "testUser",
       "email": "testuser@gmail.com",
@@ -23,12 +11,6 @@
       "username": "Julio342",
       "email": "julio@gmail.com",
       "password": "$2b$10$1lzAwl7eekc6nH68PU1B0.zH9RW9B3AxVO1bpNnMsbrUbIuD9sRJq"
-    },
-    {
-      "id": "c7a39893-8173-434f-8614-da96ff9294cc",
-      "username": "Saku",
-      "email": "gean@gmail.com",
-      "password": "$2b$10$/R5S8RZdDagK10CWkz8XDOtUQuEvi2G0sWtdVDZE9nvOhDbMTkwRC"
     }
   ]
 }
