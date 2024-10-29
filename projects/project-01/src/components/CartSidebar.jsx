@@ -1,8 +1,10 @@
 import '../css/cartsidebar.css'
+import { useNavigate } from 'react-router-dom'
 import { Offcanvas, Button } from 'react-bootstrap'
 import { useState } from 'react'
 
 export default function CartSidebar({ show, onClose }) {
+  const navigate = useNavigate()
   const [items, setItems] = useState([
     {
       id: 1,
@@ -34,6 +36,12 @@ export default function CartSidebar({ show, onClose }) {
     )
   }
 
+  const handleCheckout = () => {
+    navigate('/checkout')
+    onClose()
+  }
+
+
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0)
   const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
@@ -53,27 +61,29 @@ export default function CartSidebar({ show, onClose }) {
                 <h5 className="cart-item-title">{item.title}</h5>
                 <p className="cart-item-price">₡{(item.price).toLocaleString('es-CR')}</p>
                 <p className="cart-item-size">Size: {item.size}</p>
-                <div className="cart-item-quantity">
+                <div className="cart-item-controls">
+                  <div className="cart-item-quantity">
+                    <span 
+                      onClick={() => handleQuantityChange(item.id, item.quantity - 1)} 
+                      className="quantity-button" 
+                    >
+                      -
+                    </span>
+                    <span className="quantity-number">{item.quantity}</span>
+                    <span 
+                      onClick={() => handleQuantityChange(item.id, item.quantity + 1)} 
+                      className="quantity-button" 
+                    >
+                      +
+                    </span>
+                  </div>
                   <span 
-                    onClick={() => handleQuantityChange(item.id, item.quantity - 1)} 
-                    style={{ cursor: 'pointer', marginRight: '10px' }} 
+                    onClick={() => handleRemove(item.id)} 
+                    className="cart-item-remove" 
                   >
-                    -
-                  </span>
-                  <span>{item.quantity}</span>
-                  <span 
-                    onClick={() => handleQuantityChange(item.id, item.quantity + 1)} 
-                    style={{ cursor: 'pointer', marginLeft: '10px' }}
-                  >
-                    +
+                    REMOVE
                   </span>
                 </div>
-                <span 
-                  onClick={() => handleRemove(item.id)} 
-                  className="cart-item-remove" 
-                >
-                  REMOVE
-                </span>
               </div>
             </div>
           ))
@@ -88,8 +98,8 @@ export default function CartSidebar({ show, onClose }) {
           <p>{totalItems} Items</p>
           <p className="cart-item-total-price">₡{totalPrice.toLocaleString('es-CR')}</p>
         </div>
-        <div className="checkout-container">
-          <Button className="checkout-button">
+        <div className="checkout-button-container">
+          <Button className="checkout-button" onClick={handleCheckout}>
             CHECKOUT
           </Button>
         </div>
