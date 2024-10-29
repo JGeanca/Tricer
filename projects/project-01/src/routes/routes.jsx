@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
 import ProductDetailsPage from '../pages/ProductDetailsPage'
 import ProductsPage from '../pages/ProductsPage'
+import CheckoutPage from '../pages/CheckoutPage'
 import CollectionsAndArrivalsPage from '../pages/CollectionsAndArrivalsPage'
 import { ProtectedRoute } from '../components/ProtectedRoute'
 import { PublicOnlyRoute } from '../components/PublicOnlyRoute'
@@ -38,7 +39,11 @@ export const routes = [
       {
         path: ':gender/:productType/:productId',
         element: <ProductDetailsPage />
-      }
+      },
+      {
+        path: '/checkout',
+        element: <CheckoutPage />,
+      },
     ],
   },
   {

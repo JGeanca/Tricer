@@ -1,0 +1,130 @@
+.checkout-container {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 0px;
+  overflow-x: hidden;
+}
+
+.checkout-form {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.checkout-summary {
+  flex: 1;
+  background: #6D7993;
+  padding: 20px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #ffffff80;
+  padding-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkout-item-image-wrapper {
+  flex: 0 0 80px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.checkout-item-image {
+  width: 105px;
+  height: 140px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.checkout-item-details {
+  flex: 1;
+  min-width: 0;
+  color: #fff;
+}
+
+.checkout-item-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.checkout-item-price,
+.checkout-item-size {
+  font-size: 14px;
+  color: #dcdcdc;
+  margin: 0;
+}
+
+.checkout-item-quantity {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.checkout-summary-header,
+.checkout-summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.checkout-summary-header p,
+.checkout-summary-total p {
+  font-size: 14px;
+  margin: 2px;
+}
+
+.checkout-summary-total p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.checkout-item-total-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .checkout-container {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .checkout-summary {
+    order: -1;
+    width: 100%;
+  }
+
+  .checkout-item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .checkout-item-image-wrapper {
+    margin: 0 15px 10px 0;
+  }
+
+  .checkout-item-image {
+    width: 85px;
+    height: 120px;
+    border-radius: 10px;
+  }
+
+  .checkout-item-title {
+    font-size: 13px;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+  }
+}
