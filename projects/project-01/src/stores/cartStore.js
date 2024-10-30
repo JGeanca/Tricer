@@ -26,10 +26,10 @@ const useCartStore = create((set, get) => ({
     }
   },
 
-  updateCartItem: async (productId, updateData) => {
+  updateCartItem: async (productInfo) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await privateApi.put(`/users/cart/${productId}`, updateData)
+      const response = await privateApi.put(`/users/cart/${productInfo.key.productId}`, productInfo)
       set({ items: response.data.cart, isLoading: false })
     } catch (error) {
       set({ error: error.response?.data?.message || 'Error updating cart', isLoading: false })

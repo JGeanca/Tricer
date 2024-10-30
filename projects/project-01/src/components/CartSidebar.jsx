@@ -21,7 +21,7 @@ export default function CartSidebar({ show, onClose }) {
   }
 
   const handleQuantityChange = (itemId, newQuantity, size, color) => {
-    updateCartItem(itemId, { 
+    updateCartItem({ 
       key: { productId: itemId, size, color },
       updates: { quantity: newQuantity }
     })
