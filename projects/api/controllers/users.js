@@ -63,11 +63,15 @@ export class UserController {
 
   addToCart = async (req, res) => {
     try {
+
+      const userId = req.user.userId
       const result = await validateAddToCart(req.body)
+
       if (!result.success) {
         return res.status(422).json({ errors: JSON.parse(result.error.message) })
       }
-      const cart = await this.userModel.addToCart(req.body)
+
+      const cart = await this.userModel.addToCart({ userId, ...req.body })
       if (!cart) {
         return res.status(404).json({ message: 'User or product not found' })
       }
