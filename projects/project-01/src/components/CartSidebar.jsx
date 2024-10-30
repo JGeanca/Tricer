@@ -21,7 +21,10 @@ export default function CartSidebar({ show, onClose }) {
   }
 
   const handleQuantityChange = (itemId, newQuantity, size, color) => {
-    updateCartItem(itemId, { quantity: newQuantity, size, color })
+    updateCartItem(itemId, { 
+      key: { productId: itemId, size, color },
+      updates: { quantity: newQuantity }
+    })
   }
 
   const handleCheckout = () => {
@@ -40,7 +43,7 @@ export default function CartSidebar({ show, onClose }) {
       <Offcanvas.Body>
         {items.length > 0 ? (
           items.map((item) => (
-            <div key={item.productId} className="cart-item">
+            <div key={`${item.productId}-${item.size}-${item.color}`} className="cart-item">
               <div className="cart-item-image-wrapper">
                 <img src={item.product.images[0]} alt={item.product.title} className="cart-item-image" />
               </div>
