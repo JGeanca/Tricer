@@ -1,10 +1,6 @@
 import { z } from 'zod'
 
 const cartItemKeySchema = z.object({
-  userId: z.string({
-    invalid_type_error: 'UserId must be a string',
-    required_error: 'UserId is required'
-  }),
   productId: z.string({
     invalid_type_error: 'ProductId must be a string',
     required_error: 'ProductId is required'
@@ -28,7 +24,6 @@ export const addToCartSchema = cartItemKeySchema.extend({
 })
 
 export const updateCartItemSchema = cartItemKeySchema.extend({
-  updates: cartItemKeySchema.partial(),
   quantity: z.number({
     invalid_type_error: 'Quantity must be a number',
   }).min(1, 'Quantity must be greater than 0').optional()
