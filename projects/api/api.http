@@ -1,0 +1,148 @@
+###* This file is just for testing the API endpoints
+###* To use it, you need to install the REST Client extension in VSCode
+
+### Get all products
+GET http://localhost:3000/products
+
+### Get product by id
+GET http://localhost:3000/products/12
+
+### Get products by gender
+GET http://localhost:3000/products?gender=women
+
+### Get products by gender
+GET http://localhost:3000/products?gender=men
+
+### Get products by type and gender
+GET http://localhost:3000/products?type=footwear&gender=men
+
+### Get products by type and gender
+GET http://localhost:3000/products?gender=women&type=footwear
+
+### Get new products for women
+GET http://localhost:3000/products/?gender=women&type=clothing&new=true
+
+###
+GET http://localhost:3000/products/?gender=men&type=clothing&new=true
+
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "rayoMakuin2",
+    "email": "rayomakuin22001@gmail.com",
+    "password": "A1235678"
+}
+
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "testUser",
+    "email": "testuser@gmail.com",
+    "password": "testPassword123"
+}
+
+### User registration
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "s",
+    "email": "testuser@gmail.com",
+    "password": "d123"
+}
+
+
+### User login
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "credential": "rayoMakuin2",
+    "password": "A1235678"
+}
+
+### Invalid login
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+<<<<<<< HEAD
+    "username": "raykuin",
+    "password": "A1237"
+=======
+    "username": "rayoMakuin",
+    "password": "A123567",
+}
+
+### User cart
+GET http://localhost:3000/users/cart
+Content-Type: application/json
+
+{
+    "userId": "c26ff231-b599-4de1-ba3f-303fcc5bd824"
+}
+
+### User Add to cart
+POST http://localhost:3000/users/cart
+Content-Type: application/json
+
+{
+    "userId": "c26ff231-b599-4de1-ba3f-303fcc5bd824",
+    "productId": "2",
+    "quantity": 3,
+    "size": "M",
+    "color": "black"
+}
+
+### User Update cart
+PUT http://localhost:3000/users/cart
+Content-Type: application/json
+
+{
+    "userId": "c26ff231-b599-4de1-ba3f-303fcc5bd824",
+    "productId": "2",
+    "quantity": 3,
+    "size": "M",
+    "color": "black",
+    "updates": {
+        "quantity": 5,
+        "size": "L"
+    }
+}
+
+
+### User remove from cart
+DELETE http://localhost:3000/users/cart
+Content-Type: application/json
+
+{
+    "userId": "c26ff231-b599-4de1-ba3f-303fcc5bd824",
+    "productId": "1",
+    "size": "M",
+    "color": "blue"
+}
+
+###
+GET http://localhost:3000/users/cart
+Content-Type: application/json
+
+{
+    "userId": "9cdb81bc-c3b0-476f-a8a0-84ce7e81c7d0"
+}
+
+###
+POST http://localhost:3000/users/cart
+Content-Type: application/json
+
+{
+    "userId": "9cdb81bc-c3b0-476f-a8a0-84ce7e81c7d0",
+    "productId": "2",
+    "quantity": 3,
+    "size": "M",
+    "color": "black"
+>>>>>>> api
+}

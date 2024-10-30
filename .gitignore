@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.vs/*
+/.vs/slnx.sqlite
+/projects/api/env.txt
+/.vs/web_dev_triceratops/v17/.wsuo
+
+# Environment
+.env
+/env.txt
+
+#Tests
+coverage

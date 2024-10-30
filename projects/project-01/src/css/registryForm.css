@@ -1,0 +1,53 @@
+
+.registry-form {
+    width: 80%;
+    margin: 1%;
+}
+
+.error-messages {
+    font-size: clamp(12px, 2.5vw, 16px);
+    display: flex;
+    flex-direction: column;
+}
+
+.username-form {
+    display: flex !important;
+    border-radius: 10px !important;
+    font-size: clamp(12px, 2.5vw, 16px) !important;
+}
+
+.email-form {
+    display: flex !important;
+    border-radius: 10px !important;
+    font-size: clamp(12px, 2.5vw, 16px) !important;
+}
+
+.password-form {
+    display: flex !important;
+    border-radius: 10px !important;
+    font-size: clamp(12px, 2.5vw, 16px) !important;
+}
+
+.confirm-password-form {
+    display: flex !important;
+    border-radius: 10px !important;
+    font-size: clamp(12px, 2.5vw, 16px) !important;
+}
+
+.accept-politics-checkbox {
+    font-size: clamp(14px, 2.5vw, 16px) !important;
+}
+
+.register-button-form {
+    width: 100% !important;
+    padding: 2.5% !important;
+    font-family: Elephant !important;
+    font-size: clamp(14px, 3vw, 20px) !important;
+    background-color: #6D7993 !important;
+    border: none !important;
+    border-radius: 10px !important;
+}
+
+.register-button-form:hover {
+    background-color: #5465FF !important;
+}

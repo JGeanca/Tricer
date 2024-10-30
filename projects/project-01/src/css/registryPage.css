@@ -1,0 +1,92 @@
+.register-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(45deg, #6D7993, #ffffff);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.registry-section {
+    min-width: 80%;
+    margin: 0%;
+    padding: 2.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid gray;
+    border-radius: 20px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.registry-title {
+    font-size: clamp(32px, 6vw, 54px);
+    font-weight: bold;
+    font-family: Elephant;
+    text-decoration: none;
+    color: black;
+}
+
+.registry-separator-line {
+    width: 80%;
+}
+
+.google-registry-link {
+    width: 80% !important;
+    padding: 2.5% !important;
+    font-family: Elephant !important;
+    font-size: clamp(10px, 2.5vw, 20px) !important;
+    background-color: #6D7993 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-registry-link:hover {
+    background-color: #5465FF !important;
+}
+
+.google-icon {
+    margin: 0% 2% 0% 0% !important;
+    transform: translateY(-2px);
+    align-items: center;
+    justify-content: center;
+}
+
+.registry-login-section {
+    min-width: 80%;
+    margin: 1%;
+    padding: 3% 0% 3% 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid gray;
+    border-radius: 15px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+    font-size: clamp(12px, 3vw, 18px);
+}
+
+.accept-politics-checkbox {
+    font-size: clamp(10px, 2.5vw, 16px);
+}
+
+.log-in {
+    margin: 0% 2% 0% 2%;
+    color: #5465FF;
+    text-decoration: none;
+}
+
+.setting-complete {
+    min-width: 40% !important;
+    padding: 1.5%;
+}

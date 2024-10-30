@@ -1,0 +1,35 @@
+
+.login-form {
+    width: 80%;
+    margin: 1.5%;
+}
+
+.email-form {
+    display: flex !important;
+    border-radius: 10px !important;
+    font-size: clamp(12px, 3vw, 16px) !important;
+}
+
+.password-form {
+    display: flex;
+    border-radius: 10px;
+    font-size: clamp(12px, 3vw, 16px) !important;
+}
+
+.login-button-form {
+    width: 100% !important;
+    padding: 2.5% !important;
+    font-family: Elephant !important;
+    font-size: clamp(14px, 2.5vw, 20px) !important;
+    background-color: #6D7993 !important;
+    border: none !important;
+    border-radius: 10px !important;
+}
+
+.login-button-form:hover {
+    background-color: #5465FF !important;
+}
+
+.remember-checkbox {
+    font-size: clamp(14px, 2.5vw, 16px) !important;
+}

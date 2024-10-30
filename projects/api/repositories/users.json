@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "c26ff231-b599-4de1-ba3f-303fcc5bd824",
+      "username": "testUser",
+      "email": "testuser@gmail.com",
+      "password": "$2b$10$KSFtGpo/X12q2N4FTtfH0uZfVaODMDPrc814tzvkJ2lDXIBkA6shG",
+      "cart": []
+    },
+    {
+      "id": "57d2544a-097f-4527-a6c5-4ef99df4d03f",
+      "username": "Julio342",
+      "email": "julio@gmail.com",
+      "password": "$2b$10$1lzAwl7eekc6nH68PU1B0.zH9RW9B3AxVO1bpNnMsbrUbIuD9sRJq",
+      "cart": []
+    }
+  ]
+}
