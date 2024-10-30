@@ -3,10 +3,13 @@ import useCartStore from '../stores/cartStore'
 import { useEffect, useState } from 'react'
 
 export default function CheckoutPage() {
-  const { items, getCartTotal, getCartItemsCount } = useCartStore()
+  const { items, getCartTotal, getCartItemsCount, clearCart } = useCartStore()
   const totalItems = getCartItemsCount()
   const totalPrice = getCartTotal()
   
+  const [expiryDate, setExpiryDate] = useState('')
+  const [showModal, setShowModal] = useState(false)
+
   // Hook para manejar la validación del formulario
   useEffect(() => {
     const forms = document.querySelectorAll('.needs-validation')
@@ -16,13 +19,14 @@ export default function CheckoutPage() {
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
+        } else {
+          event.preventDefault()
+          handlePaymentSuccess()
         }
         form.classList.add('was-validated')
       }, false)
     })
   }, [])
-
-  const [expiryDate, setExpiryDate] = useState('')
 
   const handleExpiryChange = (e) => {
     const input = e.target.value.replace(/[^0-9]/g, '') // Eliminar caracteres no numéricos
@@ -35,6 +39,16 @@ export default function CheckoutPage() {
     }
 
     setExpiryDate(formattedValue)
+  }
+
+  const handlePaymentSuccess = () => {
+    setShowModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+    clearCart()
+    window.location.reload()
   }
 
   return (
@@ -147,6 +161,24 @@ export default function CheckoutPage() {
         </div>
       </form>
 
+      {showModal && (
+        <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLongTitle">Success</h5>
+              </div>
+              <div className="modal-body">
+                Your payment has been processed successfully!
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary" onClick={handleCloseModal}>OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="checkout-summary">
         <h2>Order Summary</h2>
         {items.length > 0 ? (
@@ -157,7 +189,7 @@ export default function CheckoutPage() {
               </div>
               <div className="checkout-item-details">
                 <h5 className="checkout-item-title">{item.product.title}</h5>
-                <p className="checkout-item-price">${item.product.price}</p>
+                <p className="checkout-item-price">${item.product.price.toFixed(2)}</p>
                 <p className="checkout-item-size">Size: {item.size}</p>
                 <div className="checkout-item-quantity">
                   <span className="quantity-number">Quantity: {item.quantity}</span>
@@ -170,11 +202,11 @@ export default function CheckoutPage() {
         )}
         <div className="checkout-summary-header">
           <p>Subtotal • {totalItems} Items </p>
-          <p className="checkout-item-total-price">${totalPrice}</p>
+          <p className="checkout-item-total-price">${totalPrice.toFixed(2)}</p>
         </div>
         <div className="checkout-summary-total">
           <p>Total</p>
-          <p className="checkout-item-total-price">${totalPrice}</p>
+          <p className="checkout-item-total-price">${totalPrice.toFixed(2)}</p>
         </div>
       </div>
     </div>

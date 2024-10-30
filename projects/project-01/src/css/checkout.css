@@ -85,14 +85,16 @@
   font-weight: bold;
   color: white;
   background-color: #6d7993;
-  border: none;
+  border: 2px solid;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .checkout-button:hover {
-  background-color: #5a6477;
+  background-color: white;
+  border-color: #6D7993;
+  color: #6D7993;
 }
 
 .checkout-summary {
@@ -178,6 +180,53 @@
   font-weight: bold;
   color: #ffffff;
   margin: 0;
+}
+
+.modal-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff; /* Fondo blanco */
+  border: none; /* Sin borde */
+}
+
+.modal-header {
+  background-color: #6d7993;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: #6d7993;
+  border: 2px solid;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: white;
+  border-color: #6D7993;
+  color: #6D7993;
 }
 
 @media (max-width: 800px) {

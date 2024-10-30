@@ -1,8 +1,8 @@
 import '../css/cartsidebar.css'
 import { useNavigate } from 'react-router-dom'
 import { Offcanvas, Button } from 'react-bootstrap'
-import { useEffect, useCallback  } from 'react'
-import  useCartStore  from '../stores/cartStore'
+import { useEffect, useCallback } from 'react'
+import useCartStore from '../stores/cartStore'
 
 export default function CartSidebar({ show, onClose }) {
   const navigate = useNavigate()
@@ -51,7 +51,7 @@ export default function CartSidebar({ show, onClose }) {
               </div>
               <div className="cart-item-details">
                 <h5 className="cart-item-title">{item.product.title}</h5>
-                <p className="cart-item-price">${item.product.price}</p>
+                <p className="cart-item-price">${item.product.price.toFixed(2)}</p>
                 <p className="cart-item-size">Size: {item.size}</p>
                 <div className="cart-item-controls">
                   <div className="cart-item-quantity">
@@ -88,7 +88,7 @@ export default function CartSidebar({ show, onClose }) {
         </div>
         <div className="cart-summary">
           <p>{totalItems} Items</p>
-          <p className="cart-item-total-price">${totalPrice}</p>
+          <p className="cart-item-total-price">${totalPrice.toFixed(2)}</p>
         </div>
         <div className="checkout-button-container">
           <Button className="checkout-button" onClick={handleCheckout}>
