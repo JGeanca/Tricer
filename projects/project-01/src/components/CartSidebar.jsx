@@ -1,39 +1,27 @@
 import '../css/cartsidebar.css'
 import { useNavigate } from 'react-router-dom'
 import { Offcanvas, Button } from 'react-bootstrap'
-import { useState } from 'react'
+import { useEffect, useCallback  } from 'react'
+import  useCartStore  from '../stores/cartStore'
 
 export default function CartSidebar({ show, onClose }) {
   const navigate = useNavigate()
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      image: 'https://via.placeholder.com/200',
-      title: '"THE" LEATHER JACKET RED',
-      price: 271200,
-      size: 'M',
-      quantity: 1,
-    },
-    {
-      id: 2,
-      image: 'https://via.placeholder.com/200',
-      title: 'FUCK NORMAL HOOD GREY MELANGE',
-      price: 53700,
-      size: 'L',
-      quantity: 2,
-    },
-  ])
+  const { items, fetchCart, removeFromCart, updateCartItem, getCartTotal, getCartItemsCount } = useCartStore()
 
-  const handleRemove = (itemId) => {
-    setItems((prevItems) => prevItems.filter(item => item.id !== itemId))
+  const loadCart = useCallback(() => {
+    fetchCart()
+  }, [fetchCart])
+
+  useEffect(() => {
+    loadCart()
+  }, [loadCart])
+
+  const handleRemove = (itemId, size, color) => {
+    removeFromCart(itemId, size, color)
   }
 
-  const handleQuantityChange = (itemId, newQuantity) => {
-    setItems((prevItems) =>
-      prevItems.map(item =>
-        item.id === itemId ? { ...item, quantity: Math.max(newQuantity, 1) } : item
-      )
-    )
+  const handleQuantityChange = (itemId, newQuantity, size, color) => {
+    updateCartItem(itemId, { quantity: newQuantity, size, color })
   }
 
   const handleCheckout = () => {
@@ -41,9 +29,8 @@ export default function CartSidebar({ show, onClose }) {
     onClose()
   }
 
-
-  const totalItems = items.reduce((acc, item) => acc + item.quantity, 0)
-  const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  const totalItems = getCartItemsCount() 
+  const totalPrice = getCartTotal()
 
   return (
     <Offcanvas show={show} onHide={onClose} placement="end">
@@ -53,32 +40,32 @@ export default function CartSidebar({ show, onClose }) {
       <Offcanvas.Body>
         {items.length > 0 ? (
           items.map((item) => (
-            <div key={item.id} className="cart-item">
+            <div key={item.productId} className="cart-item">
               <div className="cart-item-image-wrapper">
-                <img src={item.image} alt={item.title} className="cart-item-image" />
+                <img src={item.product.images[0]} alt={item.product.title} className="cart-item-image" />
               </div>
               <div className="cart-item-details">
-                <h5 className="cart-item-title">{item.title}</h5>
-                <p className="cart-item-price">₡{(item.price).toLocaleString('es-CR')}</p>
+                <h5 className="cart-item-title">{item.product.title}</h5>
+                <p className="cart-item-price">₡{(item.product.price).toLocaleString('es-CR')}</p>
                 <p className="cart-item-size">Size: {item.size}</p>
                 <div className="cart-item-controls">
                   <div className="cart-item-quantity">
                     <span 
-                      onClick={() => handleQuantityChange(item.id, item.quantity - 1)} 
+                      onClick={() => handleQuantityChange(item.productId, item.quantity - 1, item.size, item.color)} 
                       className="quantity-button" 
                     >
                       -
                     </span>
                     <span className="quantity-number">{item.quantity}</span>
                     <span 
-                      onClick={() => handleQuantityChange(item.id, item.quantity + 1)} 
+                      onClick={() => handleQuantityChange(item.productId, item.quantity + 1, item.size, item.color)} 
                       className="quantity-button" 
                     >
                       +
                     </span>
                   </div>
                   <span 
-                    onClick={() => handleRemove(item.id)} 
+                    onClick={() => handleRemove(item.productId)} 
                     className="cart-item-remove" 
                   >
                     REMOVE
