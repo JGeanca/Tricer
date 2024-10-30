@@ -23,11 +23,16 @@ export const addToCartSchema = cartItemKeySchema.extend({
   }).min(1, 'Quantity must be greater than 0')
 })
 
-export const updateCartItemSchema = cartItemKeySchema.extend({
-  quantity: z.number({
-    invalid_type_error: 'Quantity must be a number',
-  }).min(1, 'Quantity must be greater than 0').optional()
-})
+export const updateCartItemSchema = z.object({
+  key: cartItemKeySchema,
+  updates: z.object({
+    quantity: z.number({
+      invalid_type_error: 'Quantity must be a number',
+    }).min(1, 'Quantity must be greater than 0').optional(),
+    size: z.string().optional(),
+    color: z.string().optional(),
+  })
+});
 
 export const removeFromCartSchema = cartItemKeySchema
 
