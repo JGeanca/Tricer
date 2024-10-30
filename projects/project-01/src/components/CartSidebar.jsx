@@ -80,7 +80,7 @@ export default function CartSidebar({ show, onClose }) {
             </div>
           ))
         ) : (
-          <p>Your cart is empty.</p>
+          <p>Your basket is empty.</p>
         )}
         <div className="cart-summary-header">
           <p>Basket</p>
