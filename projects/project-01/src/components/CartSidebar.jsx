@@ -17,7 +17,9 @@ export default function CartSidebar({ show, onClose }) {
   }, [loadCart])
 
   const handleRemove = (itemId, size, color) => {
-    removeFromCart(itemId, size, color)
+    removeFromCart({ 
+      key: { productId: itemId, size, color }
+    })
   }
 
   const handleQuantityChange = (itemId, newQuantity, size, color) => {
@@ -68,7 +70,7 @@ export default function CartSidebar({ show, onClose }) {
                     </span>
                   </div>
                   <span 
-                    onClick={() => handleRemove(item.productId)} 
+                    onClick={() => handleRemove(item.productId, item.size, item.color)} 
                     className="cart-item-remove" 
                   >
                     REMOVE

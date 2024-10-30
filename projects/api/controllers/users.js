@@ -79,11 +79,15 @@ export class UserController {
 
   removeFromCart = async (req, res) => {
     try {
-      const result = await validateRemoveFromCart(req.body)
+
+      const userId = req.user.userId
+      const { key } = req.body
+
+      const result = await validateRemoveFromCart(key)
       if (!result.success) {
         return res.status(422).json({ errors: JSON.parse(result.error.message) })
       }
-      const cart = await this.userModel.removeFromCart(req.body)
+      const cart = await this.userModel.removeFromCart({ userId, ...key })
       if (!cart) {
         return res.status(404).json({ message: 'User not found' })
       }

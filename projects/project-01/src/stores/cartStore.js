@@ -36,10 +36,13 @@ const useCartStore = create((set, get) => ({
     }
   },
 
-  removeFromCart: async (productId, size, color) => {
+  removeFromCart: async (productKey) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await privateApi.delete(`/users/cart/${productId}`, { data: { size, color } })
+      const response = await privateApi.delete(`/users/cart/${productKey.key.productId}`, {
+        data: productKey
+      })
+      
       set({ items: response.data.cart, isLoading: false })
     } catch (error) {
       set({ error: error.response?.data?.message || 'Error removing from cart', isLoading: false })
