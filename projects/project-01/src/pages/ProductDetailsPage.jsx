@@ -6,6 +6,7 @@ import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../asset
 import { capitalize } from '../utils/utils'
 import { useProduct } from '../hooks/useProducts'
 import { Loading } from '../components/Loading'
+import  useCartStore  from '../stores/cartStore'
 
 import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,6 +19,17 @@ export default function ProductDetailsPage() {
   const [selectedSize, setSelectedSize] = useState('S')
   const [quantity, setQuantity] = useState(1)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+
+  const { addToCart } = useCartStore()
+
+  const handleAddToCart = (itemId, quantity, size, color) => {
+    addToCart({ 
+      productId: itemId,
+      size,
+      color,
+      quantity
+    })
+  }
 
   if (isLoading) {
     return <Loading />
@@ -99,7 +111,7 @@ export default function ProductDetailsPage() {
             </div>
           </div>
           <p className="product-details-price">${price}</p>
-          <Button className="add-to-basket w-100" size="lg">
+          <Button className="add-to-basket w-100" size="lg" onClick={() => handleAddToCart(productId, quantity, selectedSize, colors[0])}>
             ADD TO BASKET
           </Button>
           <div className="product-share-and-contact">
