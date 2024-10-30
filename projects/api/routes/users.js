@@ -10,12 +10,10 @@ export const createUsersRouter = ({ userModel }) => {
   usersRouter.post('/register', userController.register)
   usersRouter.post('/login', userController.login)
 
-  //TODO: Add middleware to check if user is authenticated
-
   usersRouter.get('/cart', authMiddleware, userController.getCart)
   usersRouter.post('/cart', authMiddleware, userController.addToCart)
-  usersRouter.delete('/cart/', authMiddleware, userController.removeFromCart)
-  usersRouter.put('/cart/', authMiddleware, userController.updateCartItem)
+  usersRouter.delete('/cart/:productId', authMiddleware, userController.removeFromCart)
+  usersRouter.put('/cart/:productId', authMiddleware, userController.updateCartItem)
 
   return usersRouter
 }
