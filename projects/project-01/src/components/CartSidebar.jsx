@@ -51,7 +51,7 @@ export default function CartSidebar({ show, onClose }) {
               </div>
               <div className="cart-item-details">
                 <h5 className="cart-item-title">{item.product.title}</h5>
-                <p className="cart-item-price">₡{(item.product.price).toLocaleString('es-CR')}</p>
+                <p className="cart-item-price">${item.product.price}</p>
                 <p className="cart-item-size">Size: {item.size}</p>
                 <div className="cart-item-controls">
                   <div className="cart-item-quantity">
@@ -88,7 +88,7 @@ export default function CartSidebar({ show, onClose }) {
         </div>
         <div className="cart-summary">
           <p>{totalItems} Items</p>
-          <p className="cart-item-total-price">₡{totalPrice.toLocaleString('es-CR')}</p>
+          <p className="cart-item-total-price">${totalPrice}</p>
         </div>
         <div className="checkout-button-container">
           <Button className="checkout-button" onClick={handleCheckout}>
