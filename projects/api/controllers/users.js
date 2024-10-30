@@ -96,18 +96,15 @@ export class UserController {
   updateCartItem = async (req, res) => {
     try {
       const userId = req.user.userId
-      const productId = req.params.productId
-      const { size, color, quantity } = req.body
+      const { key, updates } = req.body
 
-      const validationData = { productId, size, color, quantity }
-
-      const result = await validateUpdateCartItem(validationData)
+      const result = await validateUpdateCartItem(req.body)
   
       if (!result.success) {
         return res.status(422).json({ errors: result.error.issues })
       }
 
-      const cart = await this.userModel.updateCartItem({ userId, productId, size, color, updates: { quantity } })
+      const cart = await this.userModel.updateCartItem({ userId, ...key, updates })
   
       if (!cart) {
         return res.status(404).json({ message: 'User or product not found' })
