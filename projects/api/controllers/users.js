@@ -47,11 +47,11 @@ export class UserController {
 
   getCart = async (req, res) => {
     try {
-      const result = await validateGetCart(req.body)
+      const result = await validateGetCart(req.user)
       if (!result.success) {
         return res.status(422).json({ errors: JSON.parse(result.error.message) })
       }
-      const cart = await this.userModel.getUserCart(req.body)
+      const cart = await this.userModel.getUserCart(req.user)
       if (!cart) {
         return res.status(404).json({ message: 'User not found' })
       }
@@ -95,16 +95,27 @@ export class UserController {
 
   updateCartItem = async (req, res) => {
     try {
-      const result = await validateUpdateCartItem(req.body)
+      const userId = req.user.userId
+      const productId = req.params.productId
+      const { size, color, quantity } = req.body
+
+      const validationData = { productId, size, color, quantity }
+
+      const result = await validateUpdateCartItem(validationData)
+  
       if (!result.success) {
-        return res.status(422).json({ errors: JSON.parse(result.error.message) })
+        return res.status(422).json({ errors: result.error.issues })
       }
-      const cart = await this.userModel.updateCartItem(req.body)
+
+      const cart = await this.userModel.updateCartItem({ userId, productId, size, color, updates: { quantity } })
+  
       if (!cart) {
         return res.status(404).json({ message: 'User or product not found' })
       }
+  
       return res.json({ message: 'Cart item updated', cart })
     } catch (error) {
+      console.error("Error in updateCartItem controller:", error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
