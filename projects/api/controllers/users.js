@@ -1,5 +1,5 @@
 import { validateUser, validateLogin } from '../schemas/user.schema.js'
-import { validateAddToCart, validateRemoveFromCart, validateUpdateCartItem, validateGetCart } from '../schemas/cart.schema.js'
+import { validateAddToCart, validateRemoveFromCart, validateUpdateCartItem, validateGetCart, validateCleanCart } from '../schemas/cart.schema.js'
 import { signToken } from '../utils.js'
 
 export class UserController {
@@ -121,6 +121,25 @@ export class UserController {
       return res.json({ message: 'Cart item updated', cart })
     } catch (error) {
       console.error("Error in updateCartItem controller:", error.message)
+      return res.status(500).json({ message: 'Internal server error' })
+    }
+  }
+
+  cleanCart = async (req, res) => {
+    try {
+      const userId = req.user.userId
+
+      const result = await validateCleanCart({ userId })
+
+      if (!result.success) {
+        return res.status(422).json({ errors: JSON.parse(result.error.message) })
+      }
+      const cart = await this.userModel.cleanCart({ userId })
+      if (!cart) {
+        return res.status(404).json({ message: 'User not found' })
+      }
+      return res.json({ message: 'Cart has been cleaned', cart })
+    } catch (error) {
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
