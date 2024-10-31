@@ -13,6 +13,7 @@ export const createUsersRouter = ({ userModel }) => {
   usersRouter.get('/cart', authMiddleware, userController.getCart)
   usersRouter.post('/cart', authMiddleware, userController.addToCart)
   usersRouter.delete('/cart/:productId', authMiddleware, userController.removeFromCart)
+  usersRouter.delete('/cart', authMiddleware, userController.cleanCart)
   usersRouter.put('/cart/:productId', authMiddleware, userController.updateCartItem)
 
   return usersRouter
