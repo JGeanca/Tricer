@@ -128,4 +128,15 @@ export class UserModel {
     await UserModel.#saveUsers()
     return UserModel.getUserCart({ userId })
   }
+
+  static async cleanCart({ userId }) {
+    const user = users.find(user => user.id === userId)
+
+    if (!user) return null
+
+    user.cart = []
+
+    await UserModel.#saveUsers()
+    return UserModel.getUserCart({ userId })
+  }
 }
