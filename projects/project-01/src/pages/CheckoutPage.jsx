@@ -1,11 +1,13 @@
 import '../css/checkout.css'
 import useCartStore from '../stores/cartStore'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function CheckoutPage() {
   const { items, getCartTotal, getCartItemsCount, clearCart } = useCartStore()
   const totalItems = getCartItemsCount()
   const totalPrice = getCartTotal()
+  const navigate = useNavigate()
   
   const [expiryDate, setExpiryDate] = useState('')
   const [showModal, setShowModal] = useState(false)
@@ -48,7 +50,7 @@ export default function CheckoutPage() {
   const handleCloseModal = () => {
     setShowModal(false)
     clearCart()
-    window.location.reload()
+    navigate('/')
   }
 
   return (
