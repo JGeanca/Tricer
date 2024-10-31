@@ -97,6 +97,13 @@ body {
   transform: translateX(-50%);
 }
 
+@media (max-width: 1350px) {
+  .homepage {
+    height: 85vh;
+  }
+}
+
+
 @media (max-width: 800px) {
   .homepage {
     flex-direction: column;
@@ -116,6 +123,14 @@ body {
 
   .small-square {
     margin: 0 5px;
+  }
+  
+  .small-square img.women-img {
+    padding-bottom: 0px;
+  }
+  
+  .small-square img.men-img {
+    padding-top: 0px;
   }
 
   .overlay-text {
