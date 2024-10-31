@@ -15,7 +15,6 @@ const cartItemKeySchema = z.object({
   })
 })
 
-
 export const addToCartSchema = cartItemKeySchema.extend({
   quantity: z.number({
     invalid_type_error: 'Quantity must be a number',
@@ -36,6 +35,20 @@ export const updateCartItemSchema = z.object({
 
 export const removeFromCartSchema = cartItemKeySchema
 
+const cleanCartSchema = z.object({
+  userId: z.string({
+    invalid_type_error: 'UserId must be a string',
+    required_error: 'UserId is required'
+  })
+});
+
+
+export async function validateGetCart(data) {
+  return z.object({
+    userId: z.string()
+  }).safeParseAsync(data)
+}
+
 export async function validateAddToCart(data) {
   return addToCartSchema.safeParseAsync(data)
 }
@@ -48,8 +61,6 @@ export async function validateRemoveFromCart(data) {
   return removeFromCartSchema.safeParseAsync(data)
 }
 
-export async function validateGetCart(data) {
-  return z.object({
-    userId: z.string()
-  }).safeParseAsync(data)
+export async function validateCleanCart(data) {
+  return cleanCartSchema.safeParseAsync(data);
 }
