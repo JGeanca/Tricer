@@ -86,7 +86,7 @@ export class UserModel {
     )
 
     if (existsInCart) {
-      productExist.quantity += quantity
+      existsInCart.quantity += quantity
     }
     else {
       user.cart.push({ productId, size, color, quantity })

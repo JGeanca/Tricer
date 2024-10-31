@@ -5,7 +5,14 @@
       "username": "testUser",
       "email": "testuser@gmail.com",
       "password": "$2b$10$KSFtGpo/X12q2N4FTtfH0uZfVaODMDPrc814tzvkJ2lDXIBkA6shG",
-      "cart": []
+      "cart": [
+        {
+          "productId": "1",
+          "size": "M",
+          "color": "black",
+          "quantity": 9
+        }
+      ]
     },
     {
       "id": "57d2544a-097f-4527-a6c5-4ef99df4d03f",
