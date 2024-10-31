@@ -49,10 +49,17 @@ const useCartStore = create((set, get) => ({
     }
   },
 
-  clearCart: () => set({ items: [], error: null }),
+  clearCart: async () => {
+    set({ isLoading: true, error: null })
+    try {
+      const response = await privateApi.delete('/users/cart')
+      set({ items: response.data.cart, isLoading: false })
+    } catch (error) {
+      set({ error: error.response?.data?.message || 'Error cleaning cart', isLoading: false })
+    }
+  },
 
   getCartTotal: () => {
-    console.log('Cart items:', get().items)
     return get().items.reduce((total, item) => total + (item.product.price * item.quantity), 0)
   },
 
