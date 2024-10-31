@@ -13,8 +13,10 @@ export default function CartSidebar({ show, onClose }) {
   }, [fetchCart])
 
   useEffect(() => {
-    loadCart()
-  }, [loadCart])
+    if (show) {
+      loadCart()
+    }
+  }, [show, loadCart])
 
   const handleRemove = (itemId, size, color) => {
     removeFromCart({ 
