@@ -132,14 +132,14 @@ describe('Users Auth Routes', () => {
 
 //* Cart Routes
 describe('Users Cart Routes', () => {
-  const token = generateToken()
+  const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
+  const token = generateToken(userID)
 
   it('GET /users/cart should return the user cart', async () => {
-    const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
+
     const res = await request(app)
       .get('/users/cart')
       .set('Authorization', `Bearer ${token}`)
-      .send({ userId: userID })
       .expect('Content-Type', /json/)
       .expect(200)
 
@@ -147,7 +147,6 @@ describe('Users Cart Routes', () => {
   })
 
   it('POST /users/cart should add a product to the user cart', async () => {
-    const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
     const product = {
       productId: "1",
       quantity: 1,
@@ -158,11 +157,19 @@ describe('Users Cart Routes', () => {
     const res = await request(app)
       .post('/users/cart')
       .set('Authorization', `Bearer ${token}`)
-      .send({ userId: userID, ...product })
+      .send(product)
       .expect('Content-Type', /json/)
       .expect(201)
 
+    const addedProduct = res.body.cart.find(item =>
+      item.productId === product.productId &&
+      item.size === product.size &&
+      item.color === product.color
+    )
+
     expect(res.body).toHaveProperty('message', 'Product added to cart')
+    expect(addedProduct.size).toBe(product.size);
+    expect(addedProduct.color).toBe(product.color);
   })
 
   it('PUT /users/cart should update a product in the user cart', async () => {

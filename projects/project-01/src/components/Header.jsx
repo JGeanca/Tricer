@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { CartIcon, ShopTitle, ProfileIcon } from '../assets/Icons'
+import CartSidebar from './CartSidebar'
 import '../css/header.css'
 
 export default function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false)
   const [dropdownCategory, setDropdownCategory] = useState('')
+  const [showCart, setShowCart] = useState(false)
   const location = useLocation()
   let timeoutId
 
@@ -25,6 +27,9 @@ export default function Header() {
   const isActiveLink = (path, category) => {
     return location.pathname.startsWith(path) || dropdownCategory === category
   }
+
+  const handleShowCart = () => setShowCart(true)
+  const handleCloseCart = () => setShowCart(false)
 
   return (
     <header className="header-container">
@@ -64,10 +69,10 @@ export default function Header() {
           <div className="header-search">
             <input type="search" placeholder="Search" />
           </div>
-          <Link to="/cart" className="header-cart">
+          <div className="header-cart" onClick={handleShowCart}>
             <CartIcon />
-          </Link>
-          <Link to="/profile" className="header-profile">
+          </div>
+          <Link to="/Profile" className="header-profile">
             <ProfileIcon />
           </Link>
         </div>
@@ -84,6 +89,8 @@ export default function Header() {
           <Link to={`/${dropdownCategory}/accessories`} className="dropdown-item">Accessories</Link>
         </div>
       )}
+
+      <CartSidebar show={showCart} onClose={handleCloseCart} />
     </header>
   )
 }

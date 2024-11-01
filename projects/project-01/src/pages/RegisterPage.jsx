@@ -1,8 +1,8 @@
 
 import { Link } from 'react-router-dom'
 import { RegistryForm } from '../components/RegistryForm'
-import { GoogleIcon } from '../assets/Icons'
 import { useState, useEffect } from 'react'
+import { GoogleAuthButton } from '../components/GoogleAuthButton'
 
 import '../css/registryPage.css'
 export default function RegisterPage() {
@@ -30,14 +30,9 @@ export default function RegisterPage() {
         <Link to="/" className="registry-title">
           Tricer
         </Link>
-        <Link to="/signin-google" className="google-registry-link">
-          <div className="google-icon">
-            <GoogleIcon width="24" height="24" />
-          </div>
-          Register with Google
-        </Link>
-        <hr className="registry-separator-line" />
         <RegistryForm />
+        <hr className="registry-separator-line" />
+        <GoogleAuthButton />
       </div>
       <div className={`registry-login-section ${isLargeScreen ? 'setting-complete' : ''}`} >
         Already have an account?

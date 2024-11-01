@@ -53,9 +53,8 @@ describe('Cart Schema Validation', () => {
   describe('Update Cart Item Validation', () => {
     it('should return true for valid update with quantity', async () => {
       const data = {
-        ...validCartItem,
-        updates: { color: 'red' },
-        quantity: 3
+        key: validCartItem,
+        updates: { color: 'red', quantity: 3 },
       }
 
       const result = await validateUpdateCartItem(data)
@@ -64,7 +63,7 @@ describe('Cart Schema Validation', () => {
 
     it('should return true for valid update without quantity', async () => {
       const data = {
-        ...validCartItem,
+        key: validCartItem,
         updates: { color: 'red' }
       }
 

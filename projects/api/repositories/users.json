@@ -5,7 +5,14 @@
       "username": "testUser",
       "email": "testuser@gmail.com",
       "password": "$2b$10$KSFtGpo/X12q2N4FTtfH0uZfVaODMDPrc814tzvkJ2lDXIBkA6shG",
-      "cart": []
+      "cart": [
+        {
+          "productId": "1",
+          "size": "M",
+          "color": "black",
+          "quantity": 9
+        }
+      ]
     },
     {
       "id": "57d2544a-097f-4527-a6c5-4ef99df4d03f",
@@ -13,6 +20,20 @@
       "email": "julio@gmail.com",
       "password": "$2b$10$1lzAwl7eekc6nH68PU1B0.zH9RW9B3AxVO1bpNnMsbrUbIuD9sRJq",
       "cart": []
+    },
+    {
+      "id": "a9b59eee-da1e-4804-a66b-64135e54b72d",
+      "username": "Sebas RT",
+      "email": "sebix.18rt@gmail.com",
+      "password": null,
+      "cart": [
+        {
+          "productId": "1",
+          "size": "S",
+          "color": "blue",
+          "quantity": 1
+        }
+      ]
     }
   ]
 }
