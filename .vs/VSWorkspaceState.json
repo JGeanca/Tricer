@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\projects",
+    "\\projects\\api",
+    "\\projects\\api\\controllers",
+    "\\projects\\api\\repositories",
+    "\\projects\\api\\routes",
+    "\\projects\\project-01",
     "\\projects\\project-01\\src",
-    "\\projects\\project-01\\src\\assets",
-    "\\projects\\project-01\\src\\assets\\imgs",
     "\\projects\\project-01\\src\\components",
-    "\\projects\\project-01\\src\\css",
-    "\\projects\\project-01\\src\\mocks",
-    "\\projects\\project-01\\src\\pages"
+    "\\projects\\project-01\\src\\services"
   ],
+  "SelectedNode": "\\projects\\project-01\\src\\pages\\LoginPage.jsx",
   "PreviewInSolutionExplorer": false
 }

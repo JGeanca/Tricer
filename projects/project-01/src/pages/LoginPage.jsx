@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import LoginWomen from '../assets/imgs/login_women.svg'
 import LoginMen from '../assets/imgs/login_men.svg'
 import { LoginForm } from '../components/LoginForm'
-import { GoogleIcon } from '../assets/Icons'
+import { GoogleAuthButton } from '../components/GoogleAuthButton'
 import { useState, useEffect } from 'react'
 
 import '../css/loginPage.css'
@@ -42,17 +42,12 @@ export default function LoginPage() {
             Tricer
           </Link>
           <LoginForm />
+          <Link to="/password/reset" className="forget-password">
+            Forget the password?
+          </Link>
           <hr className="separator-line" />
           <div className="login-lower-section">
-            <div className="login-google-group">
-              <GoogleIcon width="24" height="24" />
-              <Link to="/login-google" className="login-google">
-                Log in with Google
-              </Link>
-            </div>
-            <Link to="/password/reset" className="forget-password">
-              Forget the password?
-            </Link>
+            <GoogleAuthButton />
           </div>
         </div>
         <div className="register-section">

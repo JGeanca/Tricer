@@ -95,6 +95,26 @@ export const useAuth = () => {
   })
 
   /**
+   * Mutation hook for handling Google user authorization
+   * Manages the async state of Google authorization requests
+   */
+  const googleAuthMutation = useMutation({
+    mutationFn: async (googleToken) => {
+      const { token } = await authService.googleAuthorization(googleToken)
+      localStorage.setItem('token', token)
+      const user = getCurrentUser()
+      return { token, user }
+    },
+    onSuccess: (data) => {
+      queryClient.setQueryData(['user'], data.user)
+    },
+    onError: (error) => {
+      handleLogout()
+      throw error
+    }
+  })
+
+  /**
    * Mutation hook for handling logout operations
    */
   const logoutMutation = useMutation({
@@ -120,6 +140,7 @@ export const useAuth = () => {
     isAuthenticated: !!user,
     login: (credentials) => loginMutation.mutateAsync(credentials),
     register: (credentials) => registerMutation.mutateAsync(credentials),
+    googleAuthorization: (credentials) => googleAuthMutation.mutateAsync(credentials),
     logout: logoutMutation.mutate,
 
     error: loginMutation.error || registerMutation.error

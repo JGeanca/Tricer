@@ -73,6 +73,7 @@
 
 .separator-line {
     width: 80%;
+    margin: 3.5%;
 }
 
 .register-section {
@@ -113,10 +114,10 @@
 
 .forget-password {
     color: #6D7993;
-    margin: 1.5%;
+    margin: 0.5%;
     text-decoration-line: none;
-    padding: 1%;
-    font-size: clamp(12px, 1.5vw, 18px);
+    padding: 0.5%;
+    font-size: clamp(12px, 2vw, 16px);
 }
 
 .sign-up {

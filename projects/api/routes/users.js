@@ -9,6 +9,7 @@ export const createUsersRouter = ({ userModel }) => {
 
   usersRouter.post('/register', userController.register)
   usersRouter.post('/login', userController.login)
+  usersRouter.post('/google-auth', userController.googleAuth)
 
   //TODO: Add middleware to check if user is authenticated
 
