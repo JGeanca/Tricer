@@ -25,4 +25,4 @@ Repository for assignments and projects of the Web Development course at the Uni
 
 ### Assignments Documentation
 
-- [Project 01](./projects/project-01/doc/Documentation.md)
+- [Project Doc](./projects/project-01/doc/Documentation.md)
