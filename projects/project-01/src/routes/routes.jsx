@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
 import ProductDetailsPage from '../pages/ProductDetailsPage'
 import ProductsPage from '../pages/ProductsPage'
+import ProfilePage from '../pages/ProfilePage'
 import CollectionsAndArrivalsPage from '../pages/CollectionsAndArrivalsPage'
 import { ProtectedRoute } from '../components/ProtectedRoute'
 import { PublicOnlyRoute } from '../components/PublicOnlyRoute'
@@ -24,6 +25,14 @@ export const routes = [
         element: (
           <ProtectedRoute>
             <TestComponent />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'profile',
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         ),
       },

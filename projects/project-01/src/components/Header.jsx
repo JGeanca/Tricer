@@ -67,7 +67,7 @@ export default function Header() {
           <Link to="/cart" className="header-cart">
             <CartIcon />
           </Link>
-          <Link to="/test" className="header-profile">
+          <Link to="/profile" className="header-profile">
             <ProfileIcon />
           </Link>
         </div>
