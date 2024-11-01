@@ -173,43 +173,40 @@ describe('Users Cart Routes', () => {
   })
 
   it('PUT /users/cart should update a product in the user cart', async () => {
-    const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
 
-    const product = {
-      userId: userID,
+    const key = {
       productId: "1",
       size: "M",
       color: "black",
-      updates: {
-        quantity: 10,
-        size: "XL",
-      }
+    }
+
+    const updates = {
+      quantity: 10,
+      size: "XL",
     }
 
     const res = await request(app)
-      .put('/users/cart')
+      .put(`/users/cart/${key.productId}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ userId: userID, ...product })
+      .send({ key, updates })
       .expect('Content-Type', /json/)
       .expect(200)
 
     expect(res.body).toHaveProperty('message', 'Cart item updated')
+    expect(res.body).toHaveProperty('cart')
   })
 
   it('DELETE /users/cart should remove a product from the user cart', async () => {
-    const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
-
-    const product = {
-      userId: userID,
+    const key = {
       productId: "1",
       size: "XL",
       color: "black",
     }
 
     const res = await request(app)
-      .delete('/users/cart')
+      .delete(`/users/cart/${key.productId}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ userId: userID, ...product })
+      .send({ key })
       .expect('Content-Type', /json/)
       .expect(200)
 
@@ -218,7 +215,6 @@ describe('Users Cart Routes', () => {
 
 
   it('POST /users/cart should return 404 if product does not exist', async () => {
-    const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
     const product = {
       productId: "999",
       quantity: 1,
@@ -256,26 +252,23 @@ describe('Users Cart Routes', () => {
   })
 
   it('PUT /users/cart should return 404 if product does not exist', async () => {
-    const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
-
-    const product = {
-      userId: userID,
-      productId: "999",
+    const key = {
+      productId: "1",
       size: "M",
       color: "black",
-      updates: {
-        quantity: 10,
-        size: "XL",
-      }
+    }
+
+    const updates = {
+      quantity: 10,
+      size: "XL",
     }
 
     const res = await request(app)
-      .put('/users/cart')
+      .put(`/users/cart/${key.productId}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ userId: userID, ...product })
+      .send({ key, updates })
       .expect('Content-Type', /json/)
       .expect(404)
-
     expect(res.body).toHaveProperty('message', 'User or product not found')
   })
 
@@ -286,5 +279,17 @@ describe('Users Cart Routes', () => {
       .expect(401)
 
     expect(res.body).toHaveProperty('message', 'Unauthorized')
+  })
+
+  it('DELETE /users/cart should clean the user cart', async () => {
+    const res = await request(app)
+      .delete('/users/cart')
+      .set('Authorization', `Bearer ${token}`)
+      .expect('Content-Type', /json/)
+      .expect(200)
+
+    expect(res.body).toHaveProperty('message', 'Cart has been cleaned')
+    expect(res.body).toHaveProperty('cart')
+    expect(res.body.cart.length).toBe(0)
   })
 })
