@@ -6,8 +6,8 @@ import { InstagramIcon, FacebookIcon, TiktokIcon, PinterestIcon } from '../asset
 import { capitalize } from '../utils/utils'
 import { useProduct } from '../hooks/useProducts'
 import { Loading } from '../components/Loading'
-import  useCartStore  from '../stores/cartStore'
-import { useFeedback } from '../hooks/useFeedback.jsx'
+import useCartStore from '../stores/cartStore'
+import { useFeedback } from '../hooks/useFeedback'
 
 import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -70,7 +70,7 @@ export default function ProductDetailsPage() {
               {images.map((image, index) => (
                 <img
                   key={index}
-                  className={`thumbnail-image ${index === selectedImageIndex  ? 'selected' : ''}`}
+                  className={`thumbnail-image ${index === selectedImageIndex ? 'selected' : ''}`}
                   src={image}
                   alt={`Thumbnail ${index + 1}`}
                   onClick={() => setSelectedImageIndex(index)}

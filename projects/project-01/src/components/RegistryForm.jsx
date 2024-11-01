@@ -1,11 +1,10 @@
 
 import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
-import { useFeedback } from '../hooks/useFeedback.jsx';
-import { useValidation } from '../hooks/useValidation.jsx';
+import { useFeedback } from '../hooks/useFeedback'
+import { useValidation } from '../hooks/useValidation'
 
 import { Form, Button } from 'react-bootstrap'
-
 
 import '../css/registryForm.css'
 
@@ -15,9 +14,9 @@ export function RegistryForm() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [acceptPolitics, setAcceptPolitics] = useState(false)
-  const { register, isLoading, error } = useAuth()
+  const { register, isLoading } = useAuth()
   const { showError, showSuccess } = useFeedback()
-  const { validateUsername, validateEmail, validatePassword, passwordsMatch } = useValidation();
+  const { validateUsername, validateEmail, validatePassword, passwordsMatch } = useValidation()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -47,12 +46,12 @@ export function RegistryForm() {
     }
 
     try {
-      await register({ username: user, email, password });
+      await register({ username: user, email, password })
 
-      showSuccess('Register successful');
+      showSuccess('Register successful')
 
     } catch (err) {
-      showError(err.message);
+      showError(err.message)
     }
   }
 

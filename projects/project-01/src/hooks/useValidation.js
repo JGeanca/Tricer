@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from 'react'
 
 export function useValidation() {
   const validateUsername = useCallback((username) => {
@@ -26,7 +26,7 @@ export function useValidation() {
 
   const passwordsMatch = useCallback((password, confirmPassword) => password === confirmPassword, [])
 
-  const validateExpirationDate = useCallback((expirationDate) => {
+  const validateExpirationDate = ((expirationDate) => {
     const expirationRegex = /^(0[1-9]|1[0-2]) \/ (\d{2})$/
     if (!expirationRegex.test(expirationDate)) {
       return false

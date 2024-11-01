@@ -1,9 +1,21 @@
 import { useAuth } from '../hooks/useAuth'
 import profileIcon from '../assets/icons/profile.svg'
+import { useFeedback } from '../hooks/useFeedback'
+
 import '../css/profilePage.css'
 
 export default function ProfilePage() {
   const { user, logout } = useAuth()
+  const { showError, showSuccess } = useFeedback()
+
+  const handleLogout = async () => {
+    try {
+      await logout()
+      showSuccess('Logout successful')
+    } catch (error) {
+      showError(error.message)
+    }
+  }
 
   return (
     <div className="profile-container">
@@ -20,7 +32,7 @@ export default function ProfilePage() {
         </h1>
         <div className="logout-button-container">
           <button
-            onClick={logout}
+            onClick={handleLogout}
             className="logout-button"
           >
             Logout

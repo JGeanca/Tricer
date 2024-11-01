@@ -1,8 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { authService } from '../services/authService'
-import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import { useCallback } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+
 
 // *NOTE: React Query == TanStack
 
@@ -13,6 +14,7 @@ import { useCallback } from 'react'
  */
 export const useAuth = () => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   // React Query's client to manage server state
   const queryClient = useQueryClient()
@@ -72,7 +74,6 @@ export const useAuth = () => {
       queryClient.setQueryData(['user'], data.user)
     },
     onError: (error) => {
-      handleLogout()
       throw error
     }
   })
@@ -90,7 +91,8 @@ export const useAuth = () => {
     },
     onSuccess: (data) => {
       queryClient.setQueryData(['user'], data.user)
-      navigate('/') // TODO: Check where to redirect after register
+      const previousPath = location.state?.from?.pathname || '/'
+      navigate(previousPath, { replace: true })
     },
   })
 

@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
-import { useFeedback } from '../hooks/useFeedback.jsx';
-import { useValidation } from '../hooks/useValidation.jsx';
+import { useFeedback } from '../hooks/useFeedback'
+import { useValidation } from '../hooks/useValidation'
 
 import '../css/loginForm.css'
 
@@ -11,7 +11,7 @@ export function LoginForm() {
   const [credential, setCredential] = useState('')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
-  const { login, isLoading, error } = useAuth()
+  const { login, isLoading } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const { showError, showSuccess } = useFeedback()
@@ -24,7 +24,7 @@ export function LoginForm() {
       showError('Invalid credentials')
       return
     }
-    
+
     if (!validatePassword(password)) {
       showError('Invalid credentials')
       return

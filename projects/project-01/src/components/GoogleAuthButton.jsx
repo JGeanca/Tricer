@@ -1,6 +1,6 @@
 import { GoogleLogin } from '@react-oauth/google'
 import { useAuth } from '../hooks/useAuth'
-import { useFeedback } from '../hooks/useFeedback.jsx'
+import { useFeedback } from '../hooks/useFeedback'
 
 import '../css/registryPage.css'
 

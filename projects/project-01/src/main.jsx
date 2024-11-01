@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { routes } from './routes/routes'
-import { FeedbackMessageContainer } from './hooks/useFeedback.jsx'
+import { FeedbackMessageContainer } from './components/FeedbackMessageContainer'
+import { GOOGLE_CLIENT_ID } from './config'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/footer.css'
@@ -17,7 +18,7 @@ const router = createBrowserRouter(routes)
 
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
-    <GoogleOAuthProvider clientId="218339771159-edfis28m4qgvuingfuhv0cdh99uiov6d.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <RouterProvider router={router} />
       <ReactQueryDevtools />
       <FeedbackMessageContainer />

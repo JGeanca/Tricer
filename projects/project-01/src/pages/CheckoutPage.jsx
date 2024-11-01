@@ -2,7 +2,7 @@ import '../css/checkout.css'
 import useCartStore from '../stores/cartStore'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useFeedback } from '../hooks/useFeedback.jsx';
+import { useFeedback } from '../hooks/useFeedback'
 
 export default function CheckoutPage() {
   const { items, getCartTotal, getCartItemsCount, clearCart } = useCartStore()
@@ -10,7 +10,7 @@ export default function CheckoutPage() {
   const totalPrice = getCartTotal()
   const navigate = useNavigate()
   const { showError, showSuccess } = useFeedback()
-  
+
   const [expiryDate, setExpiryDate] = useState('')
   const [showModal, setShowModal] = useState(false)
 
@@ -69,7 +69,7 @@ export default function CheckoutPage() {
 
           <div className="checkout-section">
             <h3>Delivery</h3>
-            
+
             <div className="form-floating mb-3">
               <select className="form-select" name="pais" required>
                 <option value="CR">Costa Rica</option>
@@ -143,13 +143,13 @@ export default function CheckoutPage() {
 
             <div className="form-row">
               <div className="form-floating mb-3">
-                <input type="text" id="expiry-date"  className="form-control"  placeholder="MM / YYYY"  value={expiryDate} onChange={handleExpiryChange} pattern="^(0[1-9]|1[0-2]) / [0-9]{4}$" required />
+                <input type="text" id="expiry-date" className="form-control" placeholder="MM / YYYY" value={expiryDate} onChange={handleExpiryChange} pattern="^(0[1-9]|1[0-2]) / [0-9]{4}$" required />
                 <label htmlFor="expiry-date">Expiration date (MM / YYYY)</label>
                 <div className="invalid-feedback">Please provide a valid expiration date (MM / YYYY).</div>
               </div>
 
               <div className="form-floating mb-3">
-                <input type="tel"  id="cvv"  className="form-control"  placeholder="CVV"  pattern="^\d{3,4}$" required/>
+                <input type="tel" id="cvv" className="form-control" placeholder="CVV" pattern="^\d{3,4}$" required />
                 <label htmlFor="cvv">CVV</label>
                 <div className="invalid-feedback">Please provide a valid CVV (3 or 4 digits).</div>
               </div>
@@ -159,7 +159,7 @@ export default function CheckoutPage() {
               <input type="text" id="card-name" className="form-control" placeholder="Cardholder Name" required />
               <label htmlFor="card-name">Cardholder Name</label>
             </div>
-        
+
           </div>
 
           <button type="submit" className="checkout-button">Pay now</button>
