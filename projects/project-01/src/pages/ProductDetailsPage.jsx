@@ -7,6 +7,7 @@ import { capitalize } from '../utils/utils'
 import { useProduct } from '../hooks/useProducts'
 import { Loading } from '../components/Loading'
 import  useCartStore  from '../stores/cartStore'
+import { useFeedback } from '../hooks/useFeedback.jsx'
 
 import NoProductsFound from '../components/NoProductFound'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,13 +23,30 @@ export default function ProductDetailsPage() {
 
   const { addToCart } = useCartStore()
 
-  const handleAddToCart = (itemId, quantity, size, color) => {
-    addToCart({ 
-      productId: itemId,
-      size,
-      color,
-      quantity
-    })
+  const { showError, showSuccess } = useFeedback()
+
+  const handleSuccessMessage = async () => {
+    try {
+      showSuccess('Product added successfully')
+    } catch (error) {
+      console.error('Error in adding product:', error.message)
+      showError('Failed to add product')
+    }
+  }
+
+  const handleAddToCart = async (itemId, quantity, size, color) => {
+    try {
+      await addToCart({
+        productId: itemId,
+        size,
+        color,
+        quantity
+      })
+      handleSuccessMessage()
+    } catch (error) {
+      console.error('Error adding product to cart:', error)
+      showError('Failed to add product to cart')
+    }
   }
 
   if (isLoading) {
