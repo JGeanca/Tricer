@@ -2,12 +2,14 @@ import '../css/checkout.css'
 import useCartStore from '../stores/cartStore'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useFeedback } from '../hooks/useFeedback.jsx';
 
 export default function CheckoutPage() {
   const { items, getCartTotal, getCartItemsCount, clearCart } = useCartStore()
   const totalItems = getCartItemsCount()
   const totalPrice = getCartTotal()
   const navigate = useNavigate()
+  const { showError, showSuccess } = useFeedback()
   
   const [expiryDate, setExpiryDate] = useState('')
   const [showModal, setShowModal] = useState(false)
@@ -50,6 +52,7 @@ export default function CheckoutPage() {
   const handleCloseModal = () => {
     setShowModal(false)
     clearCart()
+    showSuccess('Successful purchase')
     navigate('/')
   }
 

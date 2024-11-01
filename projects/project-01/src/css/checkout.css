@@ -137,7 +137,7 @@
 }
 
 .checkout-item-title {
-  font-size: 14px;
+  font-size: clamp(16px, 3.5vw, 22px) !important;
   font-weight: bold;
   margin: 0 0 8px;
   overflow: hidden;
@@ -149,14 +149,14 @@
 
 .checkout-item-price,
 .checkout-item-size {
-  font-size: 14px;
+  font-size: clamp(14px, 3vw, 18px) !important;
   color: #dcdcdc;
   margin: 0;
 }
 
 .checkout-item-quantity {
   margin-top: 8px;
-  font-size: 13px;
+  font-size: clamp(10px, 2vw, 12px) !important;
 }
 
 .checkout-summary-header,

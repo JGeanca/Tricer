@@ -73,8 +73,7 @@ export default function CartSidebar({ show, onClose }) {
                   </div>
                   <span 
                     onClick={() => handleRemove(item.productId, item.size, item.color)} 
-                    className="cart-item-remove" 
-                  >
+                    className="cart-item-remove">
                     REMOVE
                   </span>
                 </div>
@@ -86,7 +85,7 @@ export default function CartSidebar({ show, onClose }) {
         )}
         <div className="cart-summary-header">
           <p>Basket</p>
-          <p>SUBTOTAL</p>
+          <p>Subtotal</p>
         </div>
         <div className="cart-summary">
           <p>{totalItems} Items</p>
@@ -94,7 +93,7 @@ export default function CartSidebar({ show, onClose }) {
         </div>
         <div className="checkout-button-container">
           <Button className="checkout-button" onClick={handleCheckout}>
-            CHECKOUT
+            Checkout
           </Button>
         </div>
       </Offcanvas.Body>

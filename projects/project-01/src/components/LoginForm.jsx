@@ -15,7 +15,7 @@ export function LoginForm() {
   const navigate = useNavigate()
   const location = useLocation()
   const { showError, showSuccess } = useFeedback()
-  const { validateUsername, validateEmail, validatePassword } = useValidation();
+  const { validateUsername, validateEmail, validatePassword } = useValidation()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
