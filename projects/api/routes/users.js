@@ -9,6 +9,7 @@ export const createUsersRouter = ({ userModel }) => {
 
   usersRouter.post('/register', userController.register)
   usersRouter.post('/login', userController.login)
+  usersRouter.post('/google-auth', userController.googleAuth)
 
   usersRouter.get('/cart', authMiddleware, userController.getCart)
   usersRouter.post('/cart', authMiddleware, userController.addToCart)

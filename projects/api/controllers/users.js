@@ -1,10 +1,12 @@
 import { validateUser, validateLogin } from '../schemas/user.schema.js'
 import { validateAddToCart, validateRemoveFromCart, validateUpdateCartItem, validateGetCart, validateCleanCart } from '../schemas/cart.schema.js'
 import { signToken } from '../utils.js'
+import { OAuth2Client } from 'google-auth-library'
 
 export class UserController {
   constructor({ userModel }) {
     this.userModel = userModel
+    this.googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
   }
 
   register = async (req, res) => {
@@ -140,6 +142,33 @@ export class UserController {
       }
       return res.json({ message: 'Cart has been cleaned', cart })
     } catch (error) {
+      return res.status(500).json({ message: 'Internal server error' })
+    }
+  }
+
+  googleAuth = async (req, res) => {
+    try {
+      const { token: googleToken } = req.body
+
+      const ticket = await this.googleClient.verifyIdToken({
+        idToken: googleToken,
+        audience: process.env.GOOGLE_CLIENT_ID
+      })
+
+      const payload = ticket.getPayload()
+      const { email, name } = payload
+
+      let user = await this.userModel.verifyGoogleCredential({ email, username: name })
+
+      if (!user) {
+        user = await this.userModel.create({ username: (name.trim()), email, password: null })
+      }
+
+      const token = signToken(user)
+
+      return res.json({ message: 'Google login successful', token })
+    } catch (error) {
+      console.error('Error during Google login:', error)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
