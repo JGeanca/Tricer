@@ -65,8 +65,8 @@
 
 .login-title {
     font-size: clamp(24px, 4vw, 48px);
+    font-family: 'Vidaloka', sans-serif;
     font-weight: bold;
-    font-family: Elephant;
     text-decoration: none;
     color: black;
 }

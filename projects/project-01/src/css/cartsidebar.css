@@ -129,3 +129,10 @@
   border-color: #6D7993;
   color: #6D7993;
 }
+
+.checkout-button-container .checkout-button:focus,
+.checkout-button-container .checkout-button:active {
+  background-color: white !important;
+  border-color: #6D7993 !important;
+  color: #6D7993 !important;
+}

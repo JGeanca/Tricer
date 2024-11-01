@@ -39,7 +39,7 @@ export default function LoginPage() {
       <div className={`user-section ${!showDecoration ? 'user-section-complete' : ''}`}>
         <div className="login-section">
           <Link to="/" className="login-title">
-            Tricer
+            TRICER
           </Link>
           <LoginForm />
           <Link to="/password/reset" className="forget-password">
@@ -53,7 +53,7 @@ export default function LoginPage() {
         <div className="register-section">
           Don&apos;t have an account?
           <Link to="/register" className="sign-up">
-            Sing up
+            Sign in
           </Link>
         </div>
       </div>
