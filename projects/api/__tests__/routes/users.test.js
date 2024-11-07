@@ -1,5 +1,5 @@
 import request from 'supertest'
-import { createTestApp } from '../../test-server.js'
+import { createTestApp } from '../../servers/fs-test-server'
 import jwt from 'jsonwebtoken'
 
 const app = createTestApp()
