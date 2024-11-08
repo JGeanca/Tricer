@@ -19,4 +19,10 @@ export class ProductController {
     const product = await this.productModel.getById({ id })
     return res.json(product)
   }
+
+  getStock = async (req, res) => {
+    const { id } = req.params
+    const stock = await this.productModel.getStock({ id })
+    return res.json(stock)
+  }
 }

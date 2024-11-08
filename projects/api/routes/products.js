@@ -8,6 +8,6 @@ export const createProductsRouter = ({ productModel }) => {
 
   productsRouter.get('/', productController.getAll)
   productsRouter.get('/:id', productController.getById)
-
+  productsRouter.get('/:id/stock', productController.getStock)
   return productsRouter
 }
