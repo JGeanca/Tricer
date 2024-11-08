@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start:local": "node --watch servers/fs-server.js",
+    "start:db": "node --watch servers/db-server.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:watch": "jest --watch"
   },
@@ -28,6 +29,7 @@
     "google-auth-library": "^9.14.2",
     "jsonwebtoken": "^9.0.2",
     "morgan": "1.10.0",
+    "mysql2": "^3.11.4",
     "zod": "3.23.8"
   }
 }

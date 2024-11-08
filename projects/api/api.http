@@ -5,7 +5,7 @@
 GET http://localhost:3000/products
 
 ### Get product by id
-GET http://localhost:3000/products/12
+GET http://localhost:3000/products/3
 
 ### Get products by gender
 GET http://localhost:3000/products?gender=women
@@ -14,13 +14,13 @@ GET http://localhost:3000/products?gender=women
 GET http://localhost:3000/products?gender=men
 
 ### Get products by type and gender
-GET http://localhost:3000/products?type=footwear&gender=men
+GET http://localhost:3000/products?type=clothing&gender=women
 
 ### Get products by type and gender
 GET http://localhost:3000/products?gender=women&type=footwear
 
 ### Get new products for women
-GET http://localhost:3000/products/?gender=women&type=clothing&new=true
+GET http://localhost:3000/products/?gender=women&type=clothing&new=false
 
 ###
 GET http://localhost:3000/products/?gender=men&type=clothing&new=true
@@ -70,10 +70,6 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
-    "username": "raykuin",
-    "password": "A1237"
-=======
     "username": "rayoMakuin",
     "password": "A123567",
 }
@@ -144,5 +140,4 @@ Content-Type: application/json
     "quantity": 3,
     "size": "M",
     "color": "black"
->>>>>>> api
 }
