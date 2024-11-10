@@ -48,15 +48,6 @@ Content-Type: application/json
     "password": "testPassword123"
 }
 
-### User registration
-POST http://localhost:3000/users/register
-Content-Type: application/json
-
-{
-    "username": "s",
-    "email": "testuser@gmail.com",
-    "password": "d123"
-}
 
 
 ### User login
@@ -64,8 +55,8 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "credential": "rayoMakuin2",
-    "password": "A1235678"
+    "credential": "testUser",
+    "password": "testPassword123"
 }
 
 ### Invalid login
@@ -76,6 +67,37 @@ Content-Type: application/json
     "username": "rayoMakuin",
     "password": "A123567",
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### User cart
 GET http://localhost:3000/users/cart
