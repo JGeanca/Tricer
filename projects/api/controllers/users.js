@@ -109,17 +109,17 @@ export class UserController {
       const { key, updates } = req.body
 
       const result = await validateUpdateCartItem(req.body)
-  
+
       if (!result.success) {
         return res.status(422).json({ errors: result.error.issues })
       }
 
       const cart = await this.userModel.updateCartItem({ userId, ...key, updates })
-  
+
       if (!cart) {
         return res.status(404).json({ message: 'User or product not found' })
       }
-  
+
       return res.json({ message: 'Cart item updated', cart })
     } catch (error) {
       console.error("Error in updateCartItem controller:", error.message)

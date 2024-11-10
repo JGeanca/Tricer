@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
 const cartItemKeySchema = z.object({
-  productId: z.string({
-    invalid_type_error: 'ProductId must be a string',
+  productId: z.number({
+    invalid_type_error: 'ProductId must be a number',
     required_error: 'ProductId is required'
   }),
   size: z.string({
