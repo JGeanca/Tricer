@@ -96,9 +96,7 @@ export class ProductModel {
       `
       const [stock] = await this.db.query(query, [id])
 
-      if (!stock.length) {
-        throw new Error('Product not found')
-      }
+      if (!stock.length) return null
 
       return {
         product_id: stock[0].product_id.toString(),

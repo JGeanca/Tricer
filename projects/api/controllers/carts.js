@@ -16,7 +16,7 @@ export class CartController {
       }
       const cart = await this.cartModel.getCart(req.user)
       if (!cart) {
-        return res.status(404).json({ message: 'User not found' })
+        return res.status(404).json({ message: 'User cart not found' })
       }
       return res.json({ cart })
     } catch (error) {
@@ -37,7 +37,7 @@ export class CartController {
 
       const cart = await this.cartModel.addToCart({ userId, ...req.body })
       if (!cart) {
-        return res.status(404).json({ message: 'User or product not found' })
+        return res.status(404).json({ message: 'User cart or product not found in store' })
       }
       return res.status(201).json({ message: 'Product added to cart', cart })
     } catch (error) {
@@ -58,7 +58,7 @@ export class CartController {
       }
       const cart = await this.cartModel.removeFromCart({ userId, ...key })
       if (!cart) {
-        return res.status(404).json({ message: 'User not found' })
+        return res.status(404).json({ message: 'User cart or product not found' })
       }
       return res.json({ message: 'Product removed from cart', cart })
     } catch (error) {
@@ -81,7 +81,7 @@ export class CartController {
       const cart = await this.cartModel.updateCartItem({ userId, ...key, updates })
 
       if (!cart) {
-        return res.status(404).json({ message: 'User or product not found' })
+        return res.status(404).json({ message: 'User cart or product not found' })
       }
 
       return res.json({ message: 'Cart item updated', cart })
@@ -101,7 +101,7 @@ export class CartController {
       }
       const cart = await this.cartModel.cleanCart({ userId })
       if (!cart) {
-        return res.status(404).json({ message: 'User not found' })
+        return res.status(404).json({ message: 'User cart not found' })
       }
       return res.json({ message: 'Cart has been cleaned', cart })
     } catch (error) {

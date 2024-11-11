@@ -29,6 +29,7 @@ export class ProductController {
     try {
       const { id } = req.params
       const stock = await this.productModel.getStock({ id })
+      if (!stock) return res.status(404).json({ message: 'Product not found' })
       return res.json(stock)
     } catch (error) {
       console.error('[getStock]:', error.message)

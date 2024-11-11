@@ -9,7 +9,7 @@ export class CartModel {
       [userId]
     )
 
-    if (!userCart.length) throw new Error('User cart not found')
+    if (!userCart.length) return null
     return userCart[0].id
   }
 
@@ -19,13 +19,15 @@ export class CartModel {
       [productId, size, color]
     )
 
-    if (!productVariant.length) throw new Error('Product variant not found')
+    if (!productVariant.length) return null
     return productVariant[0].id
   }
 
   async getCart({ userId }) {
     try {
       const userCartId = await this.#getUserCartId(userId)
+
+      if (!userCartId) return null
 
       const [cartItems] = await this.db.query(`
         SELECT 
@@ -67,7 +69,10 @@ export class CartModel {
   async addToCart({ userId, productId, quantity, size, color }) {
     try {
       const userCartId = await this.#getUserCartId(userId)
+      if (!userCartId) return null
+
       const productVariantId = await this.#getProductVariantId({ productId, size, color })
+      if (!productVariantId) return null
 
       const [existingItem] = await this.db.query(
         'SELECT id, quantity FROM cart_items WHERE cart_id = ? AND inventory_id = ?',
@@ -103,7 +108,10 @@ export class CartModel {
   async removeFromCart({ userId, productId, size, color }) {
     try {
       const userCartId = await this.#getUserCartId(userId)
+      if (!userCartId) return null
+
       const productVariantId = await this.#getProductVariantId({ productId, size, color })
+      if (!productVariantId) return null
 
       await this.db.query('START TRANSACTION')
 
@@ -127,7 +135,10 @@ export class CartModel {
   async updateCartItem({ userId, productId, size, color, updates }) {
     try {
       const userCartId = await this.#getUserCartId(userId)
+      if (!userCartId) return null
+
       const productVariantId = await this.#getProductVariantId({ productId, size, color })
+      if (!productVariantId) return null
 
       await this.db.query('START TRANSACTION')
 
@@ -151,6 +162,7 @@ export class CartModel {
   async cleanCart({ userId }) {
     try {
       const userCartId = await this.#getUserCartId(userId)
+      if (!userCartId) return null
 
       await this.db.query('START TRANSACTION')
 
