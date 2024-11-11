@@ -1,7 +1,13 @@
 import { createApp } from '../app.js'
-import { ProductModel } from '../models/local-file-system/products.js'
-import { UserModel } from '../models/local-file-system/users.js'
+import { pool } from '../config/database.js'
+import { ProductModel } from '../models/database/products.js'
+import { UserModel } from '../models/database/users.js'
+import { CartModel } from '../models/database/carts.js'
+
+const productModel = new ProductModel(pool)
+const userModel = new UserModel(pool)
+const cartModel = new CartModel(pool)
 
 export const createTestApp = () => {
-  return createApp({ productModel: ProductModel, userModel: UserModel })
+  return createApp({ productModel, userModel, cartModel })
 }

@@ -142,7 +142,7 @@ export class CartModel {
 
       await this.db.query('START TRANSACTION')
 
-      try {
+      try { //! For now, only quantity can be updated
         await this.db.query(
           'UPDATE cart_items SET ? WHERE cart_id = ? AND inventory_id = ?',
           [updates, userCartId, productVariantId]

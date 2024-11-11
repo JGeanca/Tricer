@@ -1,5 +1,6 @@
 import request from 'supertest'
-import { createTestApp } from '../../servers/fs-test-server'
+// import { createTestApp } from '../../servers/fs-test-server'
+import { createTestApp } from '../../servers/db-test-server'
 import jwt from 'jsonwebtoken'
 
 const app = createTestApp()
@@ -10,7 +11,7 @@ const generateToken = (userId = 'test-user-id') => {
 
 //* Cart Routes
 describe('Users Cart Routes', () => {
-  const userID = "c26ff231-b599-4de1-ba3f-303fcc5bd824"
+  const userID = "9649a6c5-9f82-11ef-a417-e0d55e430678"
   const token = generateToken(userID)
 
   it('GET /carts should return the user cart', async () => {
@@ -28,8 +29,8 @@ describe('Users Cart Routes', () => {
     const product = {
       productId: "1",
       quantity: 1,
-      size: "M",
-      color: "black"
+      size: "S",
+      color: "blue"
     }
 
     const res = await request(app)
@@ -54,13 +55,12 @@ describe('Users Cart Routes', () => {
 
     const key = {
       productId: "1",
-      size: "M",
-      color: "black",
+      size: "S",
+      color: "blue",
     }
 
     const updates = {
       quantity: 10,
-      size: "XL",
     }
 
     const res = await request(app)
@@ -77,8 +77,8 @@ describe('Users Cart Routes', () => {
   it('DELETE /carts should remove a product from the user cart', async () => {
     const key = {
       productId: "1",
-      size: "XL",
-      color: "black",
+      size: "S",
+      color: "blue",
     }
 
     const res = await request(app)
@@ -132,7 +132,7 @@ describe('Users Cart Routes', () => {
   it('PUT /carts should return 404 if product does not exist', async () => {
     const key = {
       productId: "1",
-      size: "M",
+      size: "XL",
       color: "black",
     }
 

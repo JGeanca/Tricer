@@ -1,5 +1,6 @@
 import request from 'supertest'
-import { createTestApp } from '../../servers/fs-test-server'
+//import { createTestApp } from '../../servers/fs-test-server'
+import { createTestApp } from '../../servers/db-test-server'
 import jwt from 'jsonwebtoken'
 
 const app = createTestApp()
@@ -8,7 +9,6 @@ const generateToken = (userId = 'test-user-id') => {
   return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' })
 }
 
-//* Auth Routes
 describe('Users Auth Routes', () => {
 
   it('POST /users/login should authenticate a valid user by username', async () => {
