@@ -6,10 +6,10 @@ const useCartStore = create((set, get) => ({
   isLoading: false,
   error: null,
 
-  fetchCart: async () => { 
+  fetchCart: async () => {
     set({ isLoading: true, error: null })
     try {
-      const response = await privateApi.get('/users/cart')
+      const response = await privateApi.get('/carts')
       set({ items: response.data.cart, isLoading: false })
     } catch (error) {
       set({ error: error.response?.data?.message || 'Error fetching cart', isLoading: false })
@@ -19,7 +19,7 @@ const useCartStore = create((set, get) => ({
   addToCart: async (product) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await privateApi.post('/users/cart', product)
+      const response = await privateApi.post('/carts', product)
       set({ items: response.data.cart, isLoading: false })
     } catch (error) {
       set({ error: error.response?.data?.message || 'Error adding to cart', isLoading: false })
@@ -29,7 +29,7 @@ const useCartStore = create((set, get) => ({
   updateCartItem: async (productInfo) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await privateApi.put(`/users/cart/${productInfo.key.productId}`, productInfo)
+      const response = await privateApi.put(`/carts/${productInfo.key.productId}`, productInfo)
       set({ items: response.data.cart, isLoading: false })
     } catch (error) {
       set({ error: error.response?.data?.message || 'Error updating cart', isLoading: false })
@@ -39,10 +39,10 @@ const useCartStore = create((set, get) => ({
   removeFromCart: async (productKey) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await privateApi.delete(`/users/cart/${productKey.key.productId}`, {
+      const response = await privateApi.delete(`/carts/${productKey.key.productId}`, {
         data: productKey
       })
-      
+
       set({ items: response.data.cart, isLoading: false })
     } catch (error) {
       set({ error: error.response?.data?.message || 'Error removing from cart', isLoading: false })
@@ -52,7 +52,7 @@ const useCartStore = create((set, get) => ({
   clearCart: async () => {
     set({ isLoading: true, error: null })
     try {
-      const response = await privateApi.delete('/users/cart')
+      const response = await privateApi.delete('/carts')
       set({ items: response.data.cart, isLoading: false })
     } catch (error) {
       set({ error: error.response?.data?.message || 'Error cleaning cart', isLoading: false })

@@ -37,7 +37,7 @@ export default function ProductDetailsPage() {
   const handleAddToCart = async (itemId, quantity, size, color) => {
     try {
       await addToCart({
-        productId: Number(itemId),
+        productId: itemId,
         size,
         color,
         quantity

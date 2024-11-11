@@ -1,13 +1,14 @@
 import express, { json } from 'express'
 import { createProductsRouter } from './routes/products.js'
 import { createUsersRouter } from './routes/users.js'
+import { createCartsRouter } from './routes/carts.js'
 import { mainRouter } from './routes/main.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import logger from 'morgan'
 import cors from 'cors'
 import dotenv from 'dotenv'
 
-export const createApp = ({ productModel, userModel }) => {
+export const createApp = ({ productModel, userModel, cartModel }) => {
   dotenv.config()
   const app = express()
   app.use(logger('dev'))
@@ -19,6 +20,7 @@ export const createApp = ({ productModel, userModel }) => {
   app.use('/', mainRouter)
   app.use('/products', createProductsRouter({ productModel }))
   app.use('/users', createUsersRouter({ userModel }))
+  app.use('/carts', createCartsRouter({ cartModel }))
 
   return app
 }

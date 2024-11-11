@@ -7,16 +7,10 @@
       "password": "$2b$10$KSFtGpo/X12q2N4FTtfH0uZfVaODMDPrc814tzvkJ2lDXIBkA6shG",
       "cart": [
         {
-          "productId": "7",
-          "size": "S",
-          "color": "pink",
-          "quantity": 1
-        },
-        {
           "productId": "9",
           "size": "S",
           "color": "black",
-          "quantity": 1
+          "quantity": 5
         }
       ]
     },

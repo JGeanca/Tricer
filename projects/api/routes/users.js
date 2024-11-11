@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { UserController } from '../controllers/users.js'
-import { authMiddleware } from '../middlewares/tokenValidation.js'
 
 export const createUsersRouter = ({ userModel }) => {
   const usersRouter = Router()
@@ -10,12 +9,6 @@ export const createUsersRouter = ({ userModel }) => {
   usersRouter.post('/register', userController.register)
   usersRouter.post('/login', userController.login)
   usersRouter.post('/google-auth', userController.googleAuth)
-
-  usersRouter.get('/cart', authMiddleware, userController.getCart)
-  usersRouter.post('/cart', authMiddleware, userController.addToCart)
-  usersRouter.delete('/cart/:productId', authMiddleware, userController.removeFromCart)
-  usersRouter.delete('/cart', authMiddleware, userController.cleanCart)
-  usersRouter.put('/cart/:productId', authMiddleware, userController.updateCartItem)
 
   return usersRouter
 }

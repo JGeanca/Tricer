@@ -1,5 +1,4 @@
 import { readJSON } from '../../utils.js'
-
 const { products } = readJSON('./repositories/products.json')
 
 export class ProductModel {
