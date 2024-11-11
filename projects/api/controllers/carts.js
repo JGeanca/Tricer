@@ -20,6 +20,7 @@ export class CartController {
       }
       return res.json({ cart })
     } catch (error) {
+      console.error("[getCart]:", error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
@@ -40,6 +41,7 @@ export class CartController {
       }
       return res.status(201).json({ message: 'Product added to cart', cart })
     } catch (error) {
+      console.error("[addToCart]:", error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
@@ -60,6 +62,7 @@ export class CartController {
       }
       return res.json({ message: 'Product removed from cart', cart })
     } catch (error) {
+      console.error("[removeFromCart]:", error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
@@ -83,7 +86,7 @@ export class CartController {
 
       return res.json({ message: 'Cart item updated', cart })
     } catch (error) {
-      console.error("Error in updateCartItem controller:", error.message)
+      console.error("[updateCartItem]:", error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
@@ -102,6 +105,7 @@ export class CartController {
       }
       return res.json({ message: 'Cart has been cleaned', cart })
     } catch (error) {
+      console.error("[cleanCart]:", error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }

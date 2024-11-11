@@ -13,7 +13,7 @@ export class UserModel {
         hashedPass = await bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS, 10))
       }
 
-      await this.db.query('START TRANSACTION');
+      await this.db.query('START TRANSACTION')
       await this.db.query(
         'INSERT INTO users (id, username, email, password) VALUES (UUID(), ?, ?, ?)',
         [username, email, hashedPass]
@@ -37,9 +37,8 @@ export class UserModel {
       return { id: newUser[0].id, username, email }
 
     } catch (error) {
-      await this.db.query('ROLLBACK');
-      console.error('[Create]: ', error);
-      throw error;
+      await this.db.query('ROLLBACK')
+      throw error
     }
   }
 

@@ -24,6 +24,7 @@ export class UserController {
       const token = signToken(newUser)
       return res.status(201).json({ message: 'User created successfully', token })
     } catch (error) {
+      console.error('[register]:', error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
@@ -42,6 +43,7 @@ export class UserController {
       const token = signToken(user)
       return res.json({ message: 'Login successful', token })
     } catch (error) {
+      console.error('[login]:', error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
@@ -68,7 +70,7 @@ export class UserController {
 
       return res.json({ message: 'Google login successful', token })
     } catch (error) {
-      console.error('Error during Google login:', error)
+      console.error('Error during Google login:', error.message)
       return res.status(500).json({ message: 'Internal server error' })
     }
   }

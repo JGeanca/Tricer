@@ -66,7 +66,6 @@ export class ProductModel {
       const [products] = await this.db.query(query, values)
       return products.map(product => this.#formatProduct(product))
     } catch (error) {
-      console.error('Error in getAll:', error)
       throw error
     }
   }
@@ -77,7 +76,6 @@ export class ProductModel {
       const [products] = await this.db.query(query, [id])
       return this.#formatProduct(products[0])
     } catch (error) {
-      console.error('Error in getById:', error)
       throw error
     }
   }
@@ -97,6 +95,11 @@ export class ProductModel {
         ORDER BY pi.size, pi.color
       `
       const [stock] = await this.db.query(query, [id])
+
+      if (!stock.length) {
+        throw new Error('Product not found')
+      }
+
       return {
         product_id: stock[0].product_id.toString(),
         title: stock[0].title,
@@ -108,7 +111,6 @@ export class ProductModel {
         total_stock: stock.reduce((sum, item) => sum + item.stock, 0)
       }
     } catch (error) {
-      console.error('Error in getStock:', error)
       throw error
     }
   }

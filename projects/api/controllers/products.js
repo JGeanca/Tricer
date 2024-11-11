@@ -3,26 +3,36 @@ export class ProductController {
     this.productModel = productModel
   }
 
-  //* We assume that the logic if the request returns a empty array is handled in
-  //* the frontend
-  //* But we can handle 404 errors if the product is not found
-  // TODO: Make the model return the error but the result too for more robustness
-
   getAll = async (req, res) => {
-    const { gender, type, new: isNew } = req.query
-    const products = await this.productModel.getAll({ gender, type, isNew })
-    res.json(products)
+    try {
+      const { gender, type, new: isNew } = req.query
+      const products = await this.productModel.getAll({ gender, type, isNew })
+      return res.json(products)
+    } catch (error) {
+      console.error('[getAll]:', error.message)
+      res.status(500).json({ message: 'Internal server error' })
+    }
   }
 
   getById = async (req, res) => {
-    const { id } = req.params
-    const product = await this.productModel.getById({ id })
-    return res.json(product)
+    try {
+      const { id } = req.params
+      const product = await this.productModel.getById({ id })
+      return res.json(product)
+    } catch (error) {
+      console.error('[getById]:', error.message)
+      return res.status(500).json({ message: 'Internal server error' })
+    }
   }
 
   getStock = async (req, res) => {
-    const { id } = req.params
-    const stock = await this.productModel.getStock({ id })
-    return res.json(stock)
+    try {
+      const { id } = req.params
+      const stock = await this.productModel.getStock({ id })
+      return res.json(stock)
+    } catch (error) {
+      console.error('[getStock]:', error.message)
+      return res.status(500).json({ message: 'Internal server error' })
+    }
   }
 }
