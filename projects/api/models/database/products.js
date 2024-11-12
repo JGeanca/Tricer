@@ -43,18 +43,32 @@ export class ProductModel {
       const conditions = []
 
       if (gender) {
+        const validGenders = ['men', 'women']
+        const lowerCaseGender = gender.toLowerCase()
+
+        if (!validGenders.includes(lowerCaseGender)) {
+          throw new Error('Invalid gender value')
+        }
         conditions.push('p.gender = ?')
-        values.push(gender)
+        values.push(lowerCaseGender)
       }
 
       if (type) {
+        const validTypes = ['footwear', 'clothing', 'accessories']
+        const lowerCaseType = type.toLowerCase()
+
+        if (!validTypes.includes(lowerCaseType)) {
+          throw new Error('Invalid type value')
+        }
+
         conditions.push('p.type = ?')
-        values.push(type)
+        values.push(lowerCaseType)
       }
 
-      if (isNew) {
+      if (isNew !== undefined) {
+        const lowerCaseIsNew = isNew.toLowerCase()
         conditions.push('p.is_new = ?')
-        values.push(isNew === 'true' ? 1 : 0)
+        values.push(lowerCaseIsNew === 'true' ? 1 : 0)
       }
 
       if (conditions.length) {
