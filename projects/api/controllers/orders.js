@@ -16,13 +16,11 @@ export class OrderController {
 
       return res.status(201).json({ message: 'Order created successfully', order })
     } catch (error) {
-      console.error('[createOrder]:', error.message)
 
       if (error.code === 'ER_CHECK_CONSTRAINT_VIOLATED') {
-        return res.status(409).json({
-          message: 'Insufficient stock for one or more products'
-        })
-      }
+        return res.status(409).json({ message: 'Insufficient stock for one or more products' })
+      } else console.error('[createOrder]:', error.message)
+
       return res.status(500).json({ message: 'Internal server error' })
     }
   }

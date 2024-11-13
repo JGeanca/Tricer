@@ -58,6 +58,10 @@ describe('Orders Routes', () => {
     })
 
     it('POST /orders should create an order', async () => {
+      await cleanupOrderAndCart(userID, createdOrderId)
+      createdOrderId = null
+      await setupCart(userID)
+
       const res = await request(app)
         .post('/orders')
         .set('Authorization', `Bearer ${token}`)
