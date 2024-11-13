@@ -16,6 +16,7 @@ export class OrderModel {
 
   async getOrderById({ orderId, userId }) {
     try {
+      console.log('orderId', orderId)
       const [orderResult] = await this.db.query(
         `SELECT * FROM orders WHERE id = ? AND user_id = ?`,
         [orderId, userId]

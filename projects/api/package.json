@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "start:local": "node --watch servers/fs-server.js",
-    "start:db": "node --watch servers/db-server.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "start:db": "node servers/db-server.js",
+    "test": "NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:watch": "jest --watch"
   },
   "keywords": [],
