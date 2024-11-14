@@ -130,6 +130,8 @@ const AddressFields = () => {
           id="floatingPhone"
           placeholder="Phone"
           name="phone"
+          minLength="8"
+          maxLength="8"
           required
         />
         <label htmlFor="floatingPhone">Phone</label>
@@ -139,7 +141,48 @@ const AddressFields = () => {
   )
 }
 
-export const PaymentForm = ({ expiryDate, handleExpiryChange }) => {
+export const PaymentForm = ({ expiryDate, setExpiryDate }) => {
+  const formatExpiryDate = (input) => {
+    if (input.length > 2) {
+      return `${input.slice(0, 2)} / ${input.slice(2, 4)}`
+    }
+    return input
+  }
+
+  const validateExpiryDate = (month, year) => {
+    const currentDate = new Date()
+    const currentYear = currentDate.getFullYear().toString().slice(2)
+    const currentMonth = currentDate.getMonth() + 1
+
+    return !(year < currentYear || (year === currentYear && month < currentMonth))
+  }
+
+  const handleExpiryChange = (e) => {
+    const input = e.target.value.replace(/[^0-9]/g, '')
+    const formattedValue = formatExpiryDate(input)
+    setExpiryDate(formattedValue)
+
+    const errorMessageElement = document.getElementById('expiry-error-message')
+
+    if (formattedValue.length === 7) {
+      const [month, year] = formattedValue.split(' / ')
+
+      const isValid = validateExpiryDate(month, year)
+
+      if (!isValid) {
+        e.target.setCustomValidity('Card has expired')
+        if (errorMessageElement) {
+          errorMessageElement.textContent = 'Card has expired'
+        }
+      } else {
+        e.target.setCustomValidity('')
+        if (errorMessageElement) {
+          errorMessageElement.textContent = 'Please provide a valid expiration date (MM / YY)'
+        }
+      }
+    }
+  }
+
   return (
     <div className="checkout-section payment-section">
       <h3>Payment Method</h3>
@@ -164,11 +207,15 @@ export const PaymentForm = ({ expiryDate, handleExpiryChange }) => {
             placeholder="MM / YY"
             value={expiryDate}
             onChange={handleExpiryChange}
-            pattern="^(0[1-9]|1[0-2]) / [0-9]{4}$"
+            pattern="^(0[1-9]|1[0-2]) / [0-9]{2}$"
             required
           />
           <label htmlFor="expiry-date">Expiration date (MM / YY)</label>
-          <div className="invalid-feedback">Please provide a valid expiration date (MM / YY).</div>
+          <div className="invalid-feedback">
+            <span id="expiry-error-message">
+              Please provide a valid expiration date (MM / YY)
+            </span>
+          </div>
         </div>
 
         <div className="form-floating mb-3">
@@ -178,7 +225,7 @@ export const PaymentForm = ({ expiryDate, handleExpiryChange }) => {
             inputMode="numeric"
             className="form-control"
             placeholder="CVV"
-            pattern="^[0-9]*{3,4}$"
+            pattern="^[0-9]{3,4}$"
             maxLength={4}
             required
           />
@@ -192,10 +239,10 @@ export const PaymentForm = ({ expiryDate, handleExpiryChange }) => {
           type="text"
           id="card-name"
           className="form-control"
-          placeholder="Cardholder Name"
+          placeholder="Card Holder Name"
           required
         />
-        <label htmlFor="card-name">Cardholder Name</label>
+        <label htmlFor="card-name">Card Holder Name</label>
       </div>
     </div>
   )

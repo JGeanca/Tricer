@@ -37,18 +37,6 @@ export default function CheckoutPage() {
     })
   }, [])
 
-  const handleExpiryChange = (e) => {
-    const input = e.target.value.replace(/[^0-9]/g, '') // Remove non-numeric characters
-    let formattedValue = ''
-
-    if (input.length > 2) {
-      formattedValue = `${input.slice(0, 2)} / ${input.slice(2, 4)}`
-    } else if (input.length > 0) {
-      formattedValue = input
-    }
-
-    setExpiryDate(formattedValue)
-  }
 
   const handlePaymentSuccess = () => {
     setShowModal(true)
@@ -69,7 +57,7 @@ export default function CheckoutPage() {
           <DeliveryForm />
           <PaymentForm
             expiryDate={expiryDate}
-            handleExpiryChange={handleExpiryChange}
+            setExpiryDate={setExpiryDate}
           />
           <button type="submit" className="checkout-button">
             Pay now
