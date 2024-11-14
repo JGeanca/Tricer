@@ -116,6 +116,7 @@ const AddressFields = () => {
             placeholder="Postal Code"
             name="postalCode"
             style={{ appearance: 'none', MozAppearance: 'textfield' }}
+            required
           />
           <label htmlFor="floatingInputPostalCode">Postal Code</label>
           <div className="invalid-feedback">Please provide a valid postal code.</div>
@@ -160,7 +161,7 @@ export const PaymentForm = ({ expiryDate, handleExpiryChange }) => {
             type="text"
             id="expiry-date"
             className="form-control"
-            placeholder="MM / YYYY"
+            placeholder="MM / YY"
             value={expiryDate}
             onChange={handleExpiryChange}
             pattern="^(0[1-9]|1[0-2]) / [0-9]{4}$"
@@ -172,11 +173,13 @@ export const PaymentForm = ({ expiryDate, handleExpiryChange }) => {
 
         <div className="form-floating mb-3">
           <input
-            type="tel"
+            type="text"
             id="cvv"
+            inputMode="numeric"
             className="form-control"
             placeholder="CVV"
-            pattern="^\d{3,4}$"
+            pattern="^[0-9]*{3,4}$"
+            maxLength={4}
             required
           />
           <label htmlFor="cvv">CVV</label>

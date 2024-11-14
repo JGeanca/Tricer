@@ -19,19 +19,21 @@ export default function CheckoutPage() {
 
   // Hook to handle form validation
   useEffect(() => {
+    // Select all forms that need validation
     const forms = document.querySelectorAll('.needs-validation')
 
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener('submit', function (event) {
+    // Loop through each form and add an event listener to handle form submission
+    forms.forEach(form => {
+      form.addEventListener('submit', event => {
+        event.preventDefault() // Prevent default form submission
+        // Check if the form is valid (all validation rules are satisfied)
         if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        } else {
-          event.preventDefault()
+          event.stopPropagation() // Stop the event from propagating (this means the form won't be submitted)
+        } else { // If the form is valid, handle payment success
           handlePaymentSuccess()
         }
-        form.classList.add('was-validated')
-      }, false)
+        form.classList.add('was-validated') // Add the 'was-validated' class to show validation feedback
+      })
     })
   }, [])
 
