@@ -14,7 +14,7 @@ export default function CheckoutPage() {
   const [expiryDate, setExpiryDate] = useState('')
   const [showModal, setShowModal] = useState(false)
 
-  // Hook para manejar la validación del formulario
+  // Hook to handle form validation
   useEffect(() => {
     const forms = document.querySelectorAll('.needs-validation')
 
@@ -33,7 +33,7 @@ export default function CheckoutPage() {
   }, [])
 
   const handleExpiryChange = (e) => {
-    const input = e.target.value.replace(/[^0-9]/g, '') // Eliminar caracteres no numéricos
+    const input = e.target.value.replace(/[^0-9]/g, '') // Remove non-numeric characters
     let formattedValue = ''
 
     if (input.length > 2) {
@@ -71,35 +71,35 @@ export default function CheckoutPage() {
             <h3>Delivery</h3>
 
             <div className="form-floating mb-3">
-              <select className="form-select" name="pais" required>
+              <select className="form-select" name="country" required>
                 <option value="CR">Costa Rica</option>
               </select>
-              <label htmlFor="pais">Country</label>
+              <label htmlFor="country">Country</label>
               <div className="invalid-feedback"> Please select your country.</div>
             </div>
 
             <div className="form-row">
               <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingNombre" placeholder="Nombre" name="nombre" required />
-                <label htmlFor="floatingNombre">First Name</label>
+                <input type="text" className="form-control" id="floatingFirstName" placeholder="First Name" name="firstName" required />
+                <label htmlFor="floatingFirstName">First Name</label>
                 <div className="invalid-feedback"> Please provide your first name. </div>
               </div>
               <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingApellido" placeholder="Apellido" name="apellido" required />
-                <label htmlFor="floatingApellido">Last Name</label>
+                <input type="text" className="form-control" id="floatingLastName" placeholder="Last Name" name="lastName" required />
+                <label htmlFor="floatingLastName">Last Name</label>
                 <div className="invalid-feedback"> Please provide your last name. </div>
               </div>
             </div>
 
             <div className="form-floating mb-3">
-              <input type="text" className="form-control" id="floatingInputDireccion" placeholder="Dirección" name="direccion" required />
-              <label htmlFor="floatingInputDireccion">Address</label>
+              <input type="text" className="form-control" id="floatingInputAddress" placeholder="Address" name="address" required />
+              <label htmlFor="floatingInputAddress">Address</label>
               <div className="invalid-feedback">Please provide a valid address.</div>
             </div>
 
             <div className="form-row">
               <div className="form-floating mb-3">
-                <select className="form-select" name="provincia" required>
+                <select className="form-select" name="province" required>
                   <option value="">Select a province</option>
                   <option value="CR-A">Alajuela</option>
                   <option value="CR-C">Cartago</option>
@@ -109,26 +109,26 @@ export default function CheckoutPage() {
                   <option value="CR-P">Puntarenas</option>
                   <option value="CR-S">San José</option>
                 </select>
-                <label htmlFor="provincia">Province</label>
+                <label htmlFor="province">Province</label>
                 <div className="invalid-feedback"> Please select a province.</div>
               </div>
 
               <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingInputCiudad" placeholder="Ciudad" name="ciudad" required />
-                <label htmlFor="floatingInputCiudad">City</label>
+                <input type="text" className="form-control" id="floatingInputCity" placeholder="City" name="city" required />
+                <label htmlFor="floatingInputCity">City</label>
                 <div className="invalid-feedback"> Please provide a valid city. </div>
               </div>
 
               <div className="form-floating mb-3">
-                <input type="number" className="form-control" id="floatingInputCodigoPostal" placeholder="Código Postal" name="codigoPostal" style={{ appearance: 'none', MozAppearance: 'textfield' }} />
-                <label htmlFor="floatingInputCodigoPostal">Postal Code</label>
+                <input type="number" className="form-control" id="floatingInputPostalCode" placeholder="Postal Code" name="postalCode" style={{ appearance: 'none', MozAppearance: 'textfield' }} />
+                <label htmlFor="floatingInputPostalCode">Postal Code</label>
                 <div className="invalid-feedback"> Please provide a valid postal code. </div>
               </div>
             </div>
 
             <div className="form-floating mb-3">
-              <input type="tel" className="form-control" id="floatingCelular" placeholder="Cell Phone" name="celular" required />
-              <label htmlFor="floatingCelular">Phone</label>
+              <input type="tel" className="form-control" id="floatingPhone" placeholder="Phone" name="phone" required />
+              <label htmlFor="floatingPhone">Phone</label>
               <div className="invalid-feedback">Please provide a valid phone number.</div>
             </div>
           </div>
@@ -167,7 +167,8 @@ export default function CheckoutPage() {
       </form>
 
       {showModal && (
-        <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal fade show" style={{ display: 'block' }}
+          tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">

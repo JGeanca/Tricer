@@ -19,13 +19,13 @@ export default function CartSidebar({ show, onClose }) {
   }, [show, loadCart])
 
   const handleRemove = (itemId, size, color) => {
-    removeFromCart({ 
+    removeFromCart({
       key: { productId: itemId, size, color }
     })
   }
 
   const handleQuantityChange = (itemId, newQuantity, size, color) => {
-    updateCartItem({ 
+    updateCartItem({
       key: { productId: itemId, size, color },
       updates: { quantity: newQuantity }
     })
@@ -36,7 +36,7 @@ export default function CartSidebar({ show, onClose }) {
     onClose()
   }
 
-  const totalItems = getCartItemsCount() 
+  const totalItems = getCartItemsCount()
   const totalPrice = getCartTotal()
 
   return (
@@ -55,24 +55,25 @@ export default function CartSidebar({ show, onClose }) {
                 <h5 className="cart-item-title">{item.product.title}</h5>
                 <p className="cart-item-price">${item.product.price.toFixed(2)}</p>
                 <p className="cart-item-size">Size: {item.size}</p>
+                <p className="cart-item-size">Color: {item.color}</p>
                 <div className="cart-item-controls">
                   <div className="cart-item-quantity">
-                    <span 
-                      onClick={() => handleQuantityChange(item.productId, item.quantity - 1, item.size, item.color)} 
-                      className="quantity-button" 
+                    <span
+                      onClick={() => handleQuantityChange(item.productId, item.quantity - 1, item.size, item.color)}
+                      className="quantity-button"
                     >
                       -
                     </span>
                     <span className="quantity-number">{item.quantity}</span>
-                    <span 
-                      onClick={() => handleQuantityChange(item.productId, item.quantity + 1, item.size, item.color)} 
-                      className="quantity-button" 
+                    <span
+                      onClick={() => handleQuantityChange(item.productId, item.quantity + 1, item.size, item.color)}
+                      className="quantity-button"
                     >
                       +
                     </span>
                   </div>
-                  <span 
-                    onClick={() => handleRemove(item.productId, item.size, item.color)} 
+                  <span
+                    onClick={() => handleRemove(item.productId, item.size, item.color)}
                     className="cart-item-remove">
                     REMOVE
                   </span>
