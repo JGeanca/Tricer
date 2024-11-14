@@ -6,7 +6,10 @@ import useCartStore from '../stores/cartStore'
 
 export default function CartSidebar({ show, onClose }) {
   const navigate = useNavigate()
-  const { items, fetchCart, removeFromCart, updateCartItem, getCartTotal, getCartItemsCount } = useCartStore()
+  const {
+    items, fetchCart, removeFromCart, updateCartItem,
+    getCartTotal, getCartItemsCount
+  } = useCartStore()
 
   const loadCart = useCallback(() => {
     fetchCart()
