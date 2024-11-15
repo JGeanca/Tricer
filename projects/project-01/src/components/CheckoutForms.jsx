@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
+import debounce from 'lodash.debounce'
+import { cardService } from '../services/cardService'
 
 export const ContactForm = () => {
   return (
@@ -187,32 +189,46 @@ export const PaymentForm = ({ expiryDate, setExpiryDate }) => {
     }
   }
 
+  const validateCardBIN = async (numericInput, element, errorElement) => {
+    if (numericInput.length >= 6) {
+      const errorMessage = await cardService.validateBIN(numericInput)
+      element.setCustomValidity(errorMessage)
+      if (errorElement) {
+        errorElement.textContent = errorMessage || 'Please provide a valid card number'
+      }
+    }
+  }
+
+  const debouncedValidateCardBIN = useCallback(
+    debounce(validateCardBIN, 500), []
+  )
+
   const handleCardNumberChange = (e) => {
     const input = e.target.value
-
     const numericInput = input.replace(/[^0-9]/g, '') // Remove non-numeric characters
-
     const truncatedInput = numericInput.slice(0, 16) // Truncate to 16 digits
 
     const formattedNumber = truncatedInput.replace(/(\d{4})/g, '$1 ').trim() // Add spaces every 4 digits
-    console.log(formattedNumber)
-    console.log(numericInput)
+
     setCardNumber(formattedNumber)
 
     const errorMessageElement = document.getElementById('card-error-message')
-    console.log('THIS IS:', numericInput.length)
     if (numericInput.length < 13 || numericInput.length > 16) {
       e.target.setCustomValidity('Card number must be between 13 and 16 digits')
       if (errorMessageElement) {
         errorMessageElement.textContent = 'Card number must be between 13 and 16 digits'
       }
-    } else {
-      e.target.setCustomValidity('')
-      if (errorMessageElement) {
-        errorMessageElement.textContent = 'Please provide a valid card number'
-      }
+
+      return
     }
+    debouncedValidateCardBIN(numericInput, e.target, errorMessageElement)
   }
+
+  useEffect(() => {
+    return () => {
+      debouncedValidateCardBIN.cancel()
+    }
+  }, [debouncedValidateCardBIN])
 
   return (
     <div className="checkout-section payment-section">
