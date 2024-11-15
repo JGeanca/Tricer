@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 export const ContactForm = () => {
   return (
     <div className="checkout-section">
@@ -142,6 +144,8 @@ const AddressFields = () => {
 }
 
 export const PaymentForm = ({ expiryDate, setExpiryDate }) => {
+  const [cardNumber, setCardNumber] = useState('')
+
   const formatExpiryDate = (input) => {
     if (input.length > 2) {
       return `${input.slice(0, 2)} / ${input.slice(2, 4)}`
@@ -183,6 +187,33 @@ export const PaymentForm = ({ expiryDate, setExpiryDate }) => {
     }
   }
 
+  const handleCardNumberChange = (e) => {
+    const input = e.target.value
+
+    const numericInput = input.replace(/[^0-9]/g, '') // Remove non-numeric characters
+
+    const truncatedInput = numericInput.slice(0, 16) // Truncate to 16 digits
+
+    const formattedNumber = truncatedInput.replace(/(\d{4})/g, '$1 ').trim() // Add spaces every 4 digits
+    console.log(formattedNumber)
+    console.log(numericInput)
+    setCardNumber(formattedNumber)
+
+    const errorMessageElement = document.getElementById('card-error-message')
+    console.log('THIS IS:', numericInput.length)
+    if (numericInput.length < 13 || numericInput.length > 16) {
+      e.target.setCustomValidity('Card number must be between 13 and 16 digits')
+      if (errorMessageElement) {
+        errorMessageElement.textContent = 'Card number must be between 13 and 16 digits'
+      }
+    } else {
+      e.target.setCustomValidity('')
+      if (errorMessageElement) {
+        errorMessageElement.textContent = 'Please provide a valid card number'
+      }
+    }
+  }
+
   return (
     <div className="checkout-section payment-section">
       <h3>Payment Method</h3>
@@ -193,9 +224,18 @@ export const PaymentForm = ({ expiryDate, setExpiryDate }) => {
           id="card-number"
           className="form-control"
           placeholder="Card Number"
+          pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{1,4}$"
+          value={cardNumber}
+          maxLength={19}
+          onChange={handleCardNumberChange}
           required
         />
         <label htmlFor="card-number">Card Number</label>
+        <div className="invalid-feedback">
+          <span id="card-error-message">
+            Please provide a valid card number (13-16 digits).
+          </span>
+        </div>
       </div>
 
       <div className="form-row">
