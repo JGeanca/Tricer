@@ -1,0 +1,77 @@
+.user-account-section {
+  position: absolute;
+  top: 85%;
+  right: 1%;
+  background-color: white;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.4);
+  padding: 2%;
+  width: 20%;
+  z-index: 1000;
+}
+
+.user-info-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-username {
+  font-size: x-large;
+  font-weight: bold;
+  margin: 0;
+}
+
+.profile-buttons-sections {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.profile-logout-button {
+  padding: 0.5rem 1.5rem !important;
+  background-color: #f56565 !important;
+  border: none !important;
+  color: #ffffff !important;
+  border-radius: 25px !important;
+  font-weight: bold !important;
+  transition: background-color 0.3s !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  width: 70% !important;
+  text-align: center !important;
+}
+
+.profile-logout-button:hover {
+  background-color: #ffffff !important;
+  color: #f56565 !important;
+}
+
+.header-profile-button {
+  padding: 0.5rem 1.5rem;
+  background-color: #E6E6E6;
+  border-color: white;
+  color: #000000;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  width: 70%;
+  text-align: center;
+}
+
+.header-profile-button:hover {
+  background-color: #ffffff;
+  border-color: #e53e3e;
+  color: #5465FF;
+}

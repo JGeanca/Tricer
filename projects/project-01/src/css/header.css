@@ -87,6 +87,10 @@
   margin-left: 20px;
 }
 
+.header-profile-inner {
+  cursor: pointer !important;
+}
+
 .fixed-dropdown {
   display: flex !important;
   flex-direction: column !important;

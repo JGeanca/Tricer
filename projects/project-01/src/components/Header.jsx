@@ -1,14 +1,18 @@
 import { useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
 import { Link, useLocation } from 'react-router-dom'
 import { CartIcon, ShopTitle, ProfileIcon } from '../assets/Icons'
 import CartSidebar from './CartSidebar'
+import UserAccount from './UserAccount'
 import '../css/header.css'
 
 export default function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false)
   const [dropdownCategory, setDropdownCategory] = useState('')
   const [showCart, setShowCart] = useState(false)
+  const [showUserProfile, setShowUserProfile] = useState(false)
   const location = useLocation()
+  const { isAuthenticated } = useAuth()
   let timeoutId
 
   const handleMouseEnter = (category) => {
@@ -26,6 +30,14 @@ export default function Header() {
 
   const isActiveLink = (path, category) => {
     return location.pathname.startsWith(path) || dropdownCategory === category
+  }
+
+  const handleMouseEnterProfile = () => {
+    setShowUserProfile(true)
+  }
+
+  const handleMouseLeaveProfile = () => {
+    setShowUserProfile(false)
   }
 
   const handleShowCart = () => setShowCart(true)
@@ -72,9 +84,20 @@ export default function Header() {
           <div className="header-cart" onClick={handleShowCart}>
             <CartIcon />
           </div>
-          <Link to="/Profile" className="header-profile">
-            <ProfileIcon />
-          </Link>
+          <div className="header-profile" onMouseEnter={handleMouseEnterProfile} onMouseLeave={handleMouseLeaveProfile}>
+            {isAuthenticated ? (
+              <>
+                <div className="header-profile-inner">
+                  <ProfileIcon className="header-profile-inner" />
+                </div>
+                {showUserProfile && <UserAccount />}
+              </>
+            ) : (
+              <Link to="/Profile" className="header-profile-inner">
+                <ProfileIcon />
+              </Link>
+            )}
+          </div>
         </div>
       </nav>
 
