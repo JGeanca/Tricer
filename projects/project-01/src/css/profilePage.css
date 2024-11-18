@@ -2,24 +2,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 85vh;
-  background-color: #f7fafc;
+  height: 15%;
+  flex-direction: row;
 }
 
 .profile-card {
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 28rem;
-  width: 100%;
+  /*background-color: #ffffff;*/
+  display: flex;
+  background-color: #f7fafc;
+  padding: 1rem;
+  margin: 1%;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .profile-avatar-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  width: 15%;
 }
 
 .profile-avatar {
@@ -30,30 +34,98 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.user-data-container {
+  width: 25%;
+}
+
 .profile-username {
-  font-size: 1.875rem;
-  font-weight: 600;
-  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: left;
 }
 
-.logout-button-container {
-  margin-top: 1.5rem;
+.profile-email {
+  font-size: larger;
+  font-weight: bold;
+  text-align: left;
+}
+
+.profile-buttons-containers {
   display: flex;
+  width: 25%;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.logout-button {
-  padding: 0.5rem 1.5rem;
-  background-color: #f56565;
+.extra-container {
+  width: 25%;
+}
+
+.group-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-checkout-button {
+  padding: 8px 15px;
+  background-color: #6D7993;
   color: #ffffff;
-  border-radius: 9999px;
-  font-weight: 600;
+  border-radius: 25px;
+  font-weight: bold;
   transition: background-color 0.3s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  margin: 5px;
 }
 
-.logout-button:hover {
+.profile-checkout-button:hover {
+  background-color: #ffffff;
+  border-color: #5465FF;
+  color: #5465FF;
+}
+
+.user-logout-button {
+  padding: 8px 15px;
+  background-color: #f56565;
+  color: #ffffff;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  margin: 5px;
+}
+
+.user-logout-button:hover {
   background-color: #ffffff;
   border-color: #e53e3e;
   color: #f56565;
+}
+
+.purchase-history-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.purchase-history-title {
+  margin: 1%;
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: Elephant !important;
+}
+
+.purchases-section {
+  display: flex;
+  background-color: #f7fafc;
+  padding: 1rem;
+  border-radius: 25px 25px 0px 0px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  flex-direction: column;
 }
