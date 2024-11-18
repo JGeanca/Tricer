@@ -3,14 +3,14 @@
     "",
     "\\projects",
     "\\projects\\api",
-    "\\projects\\api\\controllers",
-    "\\projects\\api\\repositories",
-    "\\projects\\api\\routes",
+    "\\projects\\api\\models",
+    "\\projects\\api\\models\\database",
     "\\projects\\project-01",
     "\\projects\\project-01\\src",
     "\\projects\\project-01\\src\\components",
-    "\\projects\\project-01\\src\\services"
+    "\\projects\\project-01\\src\\css",
+    "\\projects\\project-01\\src\\stores"
   ],
-  "SelectedNode": "\\projects\\project-01\\src\\pages\\LoginPage.jsx",
+  "SelectedNode": "\\projects\\project-01\\src\\stores\\cartStore.js",
   "PreviewInSolutionExplorer": false
 }

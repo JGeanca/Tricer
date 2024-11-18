@@ -1,12 +1,15 @@
 import { useAuth } from '../hooks/useAuth'
 import profileIcon from '../assets/icons/profile.svg'
+import { useNavigate } from 'react-router-dom'
 import { useFeedback } from '../hooks/useFeedback'
+import PurchaseCard from '../components/PurchaseCard'
 
 import '../css/profilePage.css'
 
 export default function ProfilePage() {
   const { user, logout } = useAuth()
   const { showError, showSuccess } = useFeedback()
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
     try {
@@ -17,6 +20,11 @@ export default function ProfilePage() {
     }
   }
 
+  const handleCheckout = () => {
+    navigate('/checkout')
+  }
+
+  console.log(user)
   return (
     <>
       <div className="profile-container">
@@ -33,14 +41,15 @@ export default function ProfilePage() {
               {user.username}
             </div>
             <h2 className="profile-email">
-              {user.username}
+              {user.email}
+              No se está mostrando el email
             </h2>
           </div>
           {/*<div className="extra-container"></div>*/}
           <div className="profile-buttons-containers">
             <div className="group-button-container">
               <button
-                onClick={handleLogout}
+                onClick={handleCheckout}
                 className="profile-checkout-button"
               >
                 Checkout
@@ -59,9 +68,11 @@ export default function ProfilePage() {
         <div className="purchase-history-title">
           Purchase history
         </div>
-        <div className="purchases-section">
-          
-        </div>
+        {/*<div className="purchases-section">*/}
+        {/*  {productsPurchased.map((productPurchased) => (*/}
+        {/*     <PurchaseCard/>*/}
+        {/*  ))}*/}
+        {/*</div>*/}
       </div>
     </>
   )
