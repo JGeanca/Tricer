@@ -1,9 +1,11 @@
-import { publicApi } from './apiConfig';
+import { privateApi } from './apiConfig';
 
 export const orderService = {
-  async fetchOrders({ id }) {
+  async fetchOrders() {
     try {
-      const response = await publicApi.get(`/orders`, { params: { id } });
+      const response = await privateApi.get(`orders`);
+      console.log("Test 1");
+      console.log(response);
       return response.data;
     } catch (error) {
       console.error('[fetchOrders]:', error.message);
@@ -11,9 +13,9 @@ export const orderService = {
     }
   },
 
-  async fetchOrdersById({ orderId, id }) {
+  async fetchOrdersById({orderId}) {
     try {
-      const response = await publicApi.get(`/orders/${orderId}`, { params: { id } });
+      const response = await privateApi.get(`/orders/${orderId}`);
       return response.data;
     } catch (error) {
       console.error('[fetchOrdersById]:', error.message);

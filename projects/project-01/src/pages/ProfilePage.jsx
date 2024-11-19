@@ -2,6 +2,7 @@ import { useAuth } from '../hooks/useAuth'
 import profileIcon from '../assets/icons/profile.svg'
 import { useNavigate } from 'react-router-dom'
 import { useFeedback } from '../hooks/useFeedback'
+import { useOrders } from '../hooks/useOrders'
 import PurchaseCard from '../components/PurchaseCard'
 
 import '../css/profilePage.css'
@@ -10,6 +11,7 @@ export default function ProfilePage() {
   const { user, logout } = useAuth()
   const { showError, showSuccess } = useFeedback()
   const navigate = useNavigate()
+  const { data: orders } = useOrders(user.userId)
 
   const handleLogout = async () => {
     try {
@@ -68,11 +70,14 @@ export default function ProfilePage() {
         <div className="purchase-history-title">
           Purchase history
         </div>
-        {/*<div className="purchases-section">*/}
-        {/*  {productsPurchased.map((productPurchased) => (*/}
-        {/*     <PurchaseCard/>*/}
-        {/*  ))}*/}
-        {/*</div>*/}
+        <div className="purchases-section">
+          {
+            orders && orders.length > 0 && (
+              orders.map((order, index) => (
+                <PurchaseCard key={index} order={ order } />
+            )))
+          }
+        </div>
       </div>
     </>
   )

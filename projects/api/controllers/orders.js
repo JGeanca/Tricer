@@ -31,7 +31,9 @@ export class OrderController {
       if (!result.success) {
         return res.status(422).json({ errors: JSON.parse(result.error.message) })
       }
-      const orders = await this.orderModel.getOrders(req.user)
+
+      const userId = req.user.userId
+      const orders = await this.orderModel.getOrders({ userId })
 
       if (!orders) {
         return res.status(404).json({ message: 'No orders found' })

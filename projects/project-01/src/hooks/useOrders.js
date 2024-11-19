@@ -1,7 +1,7 @@
 import { orderService } from '../services/orderService';
 import { useQuery } from '@tanstack/react-query';
 
-export const useUserOrders = (userId) => {
+export const useOrders = (userId) => {
   return useQuery({
     queryKey: ['userOrders', userId],
     queryFn: () => orderService.fetchOrders({ id: userId }),
@@ -10,7 +10,7 @@ export const useUserOrders = (userId) => {
   });
 };
 
-export const useUserOrder = (orderId, userId) => {
+export const useOrderById = (orderId, userId) => {
   return useQuery({
     queryKey: ['userOrder', orderId, userId],
     queryFn: () => orderService.fetchOrdersById({ orderId, id: userId }),

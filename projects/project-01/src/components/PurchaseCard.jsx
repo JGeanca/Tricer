@@ -1,11 +1,11 @@
 
 
-export default function PurchaseCard( product ) {
+export default function PurchaseCard(order) {
 
 
   return (
-    product && <div className="product-purchase">
-      { product.title }
+    order && <div className="product-purchase">
+      {order.title }
     </div>
   )
 }
