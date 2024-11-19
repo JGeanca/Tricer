@@ -11,7 +11,8 @@ export default function ProfilePage() {
   const { user, logout } = useAuth()
   const { showError, showSuccess } = useFeedback()
   const navigate = useNavigate()
-  const { data: orders } = useOrders(user.userId)
+  const { data } = useOrders(user.userId)
+  const orders = data?.orders || []
 
   const handleLogout = async () => {
     try {
@@ -26,7 +27,6 @@ export default function ProfilePage() {
     navigate('/checkout')
   }
 
-  console.log(user)
   return (
     <>
       <div className="profile-container">
@@ -43,11 +43,9 @@ export default function ProfilePage() {
               {user.username}
             </div>
             <h2 className="profile-email">
-              {user.email}
-              No se está mostrando el email
+              {user.email || "No se está mostrando el email"}
             </h2>
           </div>
-          {/*<div className="extra-container"></div>*/}
           <div className="profile-buttons-containers">
             <div className="group-button-container">
               <button
@@ -66,18 +64,23 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-      <div className="purchase-history-section">
-        <div className="purchase-history-title">
+      <div className="orders-history-section">
+        <div className="orders-history-title">
           Purchase history
         </div>
-        <div className="purchases-section">
-          {
-            orders && orders.length > 0 && (
-              orders.map((order, index) => (
-                <PurchaseCard key={index} order={ order } />
-            )))
-          }
-        </div>
+        {orders && (
+          orders.length > 0 ? (
+            <div className="orders-section">
+              {orders.map((order, index) => (
+                <PurchaseCard key={index} order={order} userId={user.userId} />
+              ))}
+            </div>
+          ) : (
+            <div className="empty-orders-section">
+              No orders made yet
+            </div>
+          )
+        )}
       </div>
     </>
   )

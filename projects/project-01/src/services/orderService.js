@@ -4,8 +4,6 @@ export const orderService = {
   async fetchOrders() {
     try {
       const response = await privateApi.get(`orders`);
-      console.log("Test 1");
-      console.log(response);
       return response.data;
     } catch (error) {
       console.error('[fetchOrders]:', error.message);

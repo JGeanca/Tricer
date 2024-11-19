@@ -106,21 +106,22 @@
   color: #f56565;
 }
 
-.purchase-history-section {
+.orders-history-section {
+  margin: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.purchase-history-title {
+.orders-history-title {
   margin: 1%;
   font-size: xx-large;
   font-weight: bold;
   font-family: Elephant !important;
 }
 
-.purchases-section {
+.orders-section {
   display: flex;
   background-color: #f7fafc;
   padding: 1rem;
@@ -128,4 +129,10 @@
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   flex-direction: column;
+}
+
+.empty-orders-section {
+  font-size: larger;
+  font-weight: normal;
+  color: slategray;
 }

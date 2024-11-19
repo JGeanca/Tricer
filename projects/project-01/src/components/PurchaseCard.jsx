@@ -1,11 +1,18 @@
+import { useOrderById } from '../hooks/useOrders'
 
+export default function PurchaseCard({ order, userId }) {
 
-export default function PurchaseCard(order) {
+  const orderId = order.orderId
 
+  const { data } = useOrderById(orderId, userId)
+  const orderData = data?.order || []
 
+  
   return (
-    order && <div className="product-purchase">
-      {order.title }
+    orderData && <div className="product-purchase">
+      {orderData.createdAt}
+      {orderData.status}
+      {orderData.totalAmount}
     </div>
   )
 }
