@@ -3,7 +3,7 @@ import profileIcon from '../assets/icons/profile.svg'
 import { useNavigate } from 'react-router-dom'
 import { useFeedback } from '../hooks/useFeedback'
 import { useOrders } from '../hooks/useOrders'
-import PurchaseCard from '../components/PurchaseCard'
+import OrderCard from '../components/OrderCard'
 
 import '../css/profilePage.css'
 
@@ -66,13 +66,13 @@ export default function ProfilePage() {
       </div>
       <div className="orders-history-section">
         <div className="orders-history-title">
-          Purchase history
+          Orders history
         </div>
         {orders && (
           orders.length > 0 ? (
             <div className="orders-section">
               {orders.map((order, index) => (
-                <PurchaseCard key={index} order={order} userId={user.userId} />
+                <OrderCard key={index} order={order} userId={user.userId} />
               ))}
             </div>
           ) : (

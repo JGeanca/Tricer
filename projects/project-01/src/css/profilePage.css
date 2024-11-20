@@ -9,7 +9,7 @@
 .profile-card {
   /*background-color: #ffffff;*/
   display: flex;
-  background-color: #f7fafc;
+  background-color: #ffffff;
   padding: 1rem;
   margin: 1%;
   border-radius: 1rem;
@@ -17,6 +17,7 @@
   width: 50%;
   flex-direction: row;
   justify-content: space-evenly;
+  border: 2px solid #eee;
 }
 
 .profile-avatar-container {
@@ -123,12 +124,13 @@
 
 .orders-section {
   display: flex;
-  background-color: #f7fafc;
+  background-color: #ffffff;
   padding: 1rem;
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 25px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   flex-direction: column;
+  border: 2px solid #eee;
 }
 
 .empty-orders-section {

@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\projects",
-    "\\projects\\api",
-    "\\projects\\api\\models",
-    "\\projects\\api\\models\\database",
+    "\\projects\\api\\__tests__",
+    "\\projects\\api\\__tests__\\schemas",
     "\\projects\\project-01",
+    "\\projects\\project-01\\doc",
     "\\projects\\project-01\\src",
     "\\projects\\project-01\\src\\components",
     "\\projects\\project-01\\src\\css",
-    "\\projects\\project-01\\src\\stores"
+    "\\projects\\project-01\\src\\pages"
   ],
-  "SelectedNode": "\\projects\\project-01\\src\\stores\\cartStore.js",
+  "SelectedNode": "\\projects\\project-01\\src\\css\\profilePage.css",
   "PreviewInSolutionExplorer": false
 }

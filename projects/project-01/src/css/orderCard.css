@@ -1,0 +1,49 @@
+.card-header {
+  background-color: #FFFFFF !important;
+}
+
+.card-body {
+  background-color: #FFFFFF !important;
+}
+
+.order-primary-data {
+  font-size: larger;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+}
+
+.order-primary-data .col {
+  flex: 1; 
+  padding: 5px 10px;
+}
+
+.pending-color {
+  background-color: #FCFFC5;
+  border-radius: 15px;
+}
+
+.arrived-color {
+  background-color: #d4edda;
+  border-radius: 15px;
+}
+
+.lost-color {
+  background-color: #f8d7da;
+  border-radius: 15px;
+}
+
+.order-colapse-button {
+  padding: 8px 15px;
+  background-color: #FFFFFF;
+  color: #5465FF;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+  margin: 5px;
+  border-color: #5465FF;
+}
+
+.order-colapse-button:hover {
+  background-color: #5465FF;
+  color: #FFFFFF;
+}
