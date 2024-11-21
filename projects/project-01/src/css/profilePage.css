@@ -4,10 +4,10 @@
   align-items: center;
   height: 15%;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .profile-card {
-  /*background-color: #ffffff;*/
   display: flex;
   background-color: #ffffff;
   padding: 1rem;
@@ -85,8 +85,8 @@
 
 .profile-checkout-button:hover {
   background-color: #ffffff;
-  border-color: #5465FF;
-  color: #5465FF;
+  border-color: #6D7993;
+  color: #6D7993;
 }
 
 .user-logout-button {
@@ -137,4 +137,111 @@
   font-size: larger;
   font-weight: normal;
   color: slategray;
+}
+
+@media (max-width: 1440px) {
+  .profile-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .profile-card {
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-avatar-container {
+    width: 40%;
+  }
+
+  .user-data-container,
+  .profile-buttons-containers,
+  .extra-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .profile-username,
+  .profile-email {
+    font-size: large;
+    text-align: center;
+  }
+
+  .profile-checkout-button,
+  .user-logout-button {
+    width: 50%;
+  }
+}
+
+@media (max-width: 800px) {
+  .profile-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .profile-card {
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-avatar-container {
+    width: 40%;
+  }
+
+  .user-data-container,
+  .profile-buttons-containers,
+  .extra-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .profile-username,
+  .profile-email {
+    font-size: large;
+  }
+
+  .profile-checkout-button,
+  .user-logout-button {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-avatar {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .profile-username {
+    font-size: large;
+    text-align: center;
+  }
+
+  .profile-email {
+    font-size: medium;
+    text-align: center;
+  }
+
+  .profile-card {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .profile-checkout-button,
+  .user-logout-button {
+    width: 50%;
+    padding: 10px;
+  }
 }
