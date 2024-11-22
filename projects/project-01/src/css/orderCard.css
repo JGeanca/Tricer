@@ -4,6 +4,8 @@
 
 .card-body {
   background-color: #FFFFFF !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .order-primary-data {

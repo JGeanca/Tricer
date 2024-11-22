@@ -32,16 +32,12 @@ export default function Header() {
     return location.pathname.startsWith(path) || dropdownCategory === category
   }
 
-  const handleMouseEnterProfile = () => {
-    setShowUserProfile(true)
-  }
-
-  const handleMouseLeaveProfile = () => {
-    setShowUserProfile(false)
-  }
-
   const handleShowCart = () => setShowCart(true)
   const handleCloseCart = () => setShowCart(false)
+
+  const toggleUserProfile = () => {
+    setShowUserProfile((prev) => !prev)
+  }
 
   return (
     <header className="header-container">
@@ -84,7 +80,7 @@ export default function Header() {
           <div className="header-cart" onClick={handleShowCart}>
             <CartIcon />
           </div>
-          <div className="header-profile" onMouseEnter={handleMouseEnterProfile} onMouseLeave={handleMouseLeaveProfile}>
+          <div className="header-profile" onClick={toggleUserProfile}>
             {isAuthenticated ? (
               <>
                 <div className="header-profile-inner">

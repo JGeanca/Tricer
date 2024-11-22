@@ -3,6 +3,7 @@ import { useOrderById } from '../hooks/useOrders';
 import { Card, Button, Collapse } from 'react-bootstrap';
 import { capitalize } from '../utils/utils'
 import '../css/orderCard.css'
+import OrderProduct from './OrderProduct';
 
 export default function OrderCard({ order, userId }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,8 +46,9 @@ export default function OrderCard({ order, userId }) {
             className="order-colapse-button"
             onClick={(e) => {
               e.stopPropagation();
-              setIsOpen(!isOpen);
+              setTimeout(() => setIsOpen((prev) => !prev), 100);
             }}
+
             aria-controls={`collapse-${orderId}`}
             aria-expanded={isOpen}
           >
@@ -57,18 +59,7 @@ export default function OrderCard({ order, userId }) {
       </Card.Header>
       <Collapse in={isOpen}>
         <Card.Body id={`collapse-${orderId}`}>
-          <div className="mt-3">
-            <div className="order-products-title">More Details:</div>
-            <ul>
-              {orderData.items
-                ? orderData.items.map((item, index) => (
-                  <li key={index}>
-                    {item.name} - {item.quantity} x ${item.price}
-                  </li>
-                ))
-                : 'Loading items...'}
-            </ul>
-          </div>
+          <OrderProduct orderData={orderData} visible={ isOpen } />
         </Card.Body>
       </Collapse>
     </Card>
