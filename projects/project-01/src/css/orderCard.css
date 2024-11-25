@@ -4,7 +4,6 @@
 
 .card-body {
   background-color: #FFFFFF !important;
-  display: flex !important;
   justify-content: center !important;
 }
 
@@ -36,16 +35,37 @@
 }
 
 .order-colapse-button {
+  width: 25rem;
   padding: 8px 15px;
   background-color: #FFFFFF;
-  color: #5465FF;
+  color: #6D7993;
   border-radius: 25px;
   transition: background-color 0.3s;
   margin: 5px;
-  border-color: #5465FF;
+  border-color: #6D7993 !important;
 }
 
 .order-colapse-button:hover {
-  background-color: #5465FF;
+  background-color: #6D7993;
   color: #FFFFFF;
+}
+
+.order-colapse-button:active {
+  background-color: #6D7993 !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+@media (max-width: 768px) {
+  .order-primary-data {
+    font-size: medium;
+  }
+
+  .pending-color, .arrived-color, .lost-color {
+    font-size: medium;
+  }
+
+  .order-colapse-button {
+    width: 15rem;
+  }
 }

@@ -43,7 +43,7 @@ export default function ProfilePage() {
               {user.username}
             </div>
             <h2 className="profile-email">
-              {user.email || "No se está mostrando el email"}
+              {user.email || 'Not email found'}
             </h2>
           </div>
           <div className="profile-buttons-containers">

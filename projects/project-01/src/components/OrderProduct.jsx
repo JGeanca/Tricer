@@ -1,5 +1,5 @@
-import { capitalize } from '../utils/utils';
-import '../css/orderProduct.css';
+import { capitalize } from '../utils/utils'
+import '../css/orderProduct.css'
 
 export default function OrderProduct({ orderData, visible }) {
   return (
@@ -37,7 +37,7 @@ export default function OrderProduct({ orderData, visible }) {
                 </div>
               </div>
               <div className="order-product-images">
-                {item.images.slice(0, 3).map((image, idx) => (
+                {item.images.slice(0, 2).map((image, idx) => (
                   <img
                     key={idx}
                     src={image}
@@ -53,5 +53,5 @@ export default function OrderProduct({ orderData, visible }) {
         )}
       </div>
     )
-  );
+  )
 }
