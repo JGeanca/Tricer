@@ -1,57 +1,53 @@
 import '../css/checkout.css'
 import useCartStore from '../stores/cartStore'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFeedback } from '../hooks/useFeedback'
 import { ContactForm, DeliveryForm, PaymentForm } from '../components/CheckoutForms'
 import { SuccessModal } from '../components/SuccessModal'
 import { OrderSummary } from '../components/OrderSummary'
+import { paymentService } from '../services/paymentService'
 
 export default function CheckoutPage() {
-  const { items, getCartTotal, getCartItemsCount, clearCart } = useCartStore()
+  const { items, getCartTotal, getCartItemsCount } = useCartStore()
   const totalItems = getCartItemsCount()
   const totalPrice = getCartTotal()
   const navigate = useNavigate()
-  const { showSuccess } = useFeedback()
-
+  const { showSuccess, showError } = useFeedback()
   const [expiryDate, setExpiryDate] = useState('')
   const [showModal, setShowModal] = useState(false)
 
-  // Hook to handle form validation
-  useEffect(() => {
-    // Select all forms that need validation
-    const forms = document.querySelectorAll('.needs-validation')
+  const handleSubmit = (event) => {
+    event.preventDefault()
 
-    // Loop through each form and add an event listener to handle form submission
-    forms.forEach(form => {
-      form.addEventListener('submit', event => {
-        event.preventDefault() // Prevent default form submission
-        // Check if the form is valid (all validation rules are satisfied)
-        if (!form.checkValidity()) {
-          event.stopPropagation() // Stop the event from propagating (this means the form won't be submitted)
-        } else { // If the form is valid, handle payment success
-          handlePaymentSuccess()
-        }
-        form.classList.add('was-validated') // Add the 'was-validated' class to show validation feedback
-      })
-    })
-  }, [])
+    // Validate the form
+    if (!event.target.checkValidity()) {
+      event.target.classList.add('was-validated') // Show feedback using Bootstrap
+      return
+    }
 
+    if (totalItems === 0) {
+      showError('Your cart is empty')
+      return
+    }
 
-  const handlePaymentSuccess = () => {
-    setShowModal(true)
+    try {
+      paymentService.processPayment()
+      setShowModal(true)
+    } catch (error) {
+      showError(error.message || 'An error occurred')
+    }
   }
 
   const handleCloseModal = () => {
     setShowModal(false)
-    clearCart()
     showSuccess('Successful purchase')
     navigate('/')
   }
 
   return (
     <div className="checkout-container">
-      <form className="checkout-form needs-validation" noValidate>
+      <form className="checkout-form needs-validation" noValidate onSubmit={handleSubmit}>
         <div className="checkout-section">
           <ContactForm />
           <DeliveryForm />
@@ -64,9 +60,7 @@ export default function CheckoutPage() {
           </button>
         </div>
       </form>
-
       {showModal && <SuccessModal handleCloseModal={handleCloseModal} />}
-
       <OrderSummary items={items} totalItems={totalItems} totalPrice={totalPrice} />
     </div>
   )

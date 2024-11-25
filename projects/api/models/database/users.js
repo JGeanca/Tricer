@@ -60,14 +60,14 @@ export class UserModel {
 
   async verifyCredentials({ credential, password }) {
     const [user] = await this.db.query(
-      'SELECT * FROM users WHERE username = ? OR email = ?',
+      'SELECT id, username, email, password FROM users WHERE username = ? OR email = ?',
       [credential, credential]
     )
 
     if (!user.length) return null
 
     if (await bcrypt.compare(password, user[0].password)) {
-      return { id: user[0].id, username: user[0].username }
+      return { id: user[0].id, username: user[0].username, email: user[0].email }
     }
     return null
   }
@@ -77,12 +77,12 @@ export class UserModel {
     const sanitizedUsername = username.trim()
 
     const [user] = await this.db.query(
-      'SELECT * FROM users WHERE username = ? OR email = ?',
+      'SELECT id, username, email, password FROM users WHERE username = ? OR email = ?',
       [sanitizedUsername, sanitizedEmail]
     )
 
     if (!user.length) return null
 
-    return { id: user[0].id, username: user[0].username }
+    return { id: user[0].id, username: user[0].username, email: user[0].email }
   }
 }

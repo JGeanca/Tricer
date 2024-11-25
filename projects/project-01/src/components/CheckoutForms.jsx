@@ -148,11 +148,21 @@ const AddressFields = () => {
 export const PaymentForm = ({ expiryDate, setExpiryDate }) => {
   const [cardNumber, setCardNumber] = useState('')
 
-  const formatExpiryDate = (input) => {
-    if (input.length > 2) {
-      return `${input.slice(0, 2)} / ${input.slice(2, 4)}`
+  const formatExpiryDate = (value, previousValue) => {
+    // Remove any non-digit characters
+    let newValue = value.replace(/\D/g, '')
+
+    // Handle backspace when " / " is being deleted
+    if (previousValue && value.length < previousValue.length && previousValue.endsWith(' / ')) {
+      newValue = newValue.slice(0, -1)
     }
-    return input
+
+    // Format the string
+    if (newValue.length >= 2) {
+      return `${newValue.slice(0, 2)} / ${newValue.slice(2, 4)}`
+    }
+
+    return newValue
   }
 
   const validateExpiryDate = (month, year) => {
@@ -164,13 +174,16 @@ export const PaymentForm = ({ expiryDate, setExpiryDate }) => {
   }
 
   const handleExpiryChange = (e) => {
-    const input = e.target.value.replace(/[^0-9]/g, '')
-    const formattedValue = formatExpiryDate(input)
-    setExpiryDate(formattedValue)
+    const inputValue = e.target.value
+    const formattedValue = formatExpiryDate(inputValue, expiryDate)
+
+    if (formattedValue.length <= 7) {
+      setExpiryDate(formattedValue)
+    }
 
     const errorMessageElement = document.getElementById('expiry-error-message')
 
-    if (formattedValue.length === 7) {
+    if (formattedValue.match(/^\d{2} \/ \d{2}$/)) {
       const [month, year] = formattedValue.split(' / ')
 
       const isValid = validateExpiryDate(month, year)
