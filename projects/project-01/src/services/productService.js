@@ -14,5 +14,11 @@ export const productService = {
   async fetchProductById(id) {
     const response = await publicApi.get(`/products/${id}`)
     return response.data
+  },
+
+  async fetchProductStockById(id) {
+    const response = await publicApi.get(`/products/${id}/stock`)
+    console.log('API Response:', response.data)
+    return response.data
   }
 }

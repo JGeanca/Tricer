@@ -18,3 +18,12 @@ export const useProduct = (id) => {
     enabled: !!id, // Only fetch the product if the id is truthy.
   })
 }
+
+export const useProductStock = (id) => {
+  return useQuery({
+    queryKey: ['productStock', id],
+    queryFn: () => productService.fetchProductStockById(id),
+    staleTime: 1000 * 60 * 5, // 5 minutes -> The data will be considered stale after 5 minutes
+    enabled: !!id, // Only fetch the product if the id is truthy.
+  })
+}
