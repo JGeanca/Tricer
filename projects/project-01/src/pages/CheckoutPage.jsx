@@ -43,6 +43,10 @@ export default function CheckoutPage() {
     setShowModal(false)
     showSuccess('Successful purchase')
     navigate('/')
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 100)
   }
 
   return (
