@@ -89,7 +89,7 @@ export default function Header() {
                 {showUserProfile && <UserAccount />}
               </>
             ) : (
-              <Link to="/Profile" className="header-profile-inner">
+              <Link to="/profile" className="header-profile-inner">
                 <ProfileIcon />
               </Link>
             )}

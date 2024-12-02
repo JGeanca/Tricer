@@ -72,6 +72,8 @@ export const useAuth = () => {
     onSuccess: (data) => {
       // Update the user data in React Query cache
       queryClient.setQueryData(['user'], data.user)
+      let previousPath = location.state?.from?.pathname || '/'
+      navigate(previousPath, { replace: true })
     },
     onError: (error) => {
       throw error

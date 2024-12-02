@@ -32,9 +32,7 @@ export function LoginForm() {
 
     try {
       await login({ credential, password })
-      const previousPath = location.state?.from?.pathname || '/'
       showSuccess('Login successful')
-      navigate(previousPath, { replace: true })
     } catch (error) {
       showError(error.message)
     }

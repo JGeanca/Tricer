@@ -31,8 +31,6 @@ export function HorizontalCarousel({ products, itemsPerCarousel }) {
   const displayedItems = Array.from({ length: itemsPerPage }, (_, i) =>
     products[(currentItemIndex + i) % totalItems])
 
-  console.log(displayedItems)
-
   return (
     <div className="carousel">
       <button onClick={handlePrev} className="carousel-button">
