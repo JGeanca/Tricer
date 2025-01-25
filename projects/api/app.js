@@ -26,3 +26,12 @@ export const createApp = ({ productModel, userModel, cartModel, orderModel }) =>
 
   return app
 }
+
+export const startApp = async (app, port = process.env.PORT ?? 3000) => {
+  return new Promise((resolve) => {
+    const server = app.listen(port, () => {
+      console.log(`Server running on port http://localhost:${port}`)
+      resolve(server);
+    })
+  })
+}
