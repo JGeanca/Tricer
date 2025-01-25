@@ -1,5 +1,8 @@
 import axios from 'axios'
 import { API_BASE_URL } from '../config'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+
+
 
 // Public instance - for routes that do not require authentication
 export const publicApi = axios.create({
@@ -37,7 +40,7 @@ privateApi.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('token')
-      window.location.href = '/login'
+      window.location.replace('/login')
     }
     return Promise.reject(error) // Reject the promise with the error
   }
