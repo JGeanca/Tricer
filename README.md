@@ -1,6 +1,6 @@
 # Tricer – E-Commerce Platform for Clothing  
 
-🔗 **Check out the live version here:** [Tricer Store](https://web-app-triceratops.vercel.app/)  
+🔗 **Check out the live version here:** [Tricer Store](https://tricer.vercel.app/)  
 
 ## Overview  
 Tricer is an **e-commerce website** designed for a clothing store, allowing users to browse, select, and purchase clothing items in an **intuitive and efficient manner**. This project emphasizes a **user-friendly design, best practices in web development, and scalable architecture**.
