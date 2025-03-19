@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 
 //TODO: Import useSessionTimeout 
 export default function Layout() {
-  //TODO: useSessionTimeout();
+  //TODO: useSessionTimeout()
   const { pathname } = useLocation()
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'auto'
